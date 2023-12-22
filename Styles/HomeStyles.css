@@ -1,0 +1,315 @@
+body,html{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+#header{
+    background-color: #393E46;
+    padding: 20px 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+.container{
+    width: 85%;
+    margin: 0 auto;
+}
+#header.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-nav{
+    margin-left: auto; }
+.main-nav ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.main-nav ul li{
+    float: right;
+    padding: 10px;
+    margin-right: 35px;
+    font-size:18px;
+}
+.main-nav ul li a{
+    text-decoration: none;
+    color: #fff;
+}
+.main-nav ul li a:hover{
+    text-decoration: underline;
+}
+.logo-picture{
+    width: 3.5%;
+    border: 1px solid #00ADB5;
+}
+.logo-picture:hover{
+    cursor: pointer;
+}
+
+.connect,
+.hugo-barnes,
+.projects{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.connect{
+    background-color: #222831;
+}
+.hugo-barnes{
+    background-color: #222831;
+}
+.projects{
+    background-color: #222831;
+}
+.scroll-up {
+    transform: translateY(20%);
+    opacity: 0;
+    transition: transform 2s, opacity 2s;
+}
+.scroll-up.appear {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+.profile-picture{
+    position: absolute;
+    max-width: 33%;
+    right: 85px;
+    bottom: 50px;
+    z-index: 0;
+    border: 1px solid #00ADB5;
+    border-radius: 10px;
+    height: auto;
+}
+
+.hugo-barnes-title{
+    color: #EEEEEE;
+    text-decoration: underline;
+    font-size: 1.25em;
+    margin-top: 100px;
+}
+.about-text{
+    width: 450px;
+    height: 500px;
+    border: 1px solid #00ADB5;
+    border-radius: 10px;
+    margin-top: 0px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    color: #EEEEEE;
+    font-size: 36px;
+    line-height: 50px;
+    padding: 0 50px; 
+    box-sizing: border-box; 
+}
+
+
+.project-title{
+    color: #EEEEEE;
+    position: absolute;
+    margin-top: 325px;
+    text-decoration: underline;
+    font-size: 2em;
+}
+.project-cards{
+    position: inherit;
+    margin-top: 400px;
+    display: grid;
+    grid-template-columns: repeat(3, 250px);
+    grid-template-rows: repeat(3,250px);
+    gap: 8px;
+}
+.card{
+    position: relative;
+    grid-column: span 1;
+    grid-row: span 1;
+    border: 1px solid #00ADB5;
+}
+
+.card-the-kings-quest{
+    background-color: #393E46;
+    color: #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column: span 1;
+    grid-row: span 2;
+    border: solid #00ADB5;
+    font-size: 3em;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 10px;
+}
+.card-automaton,
+.card-matrix-master,
+.card-word-wizard,
+.card-grid-genius{
+    background-color: #393E46;
+    color: #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column: span 1;
+    border-radius: 10px;
+    grid-row: span 1;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    border: solid #00ADB5;
+}
+.automaton-caption,
+.matrix-master-caption{
+    color: #EEEEEE;
+    position: absolute;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    pointer-events: none;
+}
+.tkq-caption{position: absolute;
+    color: #EEEEEE;
+    font-size: 1em;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    pointer-events: none;}
+.word-wizard-caption{
+    color: #EEEEEE;
+    position: absolute;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    pointer-events: none;
+}
+.grid-genius-caption{
+    position: absolute;
+    color: #EEEEEE; 
+    position: absolute;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+    pointer-events: none;
+}
+.project-thumbnails {
+    position: absolute;
+    left: 1020px;
+    top: 995px; 
+}
+.automaton-picture{
+    opacity: 1;
+    z-index: 99999;
+    width: 52%;
+}
+
+.connect-title{
+    color: #EEEEEE;
+    position: absolute;
+    margin-top: -210px;
+    right: 915px;
+    text-decoration: underline;
+    font-size: 2em;
+}
+.stlye-text-fields{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    width: 400px;
+    height: 350px;
+    right: 850px;
+    top: 2040px;
+    margin-top: -260px; 
+    background-color: #393E46;
+    padding: 10px;
+    border: 1px solid #00ADB5;
+}
+.text-field{
+    width: 350px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+.message-field{
+    height: 200px;
+    padding-bottom: 60%;
+}
+.send-button{
+    width: 423px;
+    color: #EEEEEE;
+    background-color: #393E46;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    padding: 10px;
+    margin-top:209px;
+    right: 850px;
+    border: 1px solid #00ADB5;
+    cursor: pointer;
+}
+.send-button:hover{
+    text-decoration: underline;
+    position: absolute;
+}
+.fontAwesome {
+    position: absolute;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    top: 1800px;
+    right: 10px;
+    height: 35%;
+    font-size: 5em;
+    cursor: pointer;
+}
+.fa-file,
+.fa-linkedin,
+.fa-square-github {
+    color: #00ADB5;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.linkedin-caption,
+.github-caption,
+.cv-caption {
+    color: #EEEEEE;
+    opacity: 1;
+    font-size: .2em;
+}
+.icon-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.skills-title{
+    position: absolute;
+    color: #EEEEEE;
+    right: 510px;
+    margin-top: -220px;
+    text-decoration: underline;
+    font-size: 2em;
+}
+.skills-p{
+    background-color: #393E46;
+    position: absolute;
+    color: #EEEEEE;
+    right: 345px;
+    top: 1744px;
+    border: 1px solid #00ADB5;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400px;
+    height: 350px;
+    font-size: 2.5em;
+    text-align: center;
+}
