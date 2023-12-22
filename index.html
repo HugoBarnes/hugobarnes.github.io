@@ -3,9 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/HomeStyles.css">
+    <title>Hugo Barnes</title>
 </head>
 <body>
-    <h1>Hopefully this works!</h1>
+    <header id="header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#connectid">Connect</a></li>
+                    <li><a href="#projectsid">Projects</a></li>
+                    <li><a href="#hugoid">Hugo Barnes</a></li>
+                </ul>
+            </nav>
+            <a href="#hugoid">
+                <img src="../images/Header Logo/Logo.png" class="logo-picture">
+            </a>
+        </div>
+    </header>
+    <section class="hugo-barnes" id="hugoid">
+        <div class="container">
+            <div class="profile-picture-div">
+                <img src="../images/profile picture/HugoProfilePic.jpg"  class="profile-picture">
+            </div>
+            <div class="hugo-barnes-title">
+                <h1> Hugo Barnes</h1>
+            </div>
+            <div class="about-text">
+                <p>
+                    Math and Computer Science Major at
+                    the University of Virginia. 
+
+                </p>
+                <p>
+                    My goal is to work on puzzles and create
+                    algorithms with creative problem solvers.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="projects" id="projectsid">
+        <div class="container">
+            <h1 class="project-title scroll-up">Projects</h1>
+            <div class="project-cards">
+                <div class="card card-automaton scroll-up">
+                    <p class="Automaton">Automaton</p>
+                    <div class="automaton-caption">
+                        <p>
+                            Arduino
+                            <br> Powered 
+                            <br> Drawing
+                            <br> Machine
+                        </p>
+                    </div>
+                    <div class="project-thumbnails">
+                        <img src="../images/Project-Thumbnails/Drawing Machine Thumbnail.png"  class="automaton-picture ">
+                    </div>
+                </div>
+                <div class="card card-matrix-master scroll-up">
+                    <p class="Matrix-Master">Matrix Master</p>
+                    <div class="matrix-master-caption">
+                        <p>
+                            Python
+                            <br>Powered
+                            <br>Sudoku
+                            <br>Solver
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-the-kings-quest scroll-up">
+                    <p class="TKQ">T <br> K <br> Q</p>
+                    <div class="tkq-caption">
+                        <p>
+                            The
+                            <br> King's 
+                            <br> Quest  
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-word-wizard scroll-up">
+                    <p class="Word-Wizard">Word Wizard</p>
+                    <div class="word-wizard-caption">
+                        <p>
+                            Python
+                            <br>Powered
+                            <br>Pangram
+                            <br>Finder 
+                        </p>
+                    </div>
+                </div>
+                <div class="card card-grid-genius scroll-up">
+                    <p class="Grid-Genius">Grid Genius</p>
+                    <div class="grid-genius-caption">
+                        <p>
+                            Machine
+                            <br>Learning
+                            <br>Crossword
+                            <br>Solver 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="connect" id="connectid">
+        <div class="container">
+            <h1 class="connect-title">Connect With Me</h1>
+            <div class="form">
+                <form  class="text-field"action="https://formsubmit.co/b01fb6bd7d0e80978abe2acb743abae9" method="POST">
+                    <div class="stlye-text-fields">
+                        <input type="hidden" name="_honey" style="display:none">
+                        <input type="hidden" name="_captcha" value="false"> 
+                        <input type="hidden" name="_subject" value="EMAIL FROM Hugo's Website">
+                        <input type="email" name="email" placeholder="Email Address" required class="text-field">
+                        <input type="text" name="subject" placeholder="Subject" required class="text-field">
+                        <input type="text" name ="message" placeHolder ="Message" required class="text-field message-field"> 
+
+                    </div>
+                    <button class="send-button" type="submit">Send</button>
+               </form>
+            </div>
+        </div>
+        <div class="fontAwesome">
+            <div class="icon-row">
+                <i class="fa-brands fa-linkedin" onclick="goToLinkedIn(event)"></i>
+                <div class="linkedin-caption">
+                    <p>Hugo Barnes</p>
+                </div>
+            </div>
+            <div class="icon-row">
+                <i class="fa-brands fa-square-github" onclick="goToGitHub(event)"></i>
+                <div class="github-caption">
+                    <p>HugoBarnes</p>
+                </div>
+            </div>
+            <div class="icon-row">
+                <i class="fa-solid fa-file" onclick="goToCV(event)"></i>
+                <div class="cv-caption">
+                    <p>CV</p>
+                </div>
+            </div>
+        </div>
+        <div class="skills-container">
+            <h1 class="skills-title">Skills</h1>
+            <p class="skills-p">
+                Algorithms
+                <br> Java
+                <br> Java Script
+                <br> HTML
+                <br> CSS
+                <br> MySQLite
+                <br> 
+            </p>
+        </div>
+    </section>
+    <script src="https://kit.fontawesome.com/a72761212d.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Scripts/HomeScript.js"></script>
 </body>
 </html>
