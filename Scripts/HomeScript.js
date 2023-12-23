@@ -1,12 +1,10 @@
 $(document).ready(function(){
     $(".card-automaton").hover(
         function(){
-            
             $(this).find(".Automaton").css("opacity", "0");
-            console.log("this code is running");
             $(this).find(".automaton-caption").css("opacity", "1");
-            $(this).find(".automaton-picture").css("opacity", "1");
-
+            console.log("This is working");
+            $(this).find(".automaton-picture").css("opacity", "0");
         }, 
         function(){
             $(this).find(".Automaton").css("opacity", "1");
@@ -14,6 +12,20 @@ $(document).ready(function(){
             $(this).find(".automaton-picture").css("opacity", "0");
         }
     );
+});
+document.addEventListener('DOMContentLoaded', function() {
+    var cardAutomaton = document.querySelector('.card-automaton');
+    var automatonPicture = document.querySelector('.automaton-picture');
+
+    if (cardAutomaton && automatonPicture) {
+        cardAutomaton.addEventListener('mouseenter', function() {
+            automatonPicture.classList.add('automaton-picture-hidden');
+        });
+
+        cardAutomaton.addEventListener('mouseleave', function() {
+            automatonPicture.classList.remove('automaton-picture-hidden');
+        });
+    }
 });
 $(document).ready(function(){
     $(".card-matrix-master").hover(
@@ -25,6 +37,20 @@ $(document).ready(function(){
             $(this).find(".matrix-master-caption").css("opacity", "0"); }
     );
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var cardMatrixMaster = document.querySelector('.card-matrix-master');
+    var inProgressPicture = document.querySelector('.in-progress-picture');
+
+    if (cardMatrixMaster && inProgressPicture) {
+        cardMatrixMaster.addEventListener('mouseenter', function() {
+            inProgressPicture.classList.add('matrix-master-picture-hidden');
+        });
+
+        cardMatrixMaster.addEventListener('mouseleave', function() {
+            inProgressPicture.classList.remove('matrix-master-picture-hidden');
+        });
+    }
+});
 $(document).ready(function(){
     $(".card-the-kings-quest").hover(
         function(){
@@ -34,6 +60,27 @@ $(document).ready(function(){
             $(this).find(".TKQ").css("opacity", "1");
             $(this).find(".tkq-caption").css("opacity", "0");}
     );
+});
+
+
+// GOT VERY LAZY AND DIDNT BOTHER CHANGING THE VARIABLES INSIDE OF THE EVENT LISTENER ALL OF 
+// THE FUNCTIONS RELY ON MATRIX-MASTER-PICTURE HIDDEN; CHANGING THIS CHANGES THE FUNCTIONALITY OF 
+// ALL OF THE OTHER METHODS. REMEMBER THIS.
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var cardMatrixMaster = document.querySelector('.card-the-kings-quest');
+    var inProgressPicture = document.querySelector('.in-progress-picture');
+
+    if (cardMatrixMaster && inProgressPicture) {
+        cardMatrixMaster.addEventListener('mouseenter', function() {
+            inProgressPicture.classList.add('matrix-master-picture-hidden');
+        });
+
+        cardMatrixMaster.addEventListener('mouseleave', function() {
+            inProgressPicture.classList.remove('matrix-master-picture-hidden');
+        });
+    }
 });
 $(document).ready(function(){
     $(".card-word-wizard").hover(
@@ -45,6 +92,20 @@ $(document).ready(function(){
             $(this).find(".word-wizard-caption").css("opacity", "0");}
     );
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var cardMatrixMaster = document.querySelector('.card-word-wizard');
+    var inProgressPicture = document.querySelector('.in-progress-picture');
+
+    if (cardMatrixMaster && inProgressPicture) {
+        cardMatrixMaster.addEventListener('mouseenter', function() {
+            inProgressPicture.classList.add('matrix-master-picture-hidden');
+        });
+
+        cardMatrixMaster.addEventListener('mouseleave', function() {
+            inProgressPicture.classList.remove('matrix-master-picture-hidden');
+        });
+    }
+});
 $(document).ready(function(){
     $(".card-grid-genius").hover(
         function(){
@@ -54,6 +115,20 @@ $(document).ready(function(){
             $(this).find(".Grid-Genius").css("opacity", "1");
             $(this).find(".grid-genius-caption").css("opacity", "0");}
     );
+});
+document.addEventListener('DOMContentLoaded', function() {
+    var cardMatrixMaster = document.querySelector('.card-grid-genius');
+    var inProgressPicture = document.querySelector('.in-progress-picture');
+
+    if (cardMatrixMaster && inProgressPicture) {
+        cardMatrixMaster.addEventListener('mouseenter', function() {
+            inProgressPicture.classList.add('matrix-master-picture-hidden');
+        });
+
+        cardMatrixMaster.addEventListener('mouseleave', function() {
+            inProgressPicture.classList.remove('matrix-master-picture-hidden');
+        });
+    }
 });
 function goToProjects(event){
     var projectSection = document.getElementsByClassName('project-title')[0];
