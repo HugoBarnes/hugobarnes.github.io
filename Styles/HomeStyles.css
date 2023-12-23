@@ -210,8 +210,8 @@ body, html {
 }
 .project-thumbnails {
     position: absolute;
-    right: -6vh;
-    top: 134vh; 
+    right: -14%;
+    top: 126.9%; 
 }
 .automaton-picture{
     opacity: 0;
@@ -226,8 +226,8 @@ body, html {
 .in-progress-picture{
     position: absolute;
     width: 50%;
-    right: 27.8vh;
-    top: 11.5vh;
+    right: 55.8%;
+    top: 18.5%;
     opacity: 0;
 }
 .connect-title{
@@ -247,7 +247,7 @@ body, html {
     width: 400px;
     height: 350px;
     right: 59.15%;
-    top: 248.6vh;
+    top: 261.6vh;
     margin-top: -260px; 
     background-color: #393E46;
     padding: 10px;
@@ -273,7 +273,7 @@ body, html {
     border-radius: 5px;
     position: absolute;
     padding: 10px;
-    top: 258.71vh;
+    top: 276vh;
     right: 59.15%;
     border: 1px solid #00ADB5;
     cursor: pointer;
@@ -287,8 +287,8 @@ body, html {
     margin-right: 50px;
     display: flex;
     flex-direction: column;
-    top: 226.5vh;
-    right: 14vh;
+    top: 228.5vh;
+    right: 3vh;
     height: 35%;
     font-size: 5em;
     cursor: pointer;
@@ -316,7 +316,7 @@ body, html {
 .skills-title{
     position: absolute;
     color: #EEEEEE;
-    right: 65vh;
+    right: 60vh;
     top: 218vh;
     text-decoration: underline;
     font-size: 2em;
@@ -325,8 +325,8 @@ body, html {
     background-color: #393E46;
     position: absolute;
     color: #EEEEEE;
-    right: 50vh;
-    top: 221.25vh;
+    right: 40vh;
+    top: 222.55vh;
     border: 1px solid #00ADB5;
     padding: 10px;
     border-radius: 10px;
