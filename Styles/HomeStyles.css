@@ -1,98 +1,110 @@
-body,html{
+body, html {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    max-width: 100%;
 }
-#header{
+
+#header {
     background-color: #393E46;
     padding: 20px 0;
     width: 100%;
     position: fixed;
     z-index: 1;
 }
-.container{
+
+.container {
     width: 85%;
+    max-width: 1200px;
     margin: 0 auto;
 }
-#header.container{
+
+#header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.main-nav{
-    margin-left: auto; }
-.main-nav ul{
+
+.main-nav {
+    margin-left: auto;
+}
+
+.main-nav ul {
     padding: 0;
     margin: 0;
     list-style: none;
+    display: flex;
+    justify-content: flex-end;
 }
-.main-nav ul li{
-    float: right;
+
+.main-nav ul li {
     padding: 10px;
-    margin-right: 35px;
-    font-size:18px;
+    margin-left: 35px;
+    font-size: 18px;
 }
-.main-nav ul li a{
+
+.main-nav ul li a {
     text-decoration: none;
     color: #fff;
 }
-.main-nav ul li a:hover{
+
+.main-nav ul li a:hover {
     text-decoration: underline;
 }
-.logo-picture{
-    width: 3.5%;
+
+.logo-picture {
+    position: absolute;
+    top: 12%;
+    left: 7%;
+    width: 3%;
     border: 1px solid #00ADB5;
 }
-.logo-picture:hover{
+
+.logo-picture:hover {
     cursor: pointer;
 }
 
-.connect,
-.hugo-barnes,
-.projects{
+.connect, .hugo-barnes, .projects {
     height: 100vh;
     display: flex;
     align-items: center;
 }
-.connect{
+
+.connect, .hugo-barnes, .projects {
     background-color: #222831;
 }
-.hugo-barnes{
-    background-color: #222831;
-}
-.projects{
-    background-color: #222831;
-}
+
 .scroll-up {
     transform: translateY(20%);
     transition: transform 2s, opacity 2s;
-  }  
+}
+
 .scroll-up.appear {
     transform: translateY(0);
     opacity: 1;
 }
 
-
-.profile-picture{
+.profile-picture {
     position: absolute;
     max-width: 33%;
-    right: 85px;
-    bottom: 50px;
+    right: 5%;
+    bottom: 5%;
     z-index: 0;
     border: 1px solid #00ADB5;
     border-radius: 10px;
     height: auto;
 }
 
-.hugo-barnes-title{
+.hugo-barnes-title {
     color: #EEEEEE;
     text-decoration: underline;
     font-size: 1.25em;
     margin-top: 100px;
 }
-.about-text{
+
+.about-text {
     width: 450px;
     height: 500px;
     border: 1px solid #00ADB5;
@@ -104,8 +116,8 @@ body,html{
     color: #EEEEEE;
     font-size: 36px;
     line-height: 50px;
-    padding: 0 50px; 
-    box-sizing: border-box; 
+    padding: 0 50px;
+    box-sizing: border-box;
 }
 
 
@@ -324,4 +336,3 @@ body,html{
     font-size: 2.4em;
     text-align: center;
 }
-
