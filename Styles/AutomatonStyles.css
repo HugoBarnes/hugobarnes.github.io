@@ -69,9 +69,10 @@
     color: #112D4E;
     text-decoration: underline;
     font-size: 33px;
+    margin-top: 45px;
   }
   
-  #hugo_barnes {
+  #Automaton {
     padding-top: 100px;
     background: #F9F7F7;
     display: flex;
@@ -80,20 +81,20 @@
     position: relative;
   }
   
-  #hugo_barnes>div {
+  #Automaton>div {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: flex-start;
     flex-direction: column;
   }
   
-  #hugo_barnes img {
-    width: 33%;
+  #Automaton img {
+    width: 43%;
     height: 100%;
     border-radius: 10px;
-    max-height: calc(100vh - 120px);
-    margin-top: 13px;
-    margin-right: -26px;
+    max-height: calc(100vh - 80px);
+    margin-top: 95px;
+    margin-left: -26px;
   }
   
   .about_text {
