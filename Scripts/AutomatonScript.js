@@ -17,9 +17,4 @@ cards.forEach(card => {
     automatonPicture.style.display = 'none';
     inProgressPicture.style.display = 'none';
   });
-  card.addEventListener('click', function (){
-    if(card.classList.contains('first_card')){
-      window.location.href="Pages/AutomatonIndex.html";
-    }
-  })
 });

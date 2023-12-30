@@ -13,15 +13,15 @@
   }
   
   .blue_border {
-    border: 1px solid #00ADB5;
+    border: 1px solid #3F72AF;
   }
   
   .navigator {
     position: fixed;
     top: 0;
     z-index: 1;
-    padding: 10px 0;
-    background-color: #393E46;
+    padding: 20px 0;
+    background-color: #DBE2EF;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -31,7 +31,8 @@
   .navigator img {
     width: 40px;
     height: auto;
-    margin-left: 83px;
+    border: 1px solid #00ADB5;
+    /* Remove the margin-left, as it is no longer needed */
   }
   
   nav ul {
@@ -43,7 +44,7 @@
   
   nav a {
     text-decoration: none;
-    color: #fff;
+    color: #112D4E;
     font-size: 18px;
   }
   
@@ -51,15 +52,28 @@
     text-decoration: underline;
   }
   
+  /* New CSS for creating a balancing pseudo-element */
+  .navigator::before {
+    content: '';
+    flex: 1;
+  }
+  
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  
   .title {
-    color: #EEEEEE;
+    color: #112D4E;
     text-decoration: underline;
     font-size: 33px;
   }
   
   #hugo_barnes {
     padding-top: 100px;
-    background: #222831;
+    background: #F9F7F7;
     display: flex;
     justify-content: space-around;
     min-height: calc(100vh - 100px);
@@ -86,10 +100,10 @@
     width: 450px;
     height: 500px;
     max-height: calc(100vh - 200px);
-    border: 1px solid #00ADB5;
+    border: 1px solid #3F72AF;
     border-radius: 10px;
     margin-top: 15px;
-    color: #EEEEEE;
+    color: #112D4E;
     font-size: 36px;
     line-height: 50px;
     padding: 0 50px;
@@ -101,7 +115,7 @@
   
   #projects,
   #connect {
-    background: #222831;
+    background: #F9F7F7;
     min-height: 100vh;
     position: relative;
     display: flex;
@@ -154,8 +168,8 @@
     margin: 4px;
     width: 250px;
     height: 516px;
-    background-color: #393E46;
-    color: #EEEEEE;
+    background-color: #DBE2EF;
+    color: #112D4E;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -164,7 +178,7 @@
     font-size: 18px;
     cursor: pointer;
     text-decoration: none;
-    border: solid #00ADB5;
+    border: solid #3F72AF;
   }
   
   .card:not(.card_grid .card) {
@@ -217,9 +231,9 @@
     border-radius: 10px;
     width: 400px;
     height: 350px;
-    background-color: #393E46;
+    background-color: #DBE2EF;
     padding: 10px;
-    border: 1px solid #00ADB5;
+    border: 1px solid #3F72AF;
   }
   
   .text-field {
@@ -237,13 +251,13 @@
   
   .send-button {
     width: 423px;
-    color: #EEEEEE;
-    background-color: #393E46;
+    color: #112D4E;
+    background-color: #DBE2EF;
     border: none;
     border-radius: 5px;
     position: relative;
     padding: 10px;
-    border: 1px solid #00ADB5;
+    border: 1px solid #3F72AF;
     cursor: pointer;
   }
   
@@ -252,16 +266,16 @@
   }
   
   .tags {
-    color: #EEEEEE;
+    color: #112D4E;
     text-decoration: underline;
     font-size: 33px;
     line-height: 50px;
   }
   
   .skills-p {
-    background-color: #393E46;
-    color: #EEEEEE;
-    border: 1px solid #00ADB5;
+    background-color: #DBE2EF;
+    color: #112D4E;
+    border: 1px solid #3F72AF;
     padding: 10px;
     border-radius: 10px;
     width: 400px;
@@ -284,7 +298,7 @@
   
   .fa-brands,
   .fa-solid {
-    color: #00ADB5;
+    color: #3F72AF;
     margin-bottom: 10px;
     padding: 10px;
     font-size: 90px;
@@ -292,7 +306,7 @@
   
   .social p {
     line-height: 90px;
-    color: white;
+    color: #112D4E;
     font-size: 18px;
   }
   
