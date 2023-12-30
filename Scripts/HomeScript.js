@@ -23,3 +23,12 @@ cards.forEach(card => {
     }
   })
 });
+window.addEventListener('load', function() {
+  var hash = window.location.hash;
+  if (hash) {
+    var targetElement = document.querySelector(hash);
+    if (targetElement) {
+      targetElement.scrollIntoView();
+    }
+  }
+});
