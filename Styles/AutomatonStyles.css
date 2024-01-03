@@ -32,7 +32,6 @@
     width: 40px;
     height: auto;
     border: 1px solid #00ADB5;
-    /* Remove the margin-left, as it is no longer needed */
   }
   
   nav ul {
@@ -52,7 +51,6 @@
     text-decoration: underline;
   }
   
-  /* New CSS for creating a balancing pseudo-element */
   .navigator::before {
     content: '';
     flex: 1;
