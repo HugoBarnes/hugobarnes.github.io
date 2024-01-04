@@ -87,8 +87,8 @@
   }
   
   #Automaton img {
-    width: 43%;
-    height: 100%;
+    width: 610px;
+    height: 500px;
     border-radius: 10px;
     max-height: calc(100vh - 80px);
     margin-top: 95px;
@@ -123,80 +123,43 @@
   }
   
   #ReadMe .title {
-    margin-bottom: 20px;
+    margin-top: 45px;
+  }
+  .ReadMeText{
+    width: 450px;
+    height: 500px;
+    max-height: calc(100vh - 200px);
+    border: 1px solid #3F72AF;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #112D4E;
+    font-size: 36px;
+    line-height: 50px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .drawing_Movie{
+    width: 43%;
+    height: 100%;
+    border-radius: 10px;
+    max-height: calc(100vh - 80px);
+    margin-top: 95px;
+    margin-left: 155px;
+    border: 1px solid #3F72AF;
   }
   
   #ReadMe>div {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex: 1;
+    justify-content: left;
+    align-items: flex-start;
+    flex-direction: column;
   }
-  
-  #ReadMe>div>div:nth-child(1) {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-  }
-  
-  #ReadMe>div>div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    min-width: 250px;
-    justify-content: center;
-  }
-  
-  #ReadMe>div>div:nth-child(2) img {
-    width: 200px;
-    height: auto;
-    max-height: 516px;
-    display: none;
-    margin: 0 auto;
-  }
-  
-  .card_grid {
-    display: flex;
-  }
-  
-  .card_grid .card {
-    height: 250px;
-    margin: 4px;
-  }
-  
-  .card {
-    margin: 4px;
-    width: 250px;
-    height: 516px;
-    background-color: #DBE2EF;
-    color: #112D4E;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    text-decoration: none;
-    border: solid #3F72AF;
-  }
-  
-  .card:not(.card_grid .card) {
-    font-size: 54px;
-  }
-  
-  .card:hover>p:nth-child(1) {
-    display: none;
-  }
-  
-  .card>p:nth-child(2) {
-    display: none;
-    font-size: 36px;
-  }
-  
-  .card:hover>p:nth-child(2) {
-    display: block;
-  }
-  
+
+
   #connect>div:nth-child(1) {
     flex: 2;
     display: flex;
