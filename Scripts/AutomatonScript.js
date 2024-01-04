@@ -6,11 +6,11 @@ cards.forEach(card => {
     if (card.classList.contains('first_card')) {
       automatonPicture.style.display = 'block';
       inProgressPicture.style.display = 'none';
-      document.querySelector('#projects>div').style.alignItems = "flex-end";
+      document.querySelector('#ReadMe>div').style.alignItems = "flex-end";
     } else {
       automatonPicture.style.display = 'none';
       inProgressPicture.style.display = 'block';
-      document.querySelector('#projects>div').style.alignItems = "center";
+      document.querySelector('#ReadMe>div').style.alignItems = "center";
     }
   });
   card.addEventListener('mouseout', function () {
