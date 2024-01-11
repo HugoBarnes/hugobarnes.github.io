@@ -229,7 +229,9 @@
     padding: 10px;
     border-radius: 10px;
   }
-  
+  .text-field-message{
+    word-wrap: break-word;
+  }
   .message-field {
     height: 200px;
     padding-bottom: 60%;
