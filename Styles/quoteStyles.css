@@ -1,0 +1,29 @@
+#status img{
+    position: absolute;
+    width: 50%;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+#logo img{
+    position: absolute;
+    width: 5%;
+    height: auto;
+    right: .2%;
+    top: 6%;
+    transform: translate(-50%,-50%);
+}
+
+#home-logo img{
+    position: absolute;
+    width: 5%;
+    height: auto;
+    left: 4%;
+    top: 6%;
+    transform: translate(-50%,-50%);
+}
+
+#home-logo img:hover{
+    cursor: pointer;
+}

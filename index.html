@@ -1,148 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hugo Barnes</title>
-  <link rel="stylesheet" type="text/css" href="Styles/HomeStyles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo Barnes</title>
+    <link rel="stylesheet" href="styles/homestyles.css">
 </head>
 <body>
-  <div class="navigator">
-    <a href="#hugo_barnes">
-      <img class="blue_border" src="images/Header Logo/Logo.png" alt="logo">
-  </a>
-      <nav>
-      <ul>
-        <li><a href="#hugo_barnes">Hugo Barnes</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#connect">Connect</a></li>
-      </ul>
-    </nav>
-  </div>
-  <div id="hugo_barnes">
-    <div>
-      <h1 class="title">Hugo Barnes</h1>
-      <div class="about_text">
-        <p> I am a Math and Computer Science Double Major at the University of Virginia.</p> 
-        <p>My goal is to work on puzzles and create algorithms with other creative problem solvers.</p>
-      </div>
-    </div>
-    <img class="blue_border" src="images/profile picture/HugoProfilePic.jpg" alt="Profile Pic">
-  </div>
-  <div id="projects">
-    <div>
-      <div>
-        <div>
-          <h2 class="title">Projects</h2>
-          <div class="card_grid">
-            <div class="card first_card">
-              <p>
-                Automaton
-              </p>
-              <p>
-                3D <br> Printed <br> Drawing <br> Machine
-              </p>
-            </div>
-            <div class="card">
-              <p>
-                Matrix Master
-              </p>
-              <p>
-                Python
-                <br>Powered
-                <br>Sudoku
-                <br>Solver
-              </p>
-            </div>
-          </div>
-          <div class="card_grid">
-            <div class="card">
-              <p>
-                Word Wizard
-              </p>
-              <p>
-                Python
-                <br>Powered
-                <br>Pangram
-                <br>Finder
-              </p>
-            </div>
-            <div class="card">
-              <p>
-                Grid Genius
-              </p>
-              <p>
-                Machine
-                <br>Learning
-                <br>Crossword
-                <br>Solver
-              </p>
-            </div>
-          </div>
+    <div id="screen-one">
+        <div id="profile-picture">
+            <img src="imgs/HugoProfilePic.jpg">
         </div>
-        <div class="card">
-          <p>T <br> K <br> Q</p>
-          <p>
-            The
-            <br> King's
-            <br> Quest
-          </p>
+        <div id="profile-caption">
+            <p1 id="caption">
+                I am Hugo Barnes, a Math and <br>
+                Computer Science Double Major.
+            </p1>
         </div>
-      </div>
-      <div>
-        <img src="images/Project-Thumbnails/Drawing Machine Thumbnail.png" class="automaton-picture">
-        <img src="images/Project-Thumbnails/InProgressThumbnail.png" class="in-progress-picture">
-      </div>
-    </div>
-  </div>
-  <div id="connect">
-    <div>
-    <div>
-      <h2 class="tags">Connect With Me</h2>
-      <form class="text-field" action="https://formsubmit.co/b01fb6bd7d0e80978abe2acb743abae9" method="POST">
-        <div class="stlye-text-fields">
-          <input type="hidden" name="_honey" style="display:none">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://hugobarnes.github.io/#connect">
-          <input type="hidden" name="_subject" value="EMAIL FROM Hugo's Website">
-          <input type="email" name="email" placeholder="Email Address" required="" class="text-field">
-          <input type="text" name="subject" placeholder="Subject" required="" class="text-field">
-          <textarea type="text" name="message" placeholder="Message" required="" class="text-field message-field"></textarea>
+        <div id="lets-connect">
+            <p1 id="connect">
+                Let's Connect ↓
+            </p1>
         </div>
-        <button class="send-button" type="submit">Send</button>
-      </form>
+        <div id="projects">
+            <div id="automaton" class="project-row">
+                <div class="content">
+                    <h1 id="automaton-text">Automaton: 3D Printed Drawing Machine</h1>
+                    <h1 class="completed">COMPLETED</h1>
+                </div>
+                <img src="imgs/automatonlogo.png" class="project-image" id="automaton-project" style="display: none; position: absolute;">
+            </div>
+            <div id="calvinandhobbes" class="project-row">
+                <div class="content">
+                    <h1 id="calvinhobbes-text">Calvin and Hobbes Reader</h1>
+                    <h1 class="completed">FAVORITES LIST</h1>
+                </div>
+                <img src="imgs/calvinandhobbeslogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="scrabble" class="project-row">
+                <div class="content">
+                    <h1 id="scrabble-text">Optimum Scrabble Player</h1>
+                    <h1 class="completed">BOARD BONUS INTEGRATION</h1>
+                </div>
+                <img src="imgs/scrabblesolverlogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="sudoku" class="project-row">
+                <div class="content">
+                    <h1 id="scrabble-text">Sudoku Solver</h1>
+                    <h1 class="completed">UI DONE</h1>
+                </div>
+                <img src="imgs/sudokusolverlogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="tkq" class="project-row">
+                <div class="content">
+                    <h1 id="tkq-text">The King's Quest: A text based D&D Game</h1>
+                    <h1 class="completed">MONSTER DB</h1>
+                </div>
+                <img src="imgs/tkqlogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="connection" class="project-row">
+                <div class="content">
+                    <h1 id="connections-text">N.Y.T. Connections Solver</h1>
+                    <h1 class="completed">PLANNING</h1>
+                </div>
+                <img src="imgs/connectionslogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="crossword" class="project-row">
+                <div class="content">
+                    <h1 id="crossword-text">Crossword Solver</h1>
+                    <h1 class="completed">PLANNING</h1>
+                </div>
+                <img src="imgs/crosswordsolverlogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="quotes" class="project-row">
+                <div class="content">
+                    <h1 id="quote-text">Quote Generator</h1>
+                    <h1 class="completed">PLANNING</h1>
+                </div>
+                <img src="imgs/quotegeneratorlogo.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+            <div id="riotgames" class="project-row">
+                <div class="content">
+                    <h1 id="riot-text">SOLOQ: A League of Legends Tracker</h1>
+                    <h1 class="completed">PLANNING</h1>
+                </div>
+                <img src="imgs/riotgamesapi.png" class="project-image" id="calvinhobbes-project" style="display: none; position: absolute;">
+            </div>
+        </div>
+        <div id="home-logo">
+            <img src="imgs/homelogo.png">
+        </div>
     </div>
-    <div>
-      <h2 class="tags">Skills</h2>
-      <p class="skills-p">Algorithms <br>
-        Java<br>
-        Java Script<br>
-        HTML<br>
-        CSS<br>
-        MySQLite<br>
-        Python</p>
+    <div id="screen-two">
+        <div id="links">
+
+        </div>
+        <div id="connect">
+
+        </div>
     </div>
-  </div>
-    <div>
-      <div class="social">
-        <a href="https://www.linkedin.com/in/hugo-barnes/" target="_blank">
-          <i class="fa-brands fa-linkedin"></i>
-          <p>Hugo Barnes</p>
-        </a>
-        <a href="https://github.com/HugoBarnes" target="_blank">
-          <i class="fa-brands fa-square-github"></i>
-          <p>HugoBarnes</p>
-        </a>
-        <a href="https://drive.google.com/file/d/1Onm_GlI0uhoV00EjikqnuCWqtc0iTWL8/view?usp=drive_link" target="_blank">
-          <i class="fa-solid fa-file"></i>
-          <p>CV</p>
-        </a>
-      </div>
-    </div>
-  </div>
-  <script>
-  </script>
-<script src="Scripts/HomeScript.js"></script>
-<script src="https://kit.fontawesome.com/a72761212d.js" crossorigin="anonymous"></script>
+    <script src="scripts/homescript.js"></script>
 </body>
 </html>
