@@ -95,6 +95,7 @@ function loadRandomComic() {
 }
 
 // Add event listener to the 'Add to Favorites' button
+loadRandomComic();
 document.getElementById('random-cartoon').addEventListener('click', loadRandomComic);
 document.getElementById('volume-selector').addEventListener('change', loadRandomComic);
 window.onload = loadRandomComic();
