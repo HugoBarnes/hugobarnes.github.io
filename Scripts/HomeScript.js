@@ -5,7 +5,7 @@ document.querySelectorAll('.project-row').forEach(row => {
     // Add a click event listener to each project row
     row.addEventListener('click', () => {
         // Navigate to a new page based on the project's ID
-        window.location.href = `/pages/${projectId}.html`; // Replace with your actual URL structure
+        window.location.href = `/Pages/${projectId}.html`; // Replace with your actual URL structure
     });
 
     const rowRect = row.getBoundingClientRect();
