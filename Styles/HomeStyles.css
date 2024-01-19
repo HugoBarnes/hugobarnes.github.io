@@ -131,9 +131,9 @@ html,body{
 
 .image-stack {
     display: flex;
-    align-items: center; /* Center images vertically */
-    justify-content: center; /* Center images horizontally */
-    gap: 30px; /* Space between images */
+    align-items: center; 
+    justify-content: center; 
+    gap: 60px; 
     position: absolute;
     left: 2.5vw;
 }
