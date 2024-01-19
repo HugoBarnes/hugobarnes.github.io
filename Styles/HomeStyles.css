@@ -194,8 +194,8 @@ html,body{
 #about-me{
     position: absolute;
     width: 580px;
-    height: 525px;
-    bottom: 15vh;
+    height: 555px;
+    bottom: 12vh;
     right: 1vw;
     border: 1px solid black;
     border-radius: 10px;
