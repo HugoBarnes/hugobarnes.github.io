@@ -27,9 +27,9 @@ html,body{
 
 #home-logo img{
     position: absolute;
-    width: 3vw;
+    width: 2.5vw;
     height: auto;
-    top: 5vh;
+    top: 4vh;
     right: 2.5vh;
     transform: translate(-50%, -50%);
 }
@@ -123,19 +123,19 @@ html,body{
     width: 500px;
     height: 500px;
     display: flex;
-    justify-content: center;
     align-content: center;
     gap: 20px;
-    left: 1.0vw;
-    bottom: 15%;
+    left: 2.5vw;
+    bottom: 9%;
 }
 
 .image-stack {
     display: flex;
-    flex-direction: column;
     align-items: center; /* Center images vertically */
     justify-content: center; /* Center images horizontally */
     gap: 30px; /* Space between images */
+    position: absolute;
+    left: 2.5vw;
 }
 .social {
     display: flex;
@@ -193,9 +193,9 @@ html,body{
 }
 #about-me{
     position: absolute;
-    width: 780px;
-    height: 425px;
-    bottom: 23.2%;
+    width: 580px;
+    height: 525px;
+    bottom: 15vh;
     right: 1vw;
     border: 1px solid black;
     border-radius: 10px;
