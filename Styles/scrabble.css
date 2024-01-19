@@ -1,8 +1,6 @@
 /*
 GENERAL STYLINGS:
 */
-
-
 #wrapper {
     position: relative;
     height: 100vh;
@@ -379,4 +377,82 @@ BOARD STYLINGS:
     height: 35px;
     border: 1px solid black;
 }
+#screen-size-div{
+    display: none;
+}
 
+
+@media (max-width: 1200px) and (min-width:1120px) {
+    #board {
+        position: absolute;
+        right: 1%;
+        top: 50%; 
+        transform: translateY(-50%);
+        display: grid;
+        grid-template-columns: repeat(15, 30px);
+        grid-template-rows: repeat(15, 30px);
+        gap: 1px;
+    }
+    
+    .grid-item {
+        width: 30px;
+        height: 30px;
+        border: 1px solid black;
+    }
+    .letter-container {
+        position: relative;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+    
+    .letter {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid black;
+        background-color: white;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        cursor: pointer;
+    }
+    
+    .point-value {
+        position: absolute;
+        bottom: 5.5px;  
+        right: 25px;
+        font-size: 10px; 
+        line-height: .9;
+        transform: translate(50%, 50%); 
+    }
+    #letters-section {
+        position: absolute;
+        width: 16.4vh;
+        height: 69.5vh;
+        left: 41.5vw;
+        border: 1px solid black;
+        display: grid;
+        grid-template-columns: repeat(3,.1fr);
+        grid-auto-rows: minmax(20px, auto);
+        gap: 10px;
+        padding: 5px;
+    }
+    #screen-size-div{
+        display: none;
+    }
+}
+@media (max-width:1119px){
+    #project-div{
+        display: none;
+    }
+    #screen-size-div {
+        display: flex; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        top: auto;
+    }
+    
+}
