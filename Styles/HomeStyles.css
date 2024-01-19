@@ -1,5 +1,6 @@
 html,body{
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #screen-one{
@@ -112,4 +113,54 @@ html,body{
     width: 45%;
     pointer-events: none;
     border-radius: 5px;
+}
+#connect-with-me {
+    position: relative;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.style-text-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.text-field {
+    width: 300px; /* Width of text fields */
+    height: 40px; /* Height of text fields */
+    margin-bottom: 10px; /* Space between fields */
+    border: 1px solid black;
+}
+
+.message-field {
+    height: 200px; /* Height of textarea */
+    margin-bottom: 10px; /* Space between textarea and button */
+    border: 1px solid black;
+}
+
+.send-button{
+    width: 300px;
+    background-color: inherit;
+    height: 40px;
+    border: 1px solid black;
+}
+
+.send-button:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#form-header{
+    width: 300px;
+    height: auto;
+    border: 1px solid black;
+    text-align: center;
+    margin: 10px;
 }
