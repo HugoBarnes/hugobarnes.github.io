@@ -4,10 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotes Generator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var category = 'inspirational';
+            $.ajax({
+                method:'GET',
+                url:'https://api.api-ninjas.com/v1/quotes?category=' + category,
+                headers: { 'X-Api-Key': '+7c4/ENzhG3/tnJFqg4AGg==JdiiuHgKQwwPru1Q'},
+                contentType: 'application/json',
+                success: function(result) {
+                    $('#quote').html(result[0].quote);
+                },
+                error: function ajaxError(jqXHR) {
+                    console.error('Error ', jqXHR.responseText);
+                }
+            });
+        });
+    </script>
     <link rel="stylesheet" href="../Styles/quoteStyles.css">
 </head>
 <body>
-    <div id="status">
+    <div id="quote"></div>
+    <!-- <div id="status">
         <img src="../imgs/inprogresslogo.png">
     </div>
     <div id="logo">
@@ -15,7 +34,7 @@
     </div>
     <div id="home-logo">
         <img src="../imgs/homelogo.png" id="back-button">
-    </div>
+    </div> -->
     <script src="../Scripts/quotescript.js"></script>
 </body>
 </html>
