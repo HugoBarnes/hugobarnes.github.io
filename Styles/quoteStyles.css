@@ -27,3 +27,26 @@
 #home-logo img:hover{
     cursor: pointer;
 }
+
+#text-content{
+    text-align: center;
+    font-size: 35px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+#author{
+    position: absolute;
+    left: 50%;  
+    bottom: 20%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    padding: 10px;
+}
+#quote{
+    position: absolute;
+    left: 50%;  
+    top: 40%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    padding: 10px;
+}
+
