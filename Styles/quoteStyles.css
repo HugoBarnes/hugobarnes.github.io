@@ -50,3 +50,22 @@
     padding: 10px;
 }
 
+#next-quote-button{
+    display: flex;
+    justify-content: center;
+}
+
+#next-button{
+    position: absolute;
+    top: 10%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 35px;
+    background-color: inherit;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+#next-button:hover{
+    text-decoration: underline;
+}
+
