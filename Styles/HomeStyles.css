@@ -193,15 +193,30 @@ html,body{
 }
 #about-me{
     position: absolute;
-    width: 580px;
-    height: 555px;
-    bottom: 12vh;
+    width: 880px;
+    height: 385px;
+    bottom: 17vh;
     right: 1vw;
     border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+@media screen and (max-width: 1100px){
+    #about-me{
+        position: absolute;
+        width: 580px;
+        height: 555px;
+        bottom: 12vh;
+        right: 1vw;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 20px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
 }
 
 
