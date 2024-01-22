@@ -66,27 +66,27 @@ html,body{
     left: 35vw;
     top: 22vh;
 }
-#sudoku{
+#quotes{
     position: absolute;
     left: 35vw;
     top: 30vh;
 }
-#tkq{
+#sudoku{
     position: absolute;
     left: 35vw;
     top: 38vh;
 }
-#connection{
+#tkq{
     position: absolute;
     left: 35vw;
     top: 46vh;
 }
-#crossword{
+#connection{
     position: absolute;
     left: 35vw;
     top: 54vh;
 }
-#quotes{
+#crossword{
     position: absolute;
     left: 35vw;
     top: 62vh;
