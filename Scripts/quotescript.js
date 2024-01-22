@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 $(document).ready(function() {
     var getQuote = function() {
-        var category = 'love';
+        var category = 'history';
         $.ajax({
             method: 'GET',
             url: 'https://api.api-ninjas.com/v1/quotes?category=' + encodeURIComponent(category),
