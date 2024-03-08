@@ -1,25 +1,22 @@
-title: Thomas Finley
+title: Hugo Barnes
 description: >-
-  The personal website of Thomas Finley, a software developer and machine
-  learning expert.
+  The personal website of Hugo Barnes
 baseurl: ""
-domain: "tomfinley.github.io"
-url: "https://tomfinley.github.io"
-twitter_username: ThomasWFinley
-github_username:  TomFinley
+domain: "hugobarnes.github.io"
+url: "https://hugobarnes.github.io"
+github_username:  Hugo Barnes
 show_excerpts: true
 markdown: kramdown
 remote_theme: jekyll/minima@8cdd1fe
 
 author:
-  name: "Thomas Finley"
-  email: tfinley@gmail.com
+  name: "Hugo Barnes"
+  email: hugo.s.barnes@gmail.com
 
 header_pages:
-  - publications.md
   - academic-notes.md
-  - llm/index.md
-  - blog.md
+  - research.md
+  - projects.md
 
 permalink_old: /:categories/:year/:title:output_ext
 permalink: /:categories/:year/:title
@@ -47,9 +44,5 @@ exclude:
 minima:
   skin: tom
   social_links:
-    github:  TomFinley
-    gitlab:
-     - username: TFinley
-       instance: gitlab.com
-    facebook: thomas.finley.921
-    linkedin: thomas-finley-a39b203
+    github:  HugoBarnes
+    linkedin: hugo-barnes

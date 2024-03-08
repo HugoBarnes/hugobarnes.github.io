@@ -3,28 +3,32 @@
 layout: page
 ---
 
-![Tom Finley](tom.jpg)
+![Hugo Barnes](hugo.jpg)
 {: .tom-image}
 
-I live in [Woodinville, Washington][wv] state. I originally come from [Chagrin
-Falls, Ohio][cf].
+I live in [Bethesda, Maryland][wv].
+I am a Math and Computer Science Double Major at the University of 
+Virginia. I graduated from Walt Whitman High School with a 4.6 GPA. While there, I received
+a D1 offer to play soccer for Davidson and I won two 4A State Championships.
 
-I received my PhD in computer science and machine learning in 2008 from Cornell.
-As an undergraduate at Duke I majored in computer science, and mathematics, and
-minored in economics.
+At UVA, I began my role as a teaching assistant under [Elizabeth Orrico][eo] in 
+Discrete Math and Theory 1 in the spring of my first year. I also worked 
+that semester as a food server and pizza chef for [Runk Dining Hall][rd].
+In the fall of my sophomore year, I joined the club soccer team and played as a
+practice player for the Women's Varsity Soccer Team.
 
-Since graduation, I have worked for [Microsoft][ms]. I am currently a principal
-software development engineer, in the Azure Data group. Other groups I've worked
-in previously have been Teams, Cloud + AI, and Bing. I tend to work on machine
-learning tools and processes in my work at Microsoft. In addition to ML I often
-work on API design and high performance computing.
+I enjoy puzzles, namely the crossword and minesweeper, as well as comics, specifically
+Calvin and Hobbes. I also love climbing and hiking.
 
-My areas of expertise are boosting algorithms and linear algorithms, and machine
-learning problems with "weird" multi-variate loss functions. In my work I've
-tended to focus more on writing algorithms, tooling, and generally the
-experience of using ML, than specific single applications of ML.
+This summer I look forward to working with [Tom Hartvigsen][th] on our Machine Learning
+research. Check out the research tab for more.
 
-[wv]: https://www.ci.woodinville.wa.us/
-[cf]: https://chagrin-falls.org/
-[tj]: https://www.cs.cornell.edu/people/tj/
-[ms]: https://microsoft.com/
+In the projects tab you'll find more of where my interests take me.
+
+In the notes tab you'll find notes that I compiled as a student and TA.
+
+
+[wv]: https://www.visitmaryland.org/list/bethesda
+[eo]: https://engineering.virginia.edu/faculty/elizabeth-orrico
+[rd]: https://virginia.campusdish.com/en/locationsandmenus/runkdiningroom/
+[th]: https://www.tomhartvigsen.com/
