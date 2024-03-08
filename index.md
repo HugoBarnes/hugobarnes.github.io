@@ -20,10 +20,10 @@ practice player for the Women's Varsity Soccer Team.
 I enjoy puzzles, namely the crossword and minesweeper, as well as comics, specifically
 Calvin and Hobbes. I also love climbing and hiking.
 
+In the projects tab you'll find more of where my interests take me.
+
 This summer I look forward to working with [Tom Hartvigsen][th] on our Machine Learning
 research. Check out the research tab for more.
-
-In the projects tab you'll find more of where my interests take me.
 
 In the notes tab you'll find notes that I compiled as a student and TA.
 
