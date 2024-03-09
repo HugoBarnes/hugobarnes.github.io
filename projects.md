@@ -32,8 +32,14 @@ solve it for you.
 
 ### [Riot Games API](riot)
 
-Better version of Na.Op.GG. tested by a challenger player.
+----
 
+** HAVEN'T STARTED **
+
+---
+
+My goal is to develop something similar to Na.Op.GG. Planning
+on exploring the RiotGames API with this project over the summer.
 
 
 [th]: https://www.tomhartvigsen.com/

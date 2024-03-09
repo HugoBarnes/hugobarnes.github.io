@@ -1,10 +1,12 @@
 ---
-layout: postlist
-title: Summaries of Readings
+layout: page
+title: Plan for Riot Games API
 chronology: false
 listcat: readings
 ---
 
-Summaries and key takeaways for all of the Machine Learning Readings.
+Plan for RIOT Games API:
 
 ---
+
+List of things that other RGAPIs (Riot Games APIs) do well:
