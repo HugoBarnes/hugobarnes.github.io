@@ -50,4 +50,6 @@ minima:
 nav:
   - name: "Calvin and Hobbes Reader"
     link: "/projects/candh/"
+  - name: "Scrabble Solver"
+    link: "/projects/scrabble/"
 
