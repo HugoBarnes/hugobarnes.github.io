@@ -46,3 +46,7 @@ minima:
   social_links:
     github:  HugoBarnes
     linkedin: hugo-barnes
+
+nav:
+- name: "Calvin and Hobbes Reader"
+  link: /Projects/candh/"

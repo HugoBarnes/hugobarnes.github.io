@@ -1,10 +1,11 @@
 ---
-layout: postlist
-title: Summaries of Readings
-chronology: false
-listcat: readings
+layout: post
+title: Calvin and Hobbes Reader
+permalink: /candh
 ---
 
-Summaries and key takeaways for all of the Machine Learning Readings.
+Check out my Calvin and Hobbes Reader Below
 
 ---
+
+<iframe src="/Projects/calvinandhobbes.html" style="width:100%; height:600px;"></iframe>
