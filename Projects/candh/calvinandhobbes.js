@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#back-to-hugo').addEventListener('click', function(){
+        window.history.back();
+    });
+});
+
 const pdfPaths = {
     all: [
     'pdfs/(1) Calvin & Hobbes - Bill Watterson.pdf',

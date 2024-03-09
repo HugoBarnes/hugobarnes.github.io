@@ -48,5 +48,6 @@ minima:
     linkedin: hugo-barnes
 
 nav:
-- name: "Calvin and Hobbes Reader"
-  link: /Projects/candh/"
+  - name: "Calvin and Hobbes Reader"
+    link: "/projects/candh/"
+
