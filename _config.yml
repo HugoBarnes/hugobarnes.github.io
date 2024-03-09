@@ -52,4 +52,6 @@ nav:
     link: "/projects/candh/"
   - name: "Scrabble Solver"
     link: "/projects/scrabble/"
+  - name: "Sudoku"
+    link: "/projects/sudoku"
 

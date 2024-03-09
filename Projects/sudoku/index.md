@@ -1,10 +1,7 @@
 ---
-layout: postlist
-title: Summaries of Readings
-chronology: false
-listcat: readings
+layout: post
+title: Sudoku
+permalink: /sudoku
 ---
 
-Summaries and key takeaways for all of the Machine Learning Readings.
-
----
+My version of Sudoku
