@@ -14,6 +14,7 @@ a D1 offer to play soccer for Davidson and I won two 4A State Championships.
 At UVA, I began my role as a teaching assistant under [Elizabeth Orrico][eo] in 
 Discrete Math and Theory 1 in the spring of my first year. I also worked 
 that semester as a food server and pizza chef for Runk Dining Hall.
+
 In the fall of my sophomore year, I joined the club soccer team and played as a
 practice player for the Women's Varsity Soccer Team.
 
