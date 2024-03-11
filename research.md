@@ -13,8 +13,4 @@ My boss is [Tom Hartvigsen][th].
 
 Key takeaways, and summaries can be found here.
 
-
-
 [th]: https://www.tomhartvigsen.com/
-
-[readings]
