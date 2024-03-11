@@ -1,9 +1,9 @@
 title: Hugo Barnes
 description: >-
   The personal website of Hugo Barnes
-baseurl: ""
-domain: "hugobarnes.github.io"
-url: "https://hugobarnes.github.io"
+baseurl: "hugo-barnes-school.github.io"
+domain: "hugo-barnes-school.github.io"
+url: "https://hugo-barnes-school.github.io"
 github_username:  Hugo Barnes
 show_excerpts: true
 markdown: kramdown
