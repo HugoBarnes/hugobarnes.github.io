@@ -49,7 +49,7 @@ minima:
 
 nav:
   - name: "Calvin and Hobbes Reader"
-    link: "/projects/candh/index.html"
+    link: "/projects/candh/index.md"
   - name: "Scrabble Solver"
     link: "/projects/scrabble/index.html"
   - name: "Sudoku"
