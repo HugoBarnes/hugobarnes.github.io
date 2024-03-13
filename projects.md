@@ -13,7 +13,7 @@ Here you will find a list of my projects in a reasonably up to date state.
 A drawing machine inspired by the movie Hugo. Powered by an Arduino Uno
 and a CNC shield. Uses Universal G-Code Sender and Inkscape.
 
-### [Calvin and Hobbes Reader](candh)
+### [Calvin and Hobbes Reader](/projects/candh)
 
 Calvin and Hobbes downloaded from the internet.
 See the README on GitHub for Copyright information.
