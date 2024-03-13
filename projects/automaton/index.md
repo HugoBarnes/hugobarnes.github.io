@@ -31,4 +31,4 @@ The universal GCode Sender seen above.
 
 [Watch the drawing machine video on Google Drive](https://drive.google.com/file/d/1Q7oVU36J3sEdZmV7bQuHMfV-TkB80hQm/view?usp=sharing)
 
-![wallprojectpicture](WallProjectPicture.jpg)
+![wallprojectpicture](cornerpic.jpg)
