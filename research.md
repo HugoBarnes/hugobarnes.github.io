@@ -9,7 +9,7 @@ My boss is [Tom Hartvigsen][th].
 
 ---
 
-### [Summaries of Readings](/research/readings/_posts/)
+### [Summaries of Readings](/research/readings/)
 
 Key takeaways, and summaries can be found here.
 
