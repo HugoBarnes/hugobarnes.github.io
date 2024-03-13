@@ -46,3 +46,12 @@ minima:
   social_links:
     github:  HugoBarnes
     linkedin: hugo-barnes
+
+nav:
+  - name: "Calvin and Hobbes Reader"
+    link: "projects/candh/index.md"
+  - name: "Scrabble Solver"
+    link: "projects/scrabble/index.html"
+  - name: "Sudoku"
+    link: "projects/sudoku/index.html"
+
