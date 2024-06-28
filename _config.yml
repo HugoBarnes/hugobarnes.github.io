@@ -14,7 +14,7 @@ author:
   email: hugo.s.barnes@gmail.com
 
 header_pages:
-  - academic-notes.md
+  #- academic-notes.md
   - research.md
   - projects.md
 
