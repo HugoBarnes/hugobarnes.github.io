@@ -28,6 +28,9 @@ research. Check out the research tab for more.
 
 In the notes tab you'll find notes that I compiled as a student and TA.
 
+This website has been inspired by, in every meaning of the word, by Thomas Finley. His website is [Here:][tf]
+
 
 [eo]: https://engineering.virginia.edu/faculty/elizabeth-orrico
 [th]: https://www.tomhartvigsen.com/
+[tf]: https://tfinley.net/
