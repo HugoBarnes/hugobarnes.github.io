@@ -5,6 +5,6 @@ chronology: false
 listcat: readings
 ---
 
-Summaries and key takeaways for all of the Machine Learning Readings.
+My research has taken two directions this summer. The first has been spearheaded by Dr. Hartvigsen, and the second by Matt Landers.
 
 ---
