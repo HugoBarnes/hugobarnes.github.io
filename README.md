@@ -1,4 +1,4 @@
-# Tom Finley's Personal Site
+# Hugo Barnes' Personal Site
 
 This is the Github pages repository for my private site, meant to be rendered
 using [Jekyll](https://jekyllrb.com/). This is not meant to be publicly consumed
@@ -33,22 +33,16 @@ The [Jekyll docs][jekyll-docs] have information on Jekyll itself, with GitHub
 Pages specific information [here][gh-pages]. Questions can be posted
 [here][jekyll-talk].
 
+
+# Source
+
+This website has been inspired by, in every meaning of the word, Thomas Finley's personal site.
+His website is [Here:][th]
+
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
 [gh-pages]:    https://docs.github.com/en/pages
 [billr]: https://gist.github.com/BillRaymond/db761d6b53dc4a237b095819d33c7332
-
-## Custom Behavior
-
-The `postlist` layout type in Jekyll seems to be optimized for blog-style
-content where recent content comes first. Adding a `chronology: true` to a
-post-list page instead makes earlier matter comes first, which makes sense if a
-reader would benefit from absorbing different posts in the order in which they
-appear.
-
-The `postlist` layout type can have its ordering over-ridden by having each post
-have a `priority` value set in the post's YAML header. For instance, having
-`priority: 10` in a post would make a post appear first above any posts with a
-priority value less than `10` or where the `priority` is unspecified. In such an
-instance the post list has a 📌 in the top level description.
+[th]: https://tfinley.net/
