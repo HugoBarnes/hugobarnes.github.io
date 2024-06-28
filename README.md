@@ -7,10 +7,6 @@ negative remains to be seen) of how to use Jekyll.
 
 ## Notes on Development
 
-These are primarily notes for myself, since I tend to keep my sites for a while.
-Greetings, future self! I hope you are still alive and well? In any case, just
-as a reminder:
-
 This uses a static site generator called Jekyll. I am using a dev container as
 specified under `Dockerfile`, with VS Code as my primary editor. The means by
 which I set this up was through [Bill Raymond's tutorial][br] on this subject.

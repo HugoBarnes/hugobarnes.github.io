@@ -6,8 +6,7 @@ layout: page
 ![Hugo Barnes](hugo.jpg)
 {: .tom-image}
 
-I live in Bethesda, Maryland.
-I am a Math and Computer Science Double Major at the University of 
+I live in Bethesda, Maryland and I am a Math and Computer Science Double Major at the University of 
 Virginia. I graduated from Walt Whitman High School with a 4.6 GPA. While there, I received
 a D1 offer to play soccer for Davidson and I won two 4A State Championships.
 
@@ -21,12 +20,10 @@ practice player for the Women's Varsity Soccer Team.
 I enjoy puzzles, namely the crossword and minesweeper, as well as comics, specifically
 Calvin and Hobbes. I also love climbing and hiking.
 
-In the projects tab you'll find more of where my interests take me.
+In the projects tab you'll find how my interests materialize. 
 
 This summer I look forward to working with [Dr. Tom Hartvigsen][th] on our Machine Learning
 research. Check out the research tab for more.
-
-In the notes tab you'll find notes that I compiled as a student and TA.
 
 This website has been inspired by, in every meaning of the word, by Thomas Finley. His website is [Here:][tf]
 
