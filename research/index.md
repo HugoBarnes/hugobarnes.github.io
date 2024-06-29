@@ -5,12 +5,9 @@ chronology: false
 listcat: readings
 ---
 
-My research this semester has focii. The first is examining bias in Large Language Models through
-text based games. I am primarily working with [Professor Hartvigsen][th] on this. 
+The nature of this summer's research has been remote. For one hour a week via zoom I met with [Professor Hartvigsen][th] and [Matt Landers][ml] individually. Additionally, I joined the team group's meetings for each of the respective projects. Also one hour a week. 
 
-The second avenue is focused on developing and improving advanced reinforcement learning algorithms for the healthcare space. 
-
-We are devloping a modified DQN / Critor Actor network to tackle the combinatoric action space that is modern healthcare. We are currently using a modified gridworld as proxy for healthcare data. This project has been spearheaded by [Matt Landers][ml].
+Below are the slides that I presented to Matt Landers and Professor Hartvigsen during our meetings. These individual meeting times were opportunities to present my findings. 
 
 ---
 

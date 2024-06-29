@@ -1,16 +1,20 @@
 ---
 layout: page
-title: Machine Learning Bias Research
+title: Summer 2024 Research
 nav_title: Research
 ---
 
-My notes on the Machine Learning Summer 24' research project. I hope to add our research statement, a comprehensive summary of readings, and general notes below. 
-My boss is [Tom Hartvigsen][th].
+My research this summer has had 2 focii. The first is examining bias in Large Language Models throughtext based games. I am primarily working with [Professor Hartvigsen][th] on this. 
 
+The second avenue is focused on developing and improving advanced reinforcement learning algorithms for the healthcare space. 
+
+We are devloping a modified DQN / Critor Actor network to tackle the combinatoric action space that is modern healthcare. We are currently using a modified gridworld as a proxy for healthcare data. This project is led by [Matt Landers][ml] and [Professor Hartvigsen][th].
 ---
 
-### [Summaries of Readings](research/)
+### [Slides](research/)
 
-Key takeaways, and summaries can be found here.
+A list of the materials that I created can be found here.
 
+[ml]: https://mattlanders.net/
 [th]: https://www.tomhartvigsen.com/
+
