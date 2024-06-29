@@ -25,9 +25,5 @@ In the projects tab you'll find how my interests materialize.
 This summer I look forward to working with [Dr. Tom Hartvigsen][th] on our Machine Learning
 research. Check out the research tab for more.
 
-This website has been inspired by, in every meaning of the word, by Thomas Finley. His website is [Here:][tf]
-
-
 [eo]: https://engineering.virginia.edu/faculty/elizabeth-orrico
 [th]: https://www.tomhartvigsen.com/
-[tf]: https://tfinley.net/
