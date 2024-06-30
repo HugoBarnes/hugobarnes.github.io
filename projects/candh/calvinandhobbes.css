@@ -9,11 +9,12 @@ body, html{
 
 #pdfCanvas {
     position: absolute;
-    top: 60%;
-    left: 55%;
+    top: 300px;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%; /* Adjust this to control the display size */
-    height: auto;
+    width: 800px;
+    height: 500px;
+    margin: 50px
 }
 
 #buttons{
@@ -22,12 +23,14 @@ body, html{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    left: 38%;
-    top: 6%;
+    gap: 20px;
+    left: 50%;
+    top: 610px;
+    transform: translate(-50%,-50%)
 }
 #volume-selector{
     position: absolute;
-    top: 6%;
-    left: 1%;
+    top: 640px;
+    left: 50%;
+    transform: translate(-50%, -50%)
 }
