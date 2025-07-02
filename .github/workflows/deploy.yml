@@ -4,20 +4,16 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: writename: Deploy to GitHub Pages
-on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    environment:     # ← NEW — must be exactly “github-pages”
+    # v4 of deploy-pages REQUIRES the job be tied to this environment
+    environment:
       name: github-pages
+
     permissions:
       contents: read
       pages: write
-      id-token: write
+      id-token: write       # needed by deploy-pages v4
+
     steps:
       - uses: actions/checkout@v4
 
@@ -27,27 +23,8 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-      - run: cp CNAME out/ || true
+      - run: cp CNAME out/ || true    # keep custom domain
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./out
-
-      - uses: actions/deploy-pages@v4
-
-      id-token: write          # ← required by deploy-pages@v4
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - run: npm ci
-      - run: npm run build           # static export → ./out
-      - run: cp CNAME out/ || true   # keep your custom domain
-
-      # ---------- latest, non-deprecated versions ----------
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
