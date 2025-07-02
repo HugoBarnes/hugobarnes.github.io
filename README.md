@@ -1,44 +1,36 @@
-# Hugo Barnes' Personal Site
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-This is the Github pages repository for my private site, meant to be rendered
-using [Jekyll](https://jekyllrb.com/). This is not meant to be publicly consumed
-through Github itself, except perhaps as an example (whether or positive or
-negative remains to be seen) of how to use Jekyll.
+## Getting Started
 
-## Notes on Development
+First, run the development server:
 
-This uses a static site generator called Jekyll. I am using a dev container as
-specified under `Dockerfile`, with VS Code as my primary editor. The means by
-which I set this up was through [Bill Raymond's tutorial][br] on this subject.
-(The tutorial is set up in such a way that it assumes that you are creating a
-totally fresh GitHub Pages site, but it is relatively easy to adapt.)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-Anyway, if you are starting from a fresh computer:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-1. In VS Code, using the Dev Containers extension, then choosing the "Dev
-   Containers: Open Folder in Container..." This will process the `Dockerfile`
-   and set up the minimal environment. I have not published the image on an
-   image repository, in the hopes that gem is semi-reliable.
-2. Once that remote is set up, in the VS Code terminal we can use `bundle
-   upgrade` and suchlike to make sure everything is properly loaded.
-3. Using the script to serve/update a local configuration can be fine. This will
-   serve it on (in container) `localhost` on port 4000, which the container is
-   configured to expose.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-The [Jekyll docs][jekyll-docs] have information on Jekyll itself, with GitHub
-Pages specific information [here][gh-pages]. Questions can be posted
-[here][jekyll-talk].
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Learn More
 
-# Source
+To learn more about Next.js, take a look at the following resources:
 
-This website has been inspired by, in every meaning of the word, Thomas Finley's personal site.
-His website is [Here:][th]
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
-[gh-pages]:    https://docs.github.com/en/pages
-[billr]: https://gist.github.com/BillRaymond/db761d6b53dc4a237b095819d33c7332
-[th]: https://tfinley.net/
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
