@@ -46,7 +46,7 @@ export default function Home() {
         <p className="mb-4">
           This summer I moved to Paris to cement the French I have studied
           for the last six years. I work at La Rotonde de La Muette and was recently
-          promoted to bartender at its sister restaurant, Dino. Photos of both
+          promoted to bartend at its sister restaurant, Dino. Photos of both
           venues are below.
         </p>
 
