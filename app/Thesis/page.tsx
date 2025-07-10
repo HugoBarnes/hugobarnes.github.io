@@ -312,26 +312,24 @@ const updates: ThesisUpdate[] = [
 ];
 
 
-
-
-
-
-
-
-/*********************************************************************
- * COLOURS – grayscale defaults
- *********************************************************************/
-const defaultDot: Record<ThesisUpdate["status"], string> = {
-  done: "bg-black",
-  "in-progress": "bg-gray-700",
-  planned: "bg-gray-500",
+/* ---------------------------------------------------------------
+ * ThesisPage – mobile-first + dark-mode calendar
+ * --------------------------------------------------------------*/
+/******************************************************************
+ * STATUS DOT COLOURS
+ ******************************************************************/
+const defaultDot: Record<ThesisUpdate['status'], string> = {
+  done: 'bg-black',
+  'in-progress': 'bg-gray-700',
+  planned: 'bg-gray-500',
 };
 
-/*********************************************************************
+/******************************************************************
  * CALENDAR HELPERS
- *********************************************************************/
-const WEEK_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-const monthKey = (d: Date) => d.toLocaleDateString("en-GB", { month: "long", year: "numeric" });
+ ******************************************************************/
+const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const monthKey = (d: Date) =>
+  d.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 const daysInMonth = (y: number, m: number) => new Date(y, m + 1, 0).getDate();
 
 interface MonthBucket {
@@ -341,38 +339,41 @@ interface MonthBucket {
   rows: (ThesisUpdate[])[][];
 }
 
-/**
- * Convert an ISO date string (YYYY-MM-DD) to a local Date object.
- * This avoids the off‑by‑one issue that appears when using `new Date("YYYY-MM-DD")`,
- * which is parsed as midnight **UTC** and therefore shifts back a day for users with
- * a negative timezone offset (e.g. the Americas).
- */
 function parseISODate(iso: string): Date {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y, m, d] = iso.split('-').map(Number);
   return new Date(y, m - 1, d);
 }
 
-function ensureAllMonths(map: Map<string, MonthBucket>, first: Date, last: Date) {
+function ensureAllMonths(
+  map: Map<string, MonthBucket>,
+  first: Date,
+  last: Date,
+) {
   const cur = new Date(first);
   cur.setDate(1);
   while (cur <= last) {
     const key = monthKey(cur);
     if (!map.has(key)) {
       const offset = (cur.getDay() + 6) % 7;
-      map.set(key, { year: cur.getFullYear(), monthIdx: cur.getMonth(), offset, rows: [] });
+      map.set(key, {
+        year: cur.getFullYear(),
+        monthIdx: cur.getMonth(),
+        offset,
+        rows: [],
+      });
     }
     cur.setMonth(cur.getMonth() + 1);
   }
 }
 
 function buildCalendar(list: ThesisUpdate[]): [string, MonthBucket][] {
-  if (list.length === 0) return [];
+  if (!list.length) return [];
 
   const map = new Map<string, MonthBucket>();
 
-  // buckets for months that have updates
-  list.forEach((u) => {
-    const d = parseISODate(u.date); // use local date parsing
+  // 1️⃣  create month buckets
+  list.forEach(u => {
+    const d = parseISODate(u.date);
     const key = monthKey(d);
     if (!map.has(key)) {
       const first = new Date(d.getFullYear(), d.getMonth(), 1);
@@ -381,20 +382,18 @@ function buildCalendar(list: ThesisUpdate[]): [string, MonthBucket][] {
     }
   });
 
-  // ensure contiguous months (so Sept / Nov etc appear)
-  const firstDate = parseISODate(list[0].date);
-  const lastDate = parseISODate(list[list.length - 1].date);
-  ensureAllMonths(map, firstDate, lastDate);
+  // 2️⃣  fill any gaps so months stay contiguous
+  ensureAllMonths(map, parseISODate(list[0].date), parseISODate(list.at(-1)!.date));
 
-  // populate grid
-  map.forEach((bucket) => {
+  // 3️⃣  populate each bucket with rows of seven cells
+  map.forEach(bucket => {
     const { year, monthIdx, offset } = bucket;
     const total = daysInMonth(year, monthIdx);
     let row: (ThesisUpdate[])[] = Array(offset).fill([]);
 
     for (let day = 1; day <= total; day++) {
-      const iso = `${year}-${String(monthIdx + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-      row.push(list.filter((u) => u.date === iso));
+      const iso = `${year}-${String(monthIdx + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      row.push(list.filter(u => u.date === iso));
       if (row.length === 7) {
         bucket.rows.push(row);
         row = [];
@@ -406,48 +405,62 @@ function buildCalendar(list: ThesisUpdate[]): [string, MonthBucket][] {
     }
   });
 
-  // return months sorted chronologically
-  return Array.from(map.entries()).sort(
-    (a, b) => new Date(a[1].year, a[1].monthIdx).getTime() - new Date(b[1].year, b[1].monthIdx).getTime()
+  return [...map.entries()].sort(
+    (a, b) =>
+      new Date(a[1].year, a[1].monthIdx).getTime() -
+      new Date(b[1].year, b[1].monthIdx).getTime(),
   );
 }
 
-/*********************************************************************
+/******************************************************************
  * COMPONENT
- *********************************************************************/
+ ******************************************************************/
 export default function ThesisPage() {
   const [expanded, setExpanded] = useState<string | null>(null);
   const months = buildCalendar(updates);
 
   return (
-    <section className="w-full px-4 md:px-8 py-10 text-gray-900 relative">
-      {/* Overlay for closing pop-out */}
+    <section
+      className="
+        w-full px-4 md:px-8 py-10
+        bg-white text-gray-900
+        dark:bg-gray-900 dark:text-gray-100
+        relative
+      "
+    >
+      {/* ── overlay for dismissing pop-outs ─────────────────── */}
       {expanded && (
-        <div
-          className="fixed inset-0 z-10 cursor-pointer"
+        <button
+          aria-label="Close details"
+          className="fixed inset-0 z-10 bg-black/30 dark:bg-black/60 cursor-pointer"
           onClick={() => setExpanded(null)}
         />
       )}
 
-      {/* Heading */}
+      {/* ── heading & narrative ─────────────────────────────── */}
       <header className="max-w-6xl mx-auto mb-12 relative z-20">
-        <h1 className="text-4xl font-extrabold text-black mb-4">Thesis Overview</h1>
-        <div className="flexbox flex space-x-4 mb-4">
+        <h1 className="text-3xl sm:text-4xl font-extrabold mb-4">
+          Thesis Overview
+        </h1>
+
+        <div className="flex flex-wrap gap-4 mb-4 text-sm sm:text-base">
           <Link
             href="https://docs.google.com/presentation/d/1gfgt_30JxTbR-H5-jgGlvBoFjbOOj7gfgjZlAc3u2-4/edit?usp=sharing"
             target="_blank"
-            className="underline text-black"
+            className="underline"
           >
             View slides ↗
           </Link>
           <Link
             href="https://www.overleaf.com/read/dnsqpdpxksmj#e5afbf"
             target="_blank"
-            className="underline text-black"
+            className="underline"
           >
             View Proposal ↗
           </Link>
         </div>
+
+        {/* ------------- PARAGRAPHS – kept EXACTLY as supplied ------------- */}
         <p className="mb-4 underline">
           Currently Reading:
         </p>
@@ -472,116 +485,149 @@ export default function ThesisPage() {
           This work is broken into three parts.
         </p>
         <p className="mb-4">
-  <strong>Phase 1 — Summer 2025.</strong> This work aims to build a deterministic computer-vision pipeline that ingests full-match video and outputs well-structured data objects. See July 8th in the calendar below and the “Projects” tab above for concrete examples. The objective is to give Coach Eilidh and Coach Swanson data that is richer, more precisely annotated, and more user-friendly than anything currently available.
-</p>
-
-<p className="mb-4">
-  <strong>Phase 2 — Fall 2025.</strong> Once the UVA Women’s team begins its season (Aug. 14), this phase intends to levrage the deterministic model against future opponents by capturing insights from how future opponents played against similarly ranked teams in the past. These reports will address three core questions:  
-  “How is the opponent likely to play?”,  
-  “Where will they try to create chances?”, and  
-  “Where can we exploit weaknesses?”
-  More information about these reports may be found in the calendar below.  
-</p>
-
-<p className="mb-4">
-  <strong>Phase 3 — Spring 2026.</strong> The project concludes with a comprehensive presentation and written summary of our methods, results, and key insights.
-</p>
-
-<p className="mb-4">
-  The calendar below outlines Phases 1 and 2. Day-to-day progress updates are available in the slide deck above.
-</p>
-
+          <strong>Phase 1 — Summer 2025.</strong> This work aims to build a deterministic computer-vision model that takes as input full- soccer match video and outputs well-structured data objects. See July 8th in the calendar below and the “Projects” tab above for concrete examples. The objective is to give Coach Eilidh and Coach Swanson data that is richer, more precisely annotated, and more user-friendly than anything currently available.
+        </p>
+        <p className="mb-4">
+          <strong>Phase 2 — Fall 2025.</strong> Once the UVA Women’s team begins its season (Aug. 14), this phase intends to levrage the deterministic model against future opponents by capturing insights from how future opponents played against similarly ranked teams in the past. These reports will address three core questions:  
+          “How is the opponent likely to play?”,  
+          “Where will they try to create chances?”, and  
+          “Where can we exploit weaknesses?”
+          More information about these reports may be found in the calendar below.  
+        </p>
+        <p className="mb-4">
+          <strong>Phase 3 — Spring 2026.</strong> The project concludes with a comprehensive presentation and written summary of our methods, results, and key insights.
+        </p>
+        <p className="mb-4">
+          The calendar below outlines Phases 1 and 2. Day-to-day progress updates are available in the slide deck above.
+        </p>
+        {/* ----------------------------------------------------------------- */}
       </header>
 
+      {/* ── calendar ─────────────────────────────────────────── */}
       <div className="flex flex-col gap-20 relative z-20">
         {months.map(([label, bucket]) => (
-          <div key={label} className="max-w-6xl mx-auto w-full">
-            <h2 className="text-2xl font-bold mb-4 text-black">{label}</h2>
+          <article key={label} className="max-w-6xl mx-auto w-full">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4">
+              {label}
+            </h2>
 
-            {/* Weekday headers */}
-            <div className="grid grid-cols-7 text-center text-sm font-semibold">
-              {WEEK_DAYS.map((d) => (
+            {/* weekday headers */}
+            <div className="grid grid-cols-7 text-center text-[11px] sm:text-xs font-semibold">
+              {WEEK_DAYS.map(d => (
                 <div
                   key={d}
-                  className="h-10 flex items-center justify-center bg-black text-white border border-black"
+                  className="
+                    h-8 sm:h-9 flex items-center justify-center
+                    bg-black text-white
+                    dark:bg-gray-700
+                    border border-black dark:border-gray-600
+                  "
                 >
                   {d}
                 </div>
               ))}
             </div>
 
-            {/* Day cells */}
-            <div className="grid grid-cols-7">
-              {bucket.rows.map((week, rIdx) =>
-                week.map((cell, cIdx) => {
-                  const dateNum = rIdx * 7 + cIdx - bucket.offset + 1;
-                  const valid = dateNum > 0 && dateNum <= daysInMonth(bucket.year, bucket.monthIdx);
-                  const iso = valid
-                    ? `${bucket.year}-${String(bucket.monthIdx + 1).padStart(2, "0")}-${String(dateNum).padStart(2, "0")}`
-                    : "";
-                  const open = expanded === iso;
+            {/* scroll container so small screens don’t squash the grid */}
+            <div className="overflow-x-auto">
+              <div className="grid grid-cols-7">
+                {bucket.rows.map((week, rIdx) =>
+                  week.map((cell, cIdx) => {
+                    const dateNum = rIdx * 7 + cIdx - bucket.offset + 1;
+                    const valid =
+                      dateNum > 0 &&
+                      dateNum <= daysInMonth(bucket.year, bucket.monthIdx);
+                    const iso = valid
+                      ? `${bucket.year}-${String(bucket.monthIdx + 1).padStart(2, '0')}-${String(dateNum).padStart(2, '0')}`
+                      : '';
+                    const open = expanded === iso;
 
-                  return (
-                    <div key={`${rIdx}-${cIdx}`} className="relative border border-black h-28">
-                      {valid && (
-                        <button
-                          onClick={() => setExpanded(open ? null : iso)}
-                          className="w-full h-full text-left p-2 focus:outline-none"
-                        >
-                          <span className="font-semibold text-sm text-black inline-block mb-1">
-                            {dateNum}
-                          </span>
+                    return (
+                      <div
+                        key={`${rIdx}-${cIdx}`}
+                        className="h-24 sm:h-28 relative border border-black dark:border-gray-600"
+                      >
+                        {valid && (
+                          <button
+                            onClick={() => setExpanded(open ? null : iso)}
+                            className="
+                              w-full h-full text-left
+                              p-1 sm:p-2
+                              focus:outline-none
+                              focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-300
+                            "
+                          >
+                            <span className="font-semibold text-[10px] sm:text-sm inline-block mb-1">
+                              {dateNum}
+                            </span>
 
-                          {!open && cell.length > 0 && (
-                            <div className="flex items-center gap-1 text-xs">
-                              <span
-                                className={`inline-block h-1.5 w-1.5 rounded-full ${cell[0].color || defaultDot[cell[0].status]}`}
-                              />
-                              <span className="truncate flex-1 text-black/80">
-                                {cell[0].title}
-                              </span>
-                            </div>
-                          )}
-                        </button>
-                      )}
+                            {!open && cell.length > 0 && (
+                              <div className="flex items-center gap-1 text-[10px] sm:text-xs">
+                                <span
+                                  className={`
+                                    inline-block h-1.5 w-1.5 rounded-full
+                                    ${cell[0].color ?? defaultDot[cell[0].status]}
+                                  `}
+                                />
+                                <span className="truncate flex-1 text-black/80 dark:text-gray-300">
+                                  {cell[0].title}
+                                </span>
+                              </div>
+                            )}
+                          </button>
+                        )}
 
-                      {open && (
-                        <div
-                          className="absolute z-30 left-1/2 -translate-x-1/2 top-full mt-2 w-64 max-h-72 overflow-auto bg-white border border-black shadow-xl p-4"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <h3 className="font-bold mb-2 text-black">
-                            {parseISODate(iso).toLocaleDateString("en-GB", {
-                              day: "numeric",
-                              month: "long",
-                              year: "numeric",
-                            })}
-                          </h3>
-                          <ul className="space-y-3 text-sm">
-                            {cell.map((u) => (
-                              <li key={u.id}>
-                                <p className="font-medium flex items-center gap-2 mb-1 text-black">
-                                  <span
-                                    className={`inline-block h-2 w-2 rounded-full ${u.color || defaultDot[u.status]}`}
-                                  />
-                                  {u.title}
-                                </p>
-                                <ul className="list-disc ml-5 space-y-1 text-gray-700 text-xs">
-                                  {u.details.map((d, i) => (
-                                    <li key={i}>{d}</li>
-                                  ))}
-                                </ul>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })
-              )}
+                        {open && (
+                          <div
+                            onClick={e => e.stopPropagation()}
+                            className="
+                              absolute z-30 left-1/2 -translate-x-1/2
+                              top-full mt-2
+                              w-64 sm:w-72
+                              max-h-80 overflow-auto
+                              bg-white dark:bg-gray-800
+                              border border-black dark:border-gray-600
+                              shadow-xl rounded-lg
+                              p-4
+                              scrollbar-thin dark:scrollbar-thumb-gray-600
+                            "
+                          >
+                            <h3 className="font-bold mb-2">
+                              {parseISODate(iso).toLocaleDateString('en-GB', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric',
+                              })}
+                            </h3>
+                            <ul className="space-y-3 text-[11px] sm:text-xs">
+                              {cell.map(u => (
+                                <li key={u.id}>
+                                  <p className="font-medium flex items-center gap-2 mb-1">
+                                    <span
+                                      className={`
+                                        inline-block h-2 w-2 rounded-full
+                                        ${u.color ?? defaultDot[u.status]}
+                                      `}
+                                    />
+                                    {u.title}
+                                  </p>
+                                  <ul className="list-disc ml-5 space-y-1 text-black/70 dark:text-gray-300 text-[10px] sm:text-xs">
+                                    {u.details.map((d, i) => (
+                                      <li key={i}>{d}</li>
+                                    ))}
+                                  </ul>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  }),
+                )}
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>
