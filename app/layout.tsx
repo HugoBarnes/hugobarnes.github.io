@@ -1,26 +1,17 @@
 import type { Metadata } from "next";
-import { Cormorant, Fira_Code, IBM_Plex_Sans } from "next/font/google";
+import { Fira_Code } from "next/font/google";
 import "./globals.css";
-import Header from '@/app/components/Header';
-import Footer from '@/app/components/Footer';
-
-const cormorant  = Cormorant({
-  subsets:['latin']
-});
+import Header from "@/app/components/Header";
+import Footer from "@/app/components/Footer";
 
 const firaCode = Fira_Code({
-  subsets:['latin']
+  subsets: ["latin"],
 });
-
-const ibmPlexSans = IBM_Plex_Sans({
-  subsets: ['latin'],
-  weight: '400',
-});
-
 
 export const metadata: Metadata = {
   title: "Hugo Barnes",
-  description: "The personal website of Hugo Barnes, a Mathematics and Computer Science Double Major at the University of Virginia.",
+  description:
+    "Hugo Barnes — Mathematics (Probability & Statistics) and Computer Science at the University of Virginia.",
 };
 
 export default function RootLayout({
@@ -29,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
-      <body className={`${ibmPlexSans.className} min-h-screen flex flex-col`}>
+    <html lang="en">
+      <body
+        className={`${firaCode.className} min-h-screen flex flex-col bg-[#2e3440] text-[#eceff4]`}
+      >
         <Header />
-        <div className="mx-auto max-w-2xl px-4 flex-grow">
-        <main>{children}</main>
-        </div>
+        <main className="mx-auto w-full max-w-3xl px-6 flex-grow">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
