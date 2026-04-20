@@ -14,13 +14,8 @@ function Header(){
                     </ul>
                     <ul className="flex items-center space-x-4">
                         <li>
-                            <Link href="/Thesis" className="hover:underline decoration-2">
-                                Thesis
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/Projects" className="hover:underline decoration-2">
-                                Projects
+                            <Link href="/Notes" className="hover:underline decoration-2">
+                                Notes
                             </Link>
                         </li>
                         <li>
@@ -29,8 +24,8 @@ function Header(){
                             </Link>
                         </li>
                         <li>
-                            <Link href="/Research" className="hover:underline decoration-2">
-                                Research
+                            <Link href="/Projects" className="hover:underline decoration-2">
+                                Projects and Applications
                             </Link>
                         </li>
                     </ul>
