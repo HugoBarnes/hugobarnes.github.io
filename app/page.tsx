@@ -1,4 +1,5 @@
 import BentoBox from "./components/BentoBox";
+import ScrollDownArrow from "./components/ScrollDownArrow";
 
 function SectionHeading({
   n,
@@ -22,22 +23,40 @@ function SectionHeading({
 
 export default function Home() {
   return (
-    <div className="space-y-24 py-12 text-sm leading-relaxed">
-      {/* hero */}
-      <section id="home" className="scroll-mt-20 pt-4">
-        <p className="text-[#a3be8c] mb-3">
-          <span className="text-[#4c566a]">$</span> whoami
+    <>
+      {/* Hero — full viewport */}
+      <section
+        id="home"
+        className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center"
+      >
+        <p className="text-[#a3be8c] text-sm mb-4">
+          <span className="text-[#4c566a]">~$</span> whoami
         </p>
-        <h1 className="text-4xl md:text-5xl text-[#eceff4] mb-6">
-          Hugo Barnes
+        <h1 className="text-5xl md:text-7xl text-[#eceff4] tracking-tight">
+          hugo-barnes
+          <span className="inline-block w-[0.6ch] ml-1 bg-[#88c0d0] animate-pulse h-[1em] align-[-0.15em]" />
         </h1>
-        <div className="flex flex-col sm:flex-row gap-6 items-start">
+        <p className="mt-6 text-sm md:text-base text-[#d8dee9]">
+          Mathematics &amp; Computer Science
+          <span className="text-[#4c566a] mx-2">|</span>
+          University of Virginia
+        </p>
+        <p className="mt-2 text-xs text-[#4c566a]">
+          Things I&apos;ve built, taught, and written down.
+        </p>
+        <ScrollDownArrow />
+      </section>
+
+      {/* About */}
+      <section className="py-16">
+        <SectionHeading n="00" id="about" title="about" />
+        <div className="flex flex-col sm:flex-row gap-6 items-start text-sm text-[#d8dee9]">
           <img
             src="/images/Hugo.jpg"
             alt="Hugo"
             className="w-40 rounded border border-[#3b4252]"
           />
-          <div className="text-[#d8dee9] space-y-3">
+          <div className="space-y-3">
             <p>
               Mathematics (Probability &amp; Statistics concentration) and
               Computer Science at the University of Virginia. Originally from
@@ -48,21 +67,15 @@ export default function Home() {
               deceptively simple questions — using probability, statistics, and
               a bit of code to find them.
             </p>
-            <p className="text-[#4c566a]">
-              <span className="text-[#a3be8c]">$</span> cd ./sections
-            </p>
           </div>
         </div>
       </section>
 
-      {/* notes */}
-      <section>
+      {/* Notes */}
+      <section className="py-16">
         <SectionHeading n="01" id="notes" title="notes" />
-        <div className="text-[#d8dee9] space-y-3">
-          <p>
-            LaTeX notes from coursework at UVA. Typeset as I go; corrections
-            welcome.
-          </p>
+        <div className="text-sm text-[#d8dee9] space-y-3">
+          <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
               <a
@@ -96,10 +109,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* teaching */}
-      <section>
+      {/* Teaching */}
+      <section className="py-16">
         <SectionHeading n="02" id="teaching" title="teaching" />
-        <div className="text-[#d8dee9] space-y-4">
+        <div className="text-sm text-[#d8dee9] space-y-4">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
@@ -137,11 +150,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* projects */}
-      <section>
+      {/* Projects */}
+      <section className="py-16">
         <SectionHeading n="03" id="projects" title="projects and applications" />
         <BentoBox />
       </section>
-    </div>
+    </>
   );
 }
