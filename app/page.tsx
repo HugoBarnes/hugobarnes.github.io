@@ -13,10 +13,10 @@ function SectionHeading({
   return (
     <h2
       id={id}
-      className="scroll-mt-20 text-[#88c0d0] text-2xl mb-6 border-b border-[#3b4252] pb-2"
+      className="scroll-mt-20 text-[#83a598] text-2xl mb-6 border-b border-[#3c3836] pb-2"
     >
-      <span className="text-[#4c566a]">[{n}]</span>{" "}
-      <span className="text-[#a3be8c]">#</span> {title}
+      <span className="text-[#665c54]">[{n}]</span>{" "}
+      <span className="text-[#b8bb26]">#</span> {title}
     </h2>
   );
 }
@@ -29,19 +29,24 @@ export default function Home() {
         id="home"
         className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center"
       >
-        <p className="text-[#a3be8c] text-sm mb-4">
-          <span className="text-[#4c566a]">~$</span> whoami
+        <img
+          src="/images/Hugo.jpg"
+          alt="Hugo"
+          className="w-32 h-32 rounded-full object-cover border-2 border-[#504945] mb-8"
+        />
+        <p className="text-[#b8bb26] text-sm mb-4">
+          <span className="text-[#665c54]">~$</span> whoami
         </p>
-        <h1 className="text-5xl md:text-7xl text-[#eceff4] tracking-tight">
+        <h1 className="text-5xl md:text-7xl text-[#ebdbb2] tracking-tight">
           hugo-barnes
-          <span className="inline-block w-[0.6ch] ml-1 bg-[#88c0d0] animate-pulse h-[1em] align-[-0.15em]" />
+          <span className="inline-block w-[0.6ch] ml-1 bg-[#83a598] animate-pulse h-[1em] align-[-0.15em]" />
         </h1>
-        <p className="mt-6 text-sm md:text-base text-[#d8dee9]">
+        <p className="mt-6 text-sm md:text-base text-[#d5c4a1]">
           Mathematics &amp; Computer Science
-          <span className="text-[#4c566a] mx-2">|</span>
+          <span className="text-[#665c54] mx-2">|</span>
           University of Virginia
         </p>
-        <p className="mt-2 text-xs text-[#4c566a]">
+        <p className="mt-2 text-xs text-[#665c54]">
           Things I&apos;ve built, taught, and written down.
         </p>
         <ScrollDownArrow />
@@ -50,31 +55,24 @@ export default function Home() {
       {/* About */}
       <section className="py-16">
         <SectionHeading n="00" id="about" title="about" />
-        <div className="flex flex-col sm:flex-row gap-6 items-start text-sm text-[#d8dee9]">
-          <img
-            src="/images/Hugo.jpg"
-            alt="Hugo"
-            className="w-40 rounded border border-[#3b4252]"
-          />
-          <div className="space-y-3">
-            <p>
-              Mathematics (Probability &amp; Statistics concentration) and
-              Computer Science at the University of Virginia. Originally from
-              Bethesda, Maryland.
-            </p>
-            <p>
-              Interested in games and the complicated answers behind
-              deceptively simple questions — using probability, statistics, and
-              a bit of code to find them.
-            </p>
-          </div>
+        <div className="text-sm text-[#d5c4a1] space-y-3">
+          <p>
+            Mathematics (Probability &amp; Statistics concentration) and
+            Computer Science at the University of Virginia. Originally from
+            Bethesda, Maryland.
+          </p>
+          <p>
+            Interested in games and the complicated answers behind deceptively
+            simple questions — using probability, statistics, and a bit of code
+            to find them.
+          </p>
         </div>
       </section>
 
       {/* Notes */}
       <section className="py-16">
         <SectionHeading n="01" id="notes" title="notes" />
-        <div className="text-sm text-[#d8dee9] space-y-3">
+        <div className="text-sm text-[#d5c4a1] space-y-3">
           <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -83,7 +81,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4c566a]">—</span> Basic Real Analysis
+                <span className="text-[#665c54]">—</span> Basic Real Analysis
               </a>
             </li>
             <li>
@@ -92,7 +90,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4c566a]">—</span> Advanced Linear
+                <span className="text-[#665c54]">—</span> Advanced Linear
                 Algebra
               </a>
             </li>
@@ -102,7 +100,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4c566a]">—</span> Combinatorics
+                <span className="text-[#665c54]">—</span> Combinatorics
               </a>
             </li>
           </ul>
@@ -112,7 +110,7 @@ export default function Home() {
       {/* Teaching */}
       <section className="py-16">
         <SectionHeading n="02" id="teaching" title="teaching" />
-        <div className="text-sm text-[#d8dee9] space-y-4">
+        <div className="text-sm text-[#d5c4a1] space-y-4">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
@@ -132,7 +130,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4c566a]">—</span> 10:00 AM lecture
+                <span className="text-[#665c54]">—</span> 10:00 AM lecture
                 recording
               </a>
             </li>
@@ -142,7 +140,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4c566a]">—</span> 11:00 AM lecture
+                <span className="text-[#665c54]">—</span> 11:00 AM lecture
                 recording
               </a>
             </li>

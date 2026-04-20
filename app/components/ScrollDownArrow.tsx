@@ -3,7 +3,7 @@ export function ScrollDownArrow() {
     <a
       href="#about"
       aria-label="Scroll down"
-      className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#4c566a] hover:text-[#88c0d0] transition-colors"
+      className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#665c54] hover:text-[#83a598] transition-colors"
     >
       <span className="block animate-bounce text-2xl leading-none">
         &#x2193;

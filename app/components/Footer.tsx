@@ -5,15 +5,15 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
-    <footer className="border-t border-[#3b4252] text-xs text-[#d8dee9] mt-12">
+    <footer className="border-t border-[#3c3836] text-xs text-[#d5c4a1] mt-12">
       <nav className="mx-auto max-w-3xl px-6 py-6">
         <div className="flex justify-between items-start w-full">
           <ul className="flex flex-col space-y-1">
             <li>
-              <span className="text-[#4c566a]">$</span>{" "}
+              <span className="text-[#665c54]">$</span>{" "}
               <a
                 href="mailto:hugo.s.barnes@gmail.com"
-                className="text-[#88c0d0] hover:text-[#8fbcbb]"
+                className="text-[#83a598] hover:text-[#8ec07c]"
               >
                 hugo.s.barnes@gmail.com
               </a>
@@ -25,7 +25,7 @@ function Footer() {
                 onClick={() =>
                   window.open("https://www.linkedin.com/in/hugo-barnes/", "_blank")
                 }
-                className="text-[#81a1c1] hover:text-[#88c0d0] cursor-pointer"
+                className="text-[#458588] hover:text-[#83a598] cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
@@ -36,7 +36,7 @@ function Footer() {
                 onClick={() =>
                   window.open("https://github.com/HugoBarnes", "_blank")
                 }
-                className="text-[#d8dee9] hover:text-[#88c0d0] cursor-pointer"
+                className="text-[#d5c4a1] hover:text-[#83a598] cursor-pointer"
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faSquareGithub} />
@@ -50,7 +50,7 @@ function Footer() {
                     "_blank"
                   )
                 }
-                className="text-[#d8dee9] hover:text-[#88c0d0] cursor-pointer"
+                className="text-[#d5c4a1] hover:text-[#83a598] cursor-pointer"
                 aria-label="CV"
               >
                 <FontAwesomeIcon icon={faFile} />

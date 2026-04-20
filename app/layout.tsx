@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaCode.className} min-h-screen flex flex-col bg-[#2e3440] text-[#eceff4]`}
+        className={`${firaCode.className} min-h-screen flex flex-col bg-[#282828] text-[#ebdbb2]`}
       >
         <Header />
         <main className="mx-auto w-full max-w-3xl px-6 flex-grow">
