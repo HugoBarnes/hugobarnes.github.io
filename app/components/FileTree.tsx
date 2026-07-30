@@ -144,7 +144,10 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-function useActiveLocation(): string {
+// Next's Link uses pushState for same-page hash jumps, which fires neither
+// hashchange nor popstate — so clicks must also report the hash directly
+// via setHash (see onNavigate below).
+function useActiveLocation(): [string, (hash: string) => void] {
   const pathname = usePathname();
   const [hash, setHash] = useState("");
 
@@ -152,13 +155,17 @@ function useActiveLocation(): string {
     const update = () => setHash(window.location.hash);
     update();
     window.addEventListener("hashchange", update);
-    return () => window.removeEventListener("hashchange", update);
+    window.addEventListener("popstate", update);
+    return () => {
+      window.removeEventListener("hashchange", update);
+      window.removeEventListener("popstate", update);
+    };
   }, [pathname]);
 
   // The site exports with trailingSlash, so live URLs are "/Research/" while
   // tree paths are "/Research" — normalize before comparing.
   const clean = pathname.replace(/\/+$/, "") || "/";
-  return clean === "/" && hash ? `/${hash}` : clean;
+  return [clean === "/" && hash ? `/${hash}` : clean, setHash];
 }
 
 interface RowProps {
@@ -169,9 +176,10 @@ interface RowProps {
   active: string;
   collapsed: Set<string>;
   onToggle: (key: string) => void;
+  onNavigate: (path: string) => void;
 }
 
-function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowProps) {
+function Row({ node, guides, isLast, trail, active, collapsed, onToggle, onNavigate }: RowProps) {
   const key = nodeKey(node, trail);
   const dir = isDir(node);
   const hasKids = dir && node.children!.length > 0;
@@ -236,7 +244,14 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
     );
   } else if (node.path) {
     row = (
-      <Link href={node.path} className={rowClass} onClick={() => hasKids && onToggle(key)}>
+      <Link
+        href={node.path}
+        className={rowClass}
+        onClick={() => {
+          if (hasKids) onToggle(key);
+          onNavigate(node.path!);
+        }}
+      >
         {label}
       </Link>
     );
@@ -263,6 +278,7 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
               active={active}
               collapsed={collapsed}
               onToggle={onToggle}
+              onNavigate={onNavigate}
             />
           ))}
         </ul>
@@ -272,7 +288,14 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
 }
 
 export default function FileTree() {
-  const active = useActiveLocation();
+  const [active, setHash] = useActiveLocation();
+
+  // Report where a clicked link points so the location dot moves immediately,
+  // even when Next handles the jump with pushState (no hashchange event).
+  const handleNavigate = (path: string) => {
+    const i = path.indexOf("#");
+    setHash(i >= 0 ? path.slice(i) : "");
+  };
   // Start fully collapsed: only the root-level entries are visible.
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set(allDirKeys(TREE)));
 
@@ -316,6 +339,7 @@ export default function FileTree() {
             active={active}
             collapsed={collapsed}
             onToggle={toggle}
+            onNavigate={handleNavigate}
           />
         ))}
       </ul>
