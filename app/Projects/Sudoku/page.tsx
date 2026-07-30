@@ -1,212 +1,217 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Grid from "@/app/components/Grid";
 import ProjectShell from "@/app/components/ProjectShell";
+import {
+  Board,
+  Difficulty,
+  Game,
+  cloneBoard,
+  emptyBoard,
+  findConflicts,
+  generateGame,
+  isComplete,
+} from "@/app/lib/sudoku";
 
 const BTN =
-  "px-3 py-1.5 rounded text-sm bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors";
+  "px-3 py-1.5 rounded text-sm bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors cursor-pointer";
 
-export default function SudokuGrid() {
-  const [board, setBoard] = useState(
-    Array(9).fill(null).map(() => Array(9).fill(""))
-  );
-  const [isBoardValid, setIsBoardValid] = useState<boolean | null>(null);
+const DIFFICULTIES: Difficulty[] = ["easy", "medium", "hard"];
+
+function formatTime(totalSeconds: number): string {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+export default function SudokuPage() {
+  const [game, setGame] = useState<Game | null>(null);
+  const [board, setBoard] = useState<Board>(emptyBoard());
+  const [difficulty, setDifficulty] = useState<Difficulty>("medium");
+  const [wrong, setWrong] = useState<Set<string>>(new Set());
+  const [message, setMessage] = useState("");
+  const [seconds, setSeconds] = useState(0);
+  const [gaveUp, setGaveUp] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const conflicts = useMemo(() => findConflicts(board), [board]);
+  const solved =
+    game !== null && isComplete(board) && conflicts.size === 0 && !gaveUp;
+
+  const startNew = (diff: Difficulty) => {
+    const next = generateGame(diff);
+    setGame(next);
+    setBoard(cloneBoard(next.puzzle));
+    setWrong(new Set());
+    setMessage("");
+    setSeconds(0);
+    setGaveUp(false);
+  };
 
   useEffect(() => {
-    const puzzle = generatePuzzle();
-    setBoard(puzzle);
+    startNew("medium");
   }, []);
 
-  const handleCheckBoard = () => {
-    const valid = checkBoard(board);
-    setIsBoardValid(valid);
-  };
-
-  const checkBoard = (grid: string[][]): boolean => {
-    for (let i = 0; i < 9; i++) {
-      if (!checkRow(i, grid)) return false;
-      if (!checkCol(i, grid)) return false;
-      if (!checkSquare(i, grid)) return false;
-    }
-    return true;
-  };
-
-  function generatePuzzle(): string[][] {
-    const grid = Array.from({ length: 9 }, () => Array(9).fill(""));
-
-    const fillGrid = (row = 0, col = 0): boolean => {
-      if (row === 9) return true;
-      const nextRow = col === 8 ? row + 1 : row;
-      const nextCol = (col + 1) % 9;
-      const nums = shuffle(Array.from({ length: 9 }, (_, i) => String(i + 1)));
-
-      for (const val of nums) {
-        if (isPlacementValid(grid, row, col, val)) {
-          grid[row][col] = val;
-          if (fillGrid(nextRow, nextCol)) return true;
-          grid[row][col] = "";
-        }
-      }
-      return false;
+  // Tick while the puzzle is unsolved.
+  useEffect(() => {
+    if (game === null || solved || gaveUp) return;
+    timerRef.current = setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
     };
+  }, [game, solved, gaveUp]);
 
-    fillGrid();
+  const givens = useMemo(
+    () =>
+      game
+        ? game.puzzle.map((row) => row.map((v) => v !== ""))
+        : emptyBoard().map((row) => row.map(() => false)),
+    [game]
+  );
 
-    const puzzle = grid.map(row => [...row]);
-    const positions = shuffleCoords();
+  const handleInput = (row: number, col: number, value: string) => {
+    setBoard((prev) => {
+      const next = cloneBoard(prev);
+      next[row][col] = value;
+      return next;
+    });
+    setWrong(new Set());
+    setMessage("");
+  };
 
-    for (const [r, c] of positions) {
-      const backup = puzzle[r][c];
-      puzzle[r][c] = "";
-
-      let solutionCount = 0;
-
-      const countSolutions = (grid: string[][]): void => {
-        for (let row = 0; row < 9; row++) {
-          for (let col = 0; col < 9; col++) {
-            if (grid[row][col] === "") {
-              for (let d = 1; d <= 9; d++) {
-                const val = String(d);
-                if (isPlacementValid(grid, row, col, val)) {
-                  grid[row][col] = val;
-                  countSolutions(grid);
-                  grid[row][col] = "";
-                }
-              }
-              return;
-            }
-          }
-        }
-        solutionCount++;
-      };
-
-      countSolutions(puzzle.map(row => [...row]));
-      if (solutionCount !== 1) {
-        puzzle[r][c] = backup;
+  const handleCheck = () => {
+    if (!game) return;
+    const bad = new Set<string>();
+    let empty = 0;
+    for (let r = 0; r < 9; r++) {
+      for (let c = 0; c < 9; c++) {
+        if (board[r][c] === "") empty++;
+        else if (board[r][c] !== game.solution[r][c]) bad.add(`${r}-${c}`);
       }
     }
+    setWrong(bad);
+    if (bad.size > 0) {
+      setMessage(`${bad.size} cell${bad.size === 1 ? "" : "s"} incorrect`);
+    } else if (empty > 0) {
+      setMessage(`All correct so far — ${empty} to go`);
+    } else {
+      setMessage("Solved!");
+    }
+  };
 
-    return puzzle;
-  }
+  const handleHint = () => {
+    if (!game) return;
+    const candidates: [number, number][] = [];
+    for (let r = 0; r < 9; r++) {
+      for (let c = 0; c < 9; c++) {
+        if (board[r][c] !== game.solution[r][c]) candidates.push([r, c]);
+      }
+    }
+    if (candidates.length === 0) return;
+    const [r, c] = candidates[Math.floor(Math.random() * candidates.length)];
+    setBoard((prev) => {
+      const next = cloneBoard(prev);
+      next[r][c] = game.solution[r][c];
+      return next;
+    });
+    setWrong(new Set());
+    setMessage("");
+  };
 
-  const clearBoard = (grid: string[][]) => {
-    const temp = Array(9).fill(null).map(() => Array(9).fill(""));
-    setIsBoardValid(null);
-    setBoard(temp);
+  const handleSolve = () => {
+    if (!game) return;
+    setBoard(cloneBoard(game.solution));
+    setWrong(new Set());
+    setGaveUp(true);
+    setMessage("Solution revealed");
+  };
+
+  const handleReset = () => {
+    if (!game) return;
+    setBoard(cloneBoard(game.puzzle));
+    setWrong(new Set());
+    setMessage("");
+    setGaveUp(false);
   };
 
   return (
     <ProjectShell
       title="sudoku"
-      description="A uniquely-solvable puzzle generated in your browser. Solve it yourself, or check your work as you go."
+      description="A uniquely-solvable puzzle generated in your browser. Solve it yourself, get a hint when stuck, or have the whole thing solved for you."
     >
-      <div className="flex flex-wrap items-start justify-center gap-6">
-        <Grid board={board} setBoard={setBoard} />
+      <div className="flex flex-wrap items-start justify-center gap-8 text-left">
+        <div>
+          <Grid
+            board={board}
+            givens={givens}
+            conflicts={conflicts}
+            wrong={wrong}
+            onInput={handleInput}
+          />
+          {solved && (
+            <p className="mt-4 text-center text-lg text-[#ff6719] font-semibold">
+              Solved in {formatTime(seconds)} — nice!
+            </p>
+          )}
+        </div>
 
-        <div className="flex flex-col gap-2 min-w-40">
-          <div className="flex items-center gap-2">
-            <button className={BTN} onClick={handleCheckBoard}>
-              Check
-            </button>
-            {isBoardValid === true && (
-              <span className="text-sm text-[#4a4a4a]">✓ valid</span>
-            )}
-            {isBoardValid === false && (
-              <span className="text-sm text-[#3a3a3a]">✗ invalid</span>
-            )}
+        <div className="flex flex-col gap-4 min-w-44">
+          <div className="flex items-center justify-between text-sm text-[#6b6b6b]">
+            <span className="capitalize">{difficulty}</span>
+            <span className="tabular-nums">{formatTime(seconds)}</span>
           </div>
 
-          <button
-            className={BTN}
-            onClick={() => {
-              setIsBoardValid(null);
-              setBoard(generatePuzzle());
-            }}
-          >
-            New Board
-          </button>
-          <button className={BTN} onClick={() => clearBoard(board)}>
-            Clear Board
-          </button>
+          <div className="flex flex-col gap-2">
+            <span className="text-xs uppercase tracking-wide text-[#a0a0a0]">
+              New puzzle
+            </span>
+            <div className="flex gap-2">
+              {DIFFICULTIES.map((d) => (
+                <button
+                  key={d}
+                  className={`${BTN} capitalize ${
+                    d === difficulty ? "bg-[#e0e0e0] font-semibold" : ""
+                  }`}
+                  onClick={() => {
+                    setDifficulty(d);
+                    startNew(d);
+                  }}
+                >
+                  {d}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-xs uppercase tracking-wide text-[#a0a0a0]">
+              Play
+            </span>
+            <div className="flex flex-wrap gap-2">
+              <button className={BTN} onClick={handleCheck}>
+                Check
+              </button>
+              <button className={BTN} onClick={handleHint}>
+                Hint
+              </button>
+              <button className={BTN} onClick={handleReset}>
+                Reset
+              </button>
+              <button className={BTN} onClick={handleSolve}>
+                Solve
+              </button>
+            </div>
+          </div>
+
+          {message && <p className="text-sm text-[#404040]">{message}</p>}
+          {conflicts.size > 0 && (
+            <p className="text-sm text-[#c0392b]">
+              Conflicting cells are highlighted
+            </p>
+          )}
         </div>
       </div>
     </ProjectShell>
   );
-
-  function checkRow(rowNum: number, board: string[][]): boolean {
-    const seen = new Set<number>();
-    for (let i = 0; i < 9; i++) {
-      const num = board[rowNum][i];
-      if (num !== "" && !isNaN(Number(num))) {
-        const val = parseInt(num);
-        if (seen.has(val)) return false;
-        seen.add(val);
-      }
-    }
-    return true;
-  }
-
-  function checkCol(colNum: number, board: string[][]): boolean {
-    const seen = new Set<number>();
-    for (let i = 0; i < 9; i++) {
-      const num = board[i][colNum];
-      if (num !== "" && !isNaN(Number(num))) {
-        const val = parseInt(num);
-        if (seen.has(val)) return false;
-        seen.add(val);
-      }
-    }
-    return true;
-  }
-
-  function checkSquare(i: number, board: string[][]): boolean {
-    const seen = new Set<number>();
-    const rowStart = Math.floor(i / 3) * 3;
-    const colStart = (i % 3) * 3;
-
-    for (let r = rowStart; r < rowStart + 3; r++) {
-      for (let c = colStart; c < colStart + 3; c++) {
-        const num = board[r][c];
-        if (num !== "" && !isNaN(Number(num))) {
-          const val = parseInt(num);
-          if (seen.has(val)) return false;
-          seen.add(val);
-        }
-      }
-    }
-    return true;
-  }
-
-  function isPlacementValid(grid: string[][], row: number, col: number, val: string): boolean {
-    for (let i = 0; i < 9; i++) {
-      if (grid[row][i] === val || grid[i][col] === val) return false;
-    }
-    const boxRow = Math.floor(row / 3) * 3;
-    const boxCol = Math.floor(col / 3) * 3;
-    for (let r = boxRow; r < boxRow + 3; r++) {
-      for (let c = boxCol; c < boxCol + 3; c++) {
-        if (grid[r][c] === val) return false;
-      }
-    }
-    return true;
-  }
-
-  function shuffle<T>(arr: T[]): T[] {
-    for (let i = arr.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-    return arr;
-  }
-
-  function shuffleCoords(): [number, number][] {
-    const coords: [number, number][] = [];
-    for (let r = 0; r < 9; r++) {
-      for (let c = 0; c < 9; c++) {
-        coords.push([r, c]);
-      }
-    }
-    return shuffle(coords);
-  }
 }
