@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { parseNumber } from "@/app/lib/linalg/number";
-import { power } from "@/app/lib/linalg/matrix";
+import { transpose } from "@/app/lib/linalg/matrix";
 import MatrixInput from "./MatrixInput";
 import ResultMatrix from "./ResultMatrix";
 import { PRIMARY_BTN, ERROR_TEXT, emptyStringMatrix } from "./styles";
@@ -10,10 +10,9 @@ import { PRIMARY_BTN, ERROR_TEXT, emptyStringMatrix } from "./styles";
 interface Props {
   rows: number;
   cols: number;
-  power: number;
 }
 
-const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
+const Transpose: React.FC<Props> = ({ rows, cols }) => {
   const [matrix, setMatrix] = useState<string[][]>([]);
   const [result, setResult] = useState<number[][] | null>(null);
   const [error, setError] = useState("");
@@ -33,11 +32,6 @@ const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
   const clear = () => setMatrix(emptyStringMatrix(rows, cols));
 
   const compute = () => {
-    if (rows !== cols) {
-      setError(`Matrix must be square (currently ${rows} × ${cols}).`);
-      setResult(null);
-      return;
-    }
     let invalid = false;
     const parsed = matrix.map((row) =>
       row.map((v) => {
@@ -52,20 +46,20 @@ const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
       return;
     }
     setError("");
-    setResult(power(parsed, exponent));
+    setResult(transpose(parsed));
   };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-center">
-        <button className={PRIMARY_BTN} onClick={compute} disabled={rows === 0}>
-          Compute Aⁿ
+        <button className={PRIMARY_BTN} onClick={compute} disabled={rows === 0 || cols === 0}>
+          Compute Aᵀ
         </button>
       </div>
 
       <div className="flex justify-center">
         <MatrixInput
-          label={`Matrix A  (n = ${exponent})`}
+          label="Matrix A"
           matrix={matrix}
           onChange={setCell}
           onFill={fill}
@@ -76,11 +70,11 @@ const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
       {error && <p className={ERROR_TEXT}>{error}</p>}
       {result && (
         <div className="flex justify-center pt-2">
-          <ResultMatrix label={`A^${exponent}`} matrix={result} />
+          <ResultMatrix label="Aᵀ" matrix={result} />
         </div>
       )}
     </div>
   );
 };
 
-export default MatrixPower;
+export default Transpose;

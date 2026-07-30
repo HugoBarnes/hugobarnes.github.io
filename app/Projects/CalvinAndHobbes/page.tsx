@@ -1,12 +1,18 @@
 "use client";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
+import ProjectShell from "@/app/components/ProjectShell";
 
-const PDFViewer = dynamic(() => import('@/app/components/PDFViewer'), { ssr: false });
+const PDFViewer = dynamic(() => import("@/app/components/PDFViewer"), {
+  ssr: false,
+});
 
 export default function HomePage() {
   return (
-    <main>
+    <ProjectShell
+      title="calvin-and-hobbes"
+      description="The complete Calvin and Hobbes collection, from the Internet Archive — read any volume right here."
+    >
       <PDFViewer />
-    </main>
+    </ProjectShell>
   );
 }

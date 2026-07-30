@@ -1,30 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  /* Gruvbox — dark bg */
-  --gb-bg0: #282828;
-  --gb-bg1: #3c3836;
-  --gb-bg2: #504945;
-  --gb-bg3: #665c54;
-  --gb-bg4: #7c6f64;
-  /* Gruvbox — fg */
-  --gb-fg0: #fbf1c7;
-  --gb-fg1: #ebdbb2;
-  --gb-fg2: #d5c4a1;
-  --gb-fg3: #bdae93;
-  --gb-fg4: #a89984;
-  /* Gruvbox — accents (bright) */
-  --gb-red: #fb4934;
-  --gb-green: #b8bb26;
-  --gb-yellow: #fabd2f;
-  --gb-blue: #83a598;
-  --gb-purple: #d3869b;
-  --gb-aqua: #8ec07c;
-  --gb-orange: #fe8019;
-  --gb-gray: #928374;
+  /* Sunset pier — matches the laptop rice (kitty / waybar / hyprland) */
+  --sp-bg0: #0f0b10;
+  --sp-bg1: #241a20;
+  --sp-bg2: #3a2a30;
+  --sp-bg3: #4a3a42;
+  --sp-bg4: #5c4a52;
+  /* Sunset pier — fg */
+  --sp-fg0: #f6ece2;
+  --sp-fg1: #f2e0d3;
+  --sp-fg2: #d9c2ba;
+  --sp-fg3: #c0a8ae;
+  --sp-fg4: #a68f97;
+  /* Sunset pier — accents */
+  --sp-coral: #e8837e;
+  --sp-sage: #b8bd8f;
+  --sp-gold: #f2c078;
+  --sp-periwinkle: #9aa5cc;
+  --sp-mauve: #cba6c3;
+  --sp-lavender: #b5a8d0;
+  --sp-peach: #f5b78a;
+  --sp-gray: #8a7080;
+  /* Terminal text — bright white with a tinge of blue */
+  --sp-term-white: #e9eef8;
 
-  --background: var(--gb-bg0);
-  --foreground: var(--gb-fg1);
+  --background: var(--sp-bg0);
+  --foreground: var(--sp-fg1);
 }
 
 html {
@@ -37,14 +39,14 @@ body {
 }
 
 ::selection {
-  background: var(--gb-bg2);
-  color: var(--gb-fg0);
+  background: var(--sp-bg2);
+  color: var(--sp-fg0);
 }
 
 a {
-  color: var(--gb-blue);
+  color: var(--sp-periwinkle);
 }
 
 a:hover {
-  color: var(--gb-aqua);
+  color: var(--sp-peach);
 }

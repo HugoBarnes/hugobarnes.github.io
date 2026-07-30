@@ -1,27 +1,24 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { parseNumber } from "@/app/lib/linalg/number";
-import { power } from "@/app/lib/linalg/matrix";
+import { parseNumber, formatNumber } from "@/app/lib/linalg/number";
+import { determinant } from "@/app/lib/linalg/matrix";
 import MatrixInput from "./MatrixInput";
-import ResultMatrix from "./ResultMatrix";
 import { PRIMARY_BTN, ERROR_TEXT, emptyStringMatrix } from "./styles";
 
 interface Props {
-  rows: number;
-  cols: number;
-  power: number;
+  size: number;
 }
 
-const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
+const Determinant: React.FC<Props> = ({ size }) => {
   const [matrix, setMatrix] = useState<string[][]>([]);
-  const [result, setResult] = useState<number[][] | null>(null);
+  const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
     setResult(null);
-    setMatrix(emptyStringMatrix(rows, cols));
-  }, [rows, cols]);
+    setMatrix(emptyStringMatrix(size, size));
+  }, [size]);
 
   const setCell = (r: number, c: number, value: string) =>
     setMatrix((m) =>
@@ -30,14 +27,9 @@ const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
 
   const fill = () =>
     setMatrix((m) => m.map((row) => row.map((v) => (v.trim() === "" ? "0" : v))));
-  const clear = () => setMatrix(emptyStringMatrix(rows, cols));
+  const clear = () => setMatrix(emptyStringMatrix(size, size));
 
   const compute = () => {
-    if (rows !== cols) {
-      setError(`Matrix must be square (currently ${rows} × ${cols}).`);
-      setResult(null);
-      return;
-    }
     let invalid = false;
     const parsed = matrix.map((row) =>
       row.map((v) => {
@@ -52,20 +44,20 @@ const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
       return;
     }
     setError("");
-    setResult(power(parsed, exponent));
+    setResult(determinant(parsed));
   };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-center">
-        <button className={PRIMARY_BTN} onClick={compute} disabled={rows === 0}>
-          Compute Aⁿ
+        <button className={PRIMARY_BTN} onClick={compute} disabled={size === 0}>
+          Compute det(A)
         </button>
       </div>
 
       <div className="flex justify-center">
         <MatrixInput
-          label={`Matrix A  (n = ${exponent})`}
+          label={`Matrix A  (${size} × ${size})`}
           matrix={matrix}
           onChange={setCell}
           onFill={fill}
@@ -74,13 +66,14 @@ const MatrixPower: React.FC<Props> = ({ rows, cols, power: exponent }) => {
       </div>
 
       {error && <p className={ERROR_TEXT}>{error}</p>}
-      {result && (
-        <div className="flex justify-center pt-2">
-          <ResultMatrix label={`A^${exponent}`} matrix={result} />
-        </div>
+      {result !== null && !error && (
+        <p className="text-center text-lg text-[#d9c2ba]">
+          det(A) ={" "}
+          <span className="text-[#b8bd8f] font-bold">{formatNumber(result)}</span>
+        </p>
       )}
     </div>
   );
 };
 
-export default MatrixPower;
+export default Determinant;

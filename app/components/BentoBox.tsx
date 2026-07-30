@@ -16,18 +16,16 @@ const projectData = [
 
 const BentoBox = () =>{
     return(
-        <main>
-            <div className='flex flex-wrap gap-2 p-2'>
-                {projectData.map((item) =>(
-                    <ProjectBox 
-                    key={item.name}
-                    name={item.name}
-                    link={item.link}
-                    description={item.description}
-                  />
-                ))}
-            </div>
-        </main>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-3'>
+            {projectData.map((item) =>(
+                <ProjectBox
+                key={item.name}
+                name={item.name}
+                link={item.link}
+                description={item.description}
+              />
+            ))}
+        </div>
     );
 };
 

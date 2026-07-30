@@ -6,7 +6,7 @@ export default function Teaching() {
         <img src="/images/Teaching.jpg" alt="Teaching" className="mb-6"></img>
         <p className="mb-4">
           Above is a picture of me teaching UVA's Fall 2024 CS 2120's Discrete Mathematics I course.
-          I was selected to fill in by fellow T.A.'s after <a href="https://www.elizabethorrico.com/home" target="_blank" className="text-blue-500 underline hover:text-blue-700">
+          I was selected to fill in by fellow T.A.'s after <a href="https://www.elizabethorrico.com/home" target="_blank" className="text-[#9aa5cc] underline hover:text-[#f5b78a]">
           Professor Orrico</a> left UVA prematurely for personal reasons.
         </p>
         <div className="flex flex-col items-center justify-center mb-4">
@@ -14,7 +14,7 @@ export default function Teaching() {
           href="https://drive.google.com/file/d/1Hg4Fh8s8LziblSEHTzarVoWh0xnGjGwj/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 underline hover:text-blue-700"
+          className="text-[#9aa5cc] underline hover:text-[#f5b78a]"
           >
           10:00 AM Lecture
         </a>
@@ -22,7 +22,7 @@ export default function Teaching() {
           href="https://drive.google.com/file/d/1rzBw8mNJ64H_2Y4qAj71WGmSwG3vW5Uq/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 underline hover:text-blue-700"
+          className="text-[#9aa5cc] underline hover:text-[#f5b78a]"
           >
           11:00 AM Lecture
         </a>
@@ -37,7 +37,7 @@ export default function Teaching() {
           href="/pdfs/BasicRealAnalyis.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 underline hover:text-blue-700"
+          className="text-[#9aa5cc] underline hover:text-[#f5b78a]"
           >
           Basic Real Analysis.pdf
         </a>
@@ -45,7 +45,7 @@ export default function Teaching() {
           href="/pdfs/AdvancedLinearAlgebra.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 underline hover:text-blue-700"
+          className="text-[#9aa5cc] underline hover:text-[#f5b78a]"
           >
           Advanced Linear Algebra.pdf
         </a>

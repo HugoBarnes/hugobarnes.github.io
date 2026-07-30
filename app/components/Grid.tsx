@@ -1,46 +1,42 @@
+"use client";
+
 import React from "react";
 
-import { useState } from "react";
-
-interface GridProps{
-    board: string[][];
-    setBoard: React.Dispatch<React.SetStateAction<string[][]>>;
+interface GridProps {
+  board: string[][];
+  setBoard: React.Dispatch<React.SetStateAction<string[][]>>;
 }
 
-// Make const const SudokuGrid: React.FC = () => { to turn into a component
-
-const SudokuGrid: React.FC<GridProps> = ({board, setBoard}) => {
+const SudokuGrid: React.FC<GridProps> = ({ board, setBoard }) => {
   return (
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(9, 50px)",
-          gridTemplateRows: "repeat(9, 50px)",
-        }}
-      >
-        {board.map((row, i) =>
+    <div
+      className="bg-[#0a070b] p-[2px] rounded"
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(9, minmax(0, 1fr))",
+      }}
+    >
+      {board.map((row, i) =>
         row.map((val, j) => (
           <input
             key={`${i}-${j}`}
             value={val}
             onChange={(e) => {
+              const v = e.target.value.replace(/[^1-9]/g, "");
               const updated = board.map((r) => [...r]);
-              updated[i][j] = e.target.value;
+              updated[i][j] = v;
               setBoard(updated);
             }}
             maxLength={1}
+            inputMode="numeric"
             type="text"
+            className="w-9 h-9 sm:w-11 sm:h-11 text-center text-lg outline-none
+              bg-[#1a1218] text-[#f2c078] focus:bg-[#241a20] transition-colors"
             style={{
-              width: "50px",
-              height: "50px",
-              textAlign: "center",
-              fontSize: "1.2rem",
-              outline: "none",
-              backgroundColor: "white",
-              borderTop: i % 3 === 0 ? "2px solid black" : "0.5px solid gray",
-              borderLeft: j % 3 === 0 ? "2px solid black" : "0.5px solid gray",
-              borderRight: j === 8 ? "2px solid black" : "",
-              borderBottom: i === 8 ? "2px solid black" : "",
+              borderTop: i % 3 === 0 ? "2px solid #8a7080" : "1px solid #241a20",
+              borderLeft: j % 3 === 0 ? "2px solid #8a7080" : "1px solid #241a20",
+              borderRight: j === 8 ? "2px solid #8a7080" : "",
+              borderBottom: i === 8 ? "2px solid #8a7080" : "",
             }}
           />
         ))

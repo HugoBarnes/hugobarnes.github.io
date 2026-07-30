@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Grid from "@/app/components/Grid";
+import ProjectShell from "@/app/components/ProjectShell";
+
+const BTN =
+  "px-3 py-1.5 rounded text-sm bg-[#241a20] text-[#d9c2ba] hover:bg-[#3a2a30] transition-colors";
 
 export default function SudokuGrid() {
   const [board, setBoard] = useState(
@@ -93,38 +97,41 @@ export default function SudokuGrid() {
   };
 
   return (
-    <div className="p-2 flex items-start gap-4">
-      <Grid board={board} setBoard={setBoard} />
+    <ProjectShell
+      title="sudoku"
+      description="A uniquely-solvable puzzle generated in your browser. Solve it yourself, or check your work as you go."
+    >
+      <div className="flex flex-wrap items-start justify-center gap-6">
+        <Grid board={board} setBoard={setBoard} />
 
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-2 min-w-40">
+          <div className="flex items-center gap-2">
+            <button className={BTN} onClick={handleCheckBoard}>
+              Check
+            </button>
+            {isBoardValid === true && (
+              <span className="text-sm text-[#b8bd8f]">✓ valid</span>
+            )}
+            {isBoardValid === false && (
+              <span className="text-sm text-[#e8837e]">✗ invalid</span>
+            )}
+          </div>
+
           <button
-            className="px-2 py-1 bg-black text-white hover:cursor-pointer hover:underline rounded-none"
-            onClick={handleCheckBoard}
+            className={BTN}
+            onClick={() => {
+              setIsBoardValid(null);
+              setBoard(generatePuzzle());
+            }}
           >
-            Check
+            New Board
           </button>
-          {isBoardValid === true && <div className="w-4 h-4 bg-green-500" />}
-          {isBoardValid === false && <div className="w-4 h-4 bg-red-500" />}
+          <button className={BTN} onClick={() => clearBoard(board)}>
+            Clear Board
+          </button>
         </div>
-
-        <button
-          className="px-2 py-1 bg-black text-white hover:cursor-pointer hover:underline rounded-none"
-          onClick={() => {
-            setIsBoardValid(null);
-            setBoard(generatePuzzle());
-          }}
-        >
-          New Board
-        </button>
-        <button
-          className="px-2 py-1 bg-black text-white hover:cursor-pointer hover:underline rounded-none"
-          onClick={() => clearBoard(board)}
-        >
-          Clear Board
-        </button>
       </div>
-    </div>
+    </ProjectShell>
   );
 
   function checkRow(rowNum: number, board: string[][]): boolean {

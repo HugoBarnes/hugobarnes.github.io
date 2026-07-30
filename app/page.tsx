@@ -13,10 +13,10 @@ function SectionHeading({
   return (
     <h2
       id={id}
-      className="scroll-mt-20 text-[#83a598] text-2xl mb-6 border-b border-[#3c3836] pb-2"
+      className="scroll-mt-20 text-[#9aa5cc] text-2xl mb-6 border-b border-[#241a20] pb-2"
     >
-      <span className="text-[#665c54]">[{n}]</span>{" "}
-      <span className="text-[#b8bb26]">#</span> {title}
+      <span className="text-[#4a3a42]">[{n}]</span>{" "}
+      <span className="text-[#b8bd8f]">#</span> {title}
     </h2>
   );
 }
@@ -32,21 +32,21 @@ export default function Home() {
         <img
           src="/images/Hugo.jpg"
           alt="Hugo"
-          className="w-32 h-32 rounded-full object-cover border-2 border-[#504945] mb-8"
+          className="w-32 h-32 rounded-full object-cover border-2 border-[#3a2a30] mb-8"
         />
-        <p className="text-[#b8bb26] text-sm mb-4">
-          <span className="text-[#665c54]">~$</span> whoami
+        <p className="text-[#e9eef8] text-sm mb-4">
+          <span className="text-[#b8bd8f]">~$</span> whoami
         </p>
-        <h1 className="text-5xl md:text-7xl text-[#ebdbb2] tracking-tight">
+        <h1 className="text-5xl md:text-7xl text-[#e9eef8] tracking-tight">
           hugo-barnes
-          <span className="inline-block w-[0.6ch] ml-1 bg-[#83a598] animate-pulse h-[1em] align-[-0.15em]" />
+          <span className="inline-block w-[0.6ch] ml-1 bg-[#9aa5cc] animate-pulse h-[1em] align-[-0.15em]" />
         </h1>
-        <p className="mt-6 text-sm md:text-base text-[#d5c4a1]">
+        <p className="mt-6 text-sm md:text-base text-[#d9c2ba]">
           Mathematics &amp; Computer Science
-          <span className="text-[#665c54] mx-2">|</span>
+          <span className="text-[#4a3a42] mx-2">|</span>
           University of Virginia
         </p>
-        <p className="mt-2 text-xs text-[#665c54]">
+        <p className="mt-2 text-xs text-[#4a3a42]">
           Things I&apos;ve built, taught, and written down.
         </p>
         <ScrollDownArrow />
@@ -55,7 +55,7 @@ export default function Home() {
       {/* About */}
       <section className="py-16">
         <SectionHeading n="00" id="about" title="about" />
-        <div className="text-sm text-[#d5c4a1] space-y-3">
+        <div className="text-sm text-[#d9c2ba] space-y-3">
           <p>
             Mathematics (Probability &amp; Statistics concentration) and
             Computer Science at the University of Virginia. Originally from
@@ -72,7 +72,7 @@ export default function Home() {
       {/* Notes */}
       <section className="py-16">
         <SectionHeading n="01" id="notes" title="notes" />
-        <div className="text-sm text-[#d5c4a1] space-y-3">
+        <div className="text-sm text-[#d9c2ba] space-y-3">
           <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -81,7 +81,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#665c54]">—</span> Basic Real Analysis
+                <span className="text-[#4a3a42]">—</span> Basic Real Analysis
               </a>
             </li>
             <li>
@@ -90,7 +90,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#665c54]">—</span> Advanced Linear
+                <span className="text-[#4a3a42]">—</span> Advanced Linear
                 Algebra
               </a>
             </li>
@@ -100,7 +100,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#665c54]">—</span> Combinatorics
+                <span className="text-[#4a3a42]">—</span> Combinatorics
               </a>
             </li>
           </ul>
@@ -110,7 +110,7 @@ export default function Home() {
       {/* Teaching */}
       <section className="py-16">
         <SectionHeading n="02" id="teaching" title="teaching" />
-        <div className="text-sm text-[#d5c4a1] space-y-4">
+        <div className="text-sm text-[#d9c2ba] space-y-4">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
@@ -130,7 +130,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#665c54]">—</span> 10:00 AM lecture
+                <span className="text-[#4a3a42]">—</span> 10:00 AM lecture
                 recording
               </a>
             </li>
@@ -140,7 +140,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#665c54]">—</span> 11:00 AM lecture
+                <span className="text-[#4a3a42]">—</span> 11:00 AM lecture
                 recording
               </a>
             </li>

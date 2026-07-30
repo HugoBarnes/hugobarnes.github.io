@@ -1,44 +1,184 @@
-"use client"
-import React, {useState,useRef, useEffect} from 'react';
-import Cell from './Cell'
+"use client";
 
-const Board = () =>{
-    const [board,setBoard] = useState<string[][]>(
-        Array.from({length: 15}, ()=> Array(15).fill(''))
-    )
-    const handleCellChange = (row: number, col: number, val: string) => {
-        const newBoard = board.map((r, i) => r.map((c, j) => (i === row && j === col ? val : c)));
-        setBoard(newBoard);
-    };
+import React, { useCallback, useMemo, useState } from "react";
+import { BOARD_SIZE, RACK_SIZE, emptyBoard } from "@/app/lib/scrabble/board";
+import { loadDictionary } from "@/app/lib/scrabble/dictionary";
+import { findMoves, type Move } from "@/app/lib/scrabble/solver";
+import BoardGrid, { type PreviewTile } from "./BoardGrid";
+import Rack from "./Rack";
+import Results from "./Results";
 
-    const getCellType = (row:number, col:number): "None" | "TripleWord" | "TripleLetter" | "DoubleWord" | "DoubleLetter" | "StartSquare" =>{
-      // Everything is Zero indexed
-      if(row == 7 && col == 7) return "StartSquare";
-      if((row == 0 && (col == 0 || col == 7 || col == 14)) || (row == 7 &&(col == 0 || col == 7 || col == 14))|| row == 14 &&(col == 0 || col == 7 || col == 14))  return "TripleWord";
-      if(row == 0 && (col == 3 || col == 11) || row == 14 &&(col == 3 || col == 11)) return "DoubleLetter";
-      if(row == 2 && (col == 6 || col == 8) || row == 12 && (col == 6 || col == 8)) return "DoubleLetter";
-      if(row == 7 && (col == 3 || col == 11)) return "DoubleLetter";
-      if(row == 6 && (col == 2 || col == 6 || col == 8 || col == 12) || row == 8 && (col == 2 || col == 6 || col == 8 || col == 12)) return "DoubleLetter"
-      if((row == 1 && (col == 5 || col == 9))|| (row == 5 &&(col == 1 || col == 5 || col == 9 || col == 13))|| (row == 9 &&(col == 1 || col == 5 || col == 9 || col == 13)) || row == 13 && (col == 5 || col == 9)) return "TripleLetter";
-      if(row == col || row+col == 14) return "DoubleWord";
-      if(row == 11 && (col == 0 || col == 7 || col == 14) || row == 3 &&(col == 0 || col == 7 || col == 14) ) return "DoubleLetter"
-      return "None";
+type DictState = "idle" | "loading" | "ready" | "error";
+
+const Board = () => {
+  const [board, setBoard] = useState<string[][]>(emptyBoard);
+  const [rack, setRack] = useState<string[]>(Array(RACK_SIZE).fill(""));
+  const [moves, setMoves] = useState<Move[]>([]);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [dictState, setDictState] = useState<DictState>("idle");
+  const [solving, setSolving] = useState(false);
+  const [message, setMessage] = useState<string>("");
+
+  const handleCellChange = useCallback((row: number, col: number, val: string) => {
+    setBoard((prev) =>
+      prev.map((r, i) => r.map((c, j) => (i === row && j === col ? val : c)))
+    );
+    setMoves([]);
+    setSelected(null);
+  }, []);
+
+  const handleRackChange = useCallback((index: number, val: string) => {
+    setRack((prev) => prev.map((t, i) => (i === index ? val : t)));
+    setMoves([]);
+    setSelected(null);
+  }, []);
+
+  const solve = useCallback(async () => {
+    const rackTiles = rack.filter((t) => t !== "");
+    if (rackTiles.length === 0) {
+      setMessage("Add some tiles to your rack first.");
+      setMoves([]);
+      return;
     }
+    setMessage("");
+    setSolving(true);
+    setSelected(null);
+    try {
+      setDictState((s) => (s === "ready" ? s : "loading"));
+      const dict = await loadDictionary();
+      setDictState("ready");
+      // Defer to next frame so the "solving" state can paint on large boards.
+      await new Promise((r) => requestAnimationFrame(() => r(null)));
+      const best = findMoves(board, rackTiles, dict, 15);
+      setMoves(best);
+      if (best.length === 0) {
+        setMessage("No legal plays found for this rack and board.");
+      }
+    } catch {
+      setDictState("error");
+      setMessage("Could not load the dictionary. Please try again.");
+    } finally {
+      setSolving(false);
+    }
+  }, [board, rack]);
 
-    return (
-        <div className="grid grid-cols-15 gap-0">
-          {board.map((row, rowIndex) =>
-            row.map((cellValue, colIndex) => (
-              <Cell
-                key={`${rowIndex}-${colIndex}`}
-                value={cellValue}
-                onChange={(val) => handleCellChange(rowIndex, colIndex, val)}
-                cellType={getCellType(rowIndex, colIndex)} // optional if you have types
-              />
-            ))
-          )}
+  const applyMove = useCallback((move: Move) => {
+    setBoard((prev) => {
+      const next = prev.map((r) => r.slice());
+      for (const p of move.placements) next[p.row][p.col] = p.letter;
+      return next;
+    });
+    // Remove the used tiles from the rack.
+    setRack((prev) => {
+      const next = [...prev];
+      for (const p of move.placements) {
+        const wanted = p.blank ? "?" : p.letter;
+        const idx = next.findIndex((t) => t === wanted);
+        if (idx !== -1) next[idx] = "";
+      }
+      return next;
+    });
+    setMoves([]);
+    setSelected(null);
+    setMessage("");
+  }, []);
+
+  const clearBoard = useCallback(() => {
+    setBoard(emptyBoard());
+    setMoves([]);
+    setSelected(null);
+  }, []);
+
+  const clearRack = useCallback(() => {
+    setRack(Array(RACK_SIZE).fill(""));
+    setMoves([]);
+    setSelected(null);
+  }, []);
+
+  const preview = useMemo(() => {
+    const map = new Map<string, PreviewTile>();
+    if (selected !== null && moves[selected]) {
+      for (const p of moves[selected].placements) {
+        map.set(`${p.row},${p.col}`, { letter: p.letter, blank: p.blank });
+      }
+    }
+    return map;
+  }, [selected, moves]);
+
+  return (
+    <div className="space-y-6">
+      <div className="grid lg:grid-cols-[auto_1fr] gap-8 items-start">
+        {/* Board */}
+        <div className="space-y-4">
+          <BoardGrid board={board} preview={preview} onChange={handleCellChange} />
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-[#8a7080]">
+            <Legend className="bg-[#c9605c]" label="triple word" />
+            <Legend className="bg-[#b087a8]" label="double word" />
+            <Legend className="bg-[#5f6a94]" label="triple letter" />
+            <Legend className="bg-[#8d80ab]" label="double letter" />
+          </div>
         </div>
-      );
+
+        {/* Controls + results */}
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-sm text-[#9aa5cc] mb-2">
+              <span className="text-[#4a3a42]">$</span> your rack
+            </h3>
+            <Rack tiles={rack} onChange={handleRackChange} />
+            <p className="mt-2 text-[10px] text-[#4a3a42] text-center">
+              Type letters; use <span className="text-[#8a7080]">?</span> for a blank.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={solve}
+              disabled={solving}
+              className="px-4 py-2 rounded text-sm font-medium bg-[#b8bd8f] text-[#0a070b]
+                hover:bg-[#9aa06e] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+            >
+              {solving
+                ? dictState === "loading"
+                  ? "Loading dictionary…"
+                  : "Solving…"
+                : "Find best plays"}
+            </button>
+            <button
+              onClick={clearRack}
+              className="px-3 py-2 rounded text-sm bg-[#241a20] text-[#d9c2ba] hover:bg-[#3a2a30] transition-colors"
+            >
+              Clear rack
+            </button>
+            <button
+              onClick={clearBoard}
+              className="px-3 py-2 rounded text-sm bg-[#241a20] text-[#d9c2ba] hover:bg-[#3a2a30] transition-colors"
+            >
+              Clear board
+            </button>
+          </div>
+
+          {message && <p className="text-sm text-[#f5b78a]">{message}</p>}
+
+          <Results
+            moves={moves}
+            selected={selected}
+            onSelect={setSelected}
+            onApply={applyMove}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
-export default Board
+function Legend({ className, label }: { className: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1">
+      <span className={`inline-block w-3 h-3 rounded-sm ${className}`} />
+      {label}
+    </span>
+  );
+}
+
+export default Board;
