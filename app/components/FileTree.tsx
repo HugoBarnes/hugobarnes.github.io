@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TreeNode {
   name: string;
@@ -219,21 +219,12 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle, onNavig
       >
         {node.name}
       </span>
-      {isActive && (
-        <>
-          <span
-            className="ml-2 inline-block w-2 h-2 rounded-full bg-[#ff6719] shrink-0"
-            aria-hidden
-          />
-          <span className="sr-only">(current page)</span>
-        </>
-      )}
+      {isActive && <span className="sr-only">(current page)</span>}
     </>
   );
 
-  const rowClass = `group flex items-center w-full text-left text-sm leading-9 rounded-sm cursor-pointer ${
-    isActive ? "bg-[#fff1e8] hover:bg-[#ffe7d6]" : "hover:bg-[#1c1c1c]/5"
-  }`;
+  const rowClass =
+    "group flex items-center w-full text-left text-sm leading-9 rounded-sm cursor-pointer hover:bg-[#1c1c1c]/5";
 
   let row: React.ReactNode;
   if (node.href) {
@@ -246,6 +237,7 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle, onNavig
     row = (
       <Link
         href={node.path}
+        data-path={node.path}
         className={rowClass}
         onClick={() => {
           if (hasKids) onToggle(key);
@@ -287,15 +279,39 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle, onNavig
   );
 }
 
+const HOME_SECTIONS = ["about", "notes", "teaching", "projects"];
+
 export default function FileTree() {
   const [active, setHash] = useActiveLocation();
+  const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
+  const [marker, setMarker] = useState<{ top: number; height: number } | null>(null);
 
-  // Report where a clicked link points so the location dot moves immediately,
+  // Report where a clicked link points so the indicator moves immediately,
   // even when Next handles the jump with pushState (no hashchange event).
   const handleNavigate = (path: string) => {
     const i = path.indexOf("#");
     setHash(i >= 0 ? path.slice(i) : "");
   };
+
+  // Scrollspy: on the home page, follow the section currently in view.
+  useEffect(() => {
+    const clean = pathname.replace(/\/+$/, "") || "/";
+    if (clean !== "/") return;
+    const onScroll = () => {
+      let current = "";
+      for (const id of HOME_SECTIONS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < window.innerHeight * 0.35) {
+          current = `#${id}`;
+        }
+      }
+      setHash(current);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname, setHash]);
   // Start fully collapsed: only the root-level entries are visible.
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set(allDirKeys(TREE)));
 
@@ -319,8 +335,29 @@ export default function FileTree() {
     });
   }, [active]);
 
+  // Slide the small black line next to the active row.
+  useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const el = nav.querySelector<HTMLElement>(`[data-path="${CSS.escape(active)}"]`);
+    if (!el) {
+      setMarker(null);
+      return;
+    }
+    const navRect = nav.getBoundingClientRect();
+    const rowRect = el.getBoundingClientRect();
+    setMarker({ top: rowRect.top - navRect.top + (rowRect.height - 16) / 2, height: 16 });
+  }, [active, collapsed]);
+
   return (
-    <nav aria-label="Site file tree" className="text-sm">
+    <nav ref={navRef} aria-label="Site file tree" className="relative text-sm">
+      {marker && (
+        <span
+          aria-hidden
+          className="absolute left-0 w-[2px] bg-[#1c1c1c] transition-[top] duration-300 ease-out"
+          style={{ top: marker.top, height: marker.height }}
+        />
+      )}
       <Link
         href="/#home"
         className="flex items-center gap-2 leading-9 text-base text-[#1c1c1c] hover:bg-[#1c1c1c]/5 rounded-sm"
