@@ -306,6 +306,12 @@ export default function FileTree() {
           current = `#${id}`;
         }
       }
+      // At the bottom of the page the last section counts, even if its
+      // heading never crosses the trigger line.
+      const doc = document.documentElement;
+      if (window.innerHeight + window.scrollY >= doc.scrollHeight - 4) {
+        current = `#${HOME_SECTIONS[HOME_SECTIONS.length - 1]}`;
+      }
       setHash(current);
     };
     onScroll();
@@ -354,7 +360,7 @@ export default function FileTree() {
       {marker && (
         <span
           aria-hidden
-          className="absolute left-0 w-[2px] bg-[#1c1c1c] transition-[top] duration-300 ease-out"
+          className="absolute right-0 w-[2px] bg-[#1c1c1c] transition-[top] duration-300 ease-out"
           style={{ top: marker.top, height: marker.height }}
         />
       )}
