@@ -27,7 +27,7 @@ export default function Home() {
       {/* Hero — full viewport */}
       <section
         id="home"
-        className="relative flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center"
+        className="relative flex flex-col items-center justify-center min-h-screen text-center"
       >
         <img
           src="/images/Hugo.jpg"
