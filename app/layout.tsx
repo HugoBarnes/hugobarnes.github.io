@@ -34,7 +34,7 @@ export default function RootLayout({
                 <FileTree />
               </div>
             </details>
-            <main className="w-full max-w-[760px] px-8">{children}</main>
+            <main className="w-full max-w-[760px] mx-auto px-6">{children}</main>
           </div>
         </div>
         <Footer />
