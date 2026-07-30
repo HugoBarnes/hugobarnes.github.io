@@ -16,8 +16,8 @@ export default function Computations({ comp, active, onClick }: ComputationsProp
       className={`px-3.5 py-1.5 rounded-full text-sm transition-colors cursor-pointer border
         ${
           active
-            ? "bg-[#b8bd8f] text-[#0a070b] border-[#b8bd8f] font-medium"
-            : "bg-[#1a1218] text-[#d9c2ba] border-[#241a20] hover:border-[#9aa5cc] hover:text-[#9aa5cc]"
+            ? "bg-[#2c4a86] text-[#ffffff] border-[#2c4a86] font-medium"
+            : "bg-[#eef1f7] text-[#262e3e] border-[#e4e9f2] hover:border-[#1a3e8c] hover:text-[#1a3e8c]"
         }`}
     >
       {comp}

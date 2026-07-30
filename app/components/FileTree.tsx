@@ -60,7 +60,7 @@ const TREE: TreeNode[] = [
   },
 ];
 
-const LINE = "border-[#e9eef8]/20"; // thin white connector lines
+const LINE = "border-[#10151f]/20"; // thin white connector lines
 
 const isDir = (node: TreeNode) => node.children !== undefined;
 
@@ -181,17 +181,17 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
     <>
       {connectors}
       {hasKids && (
-        <span className="text-[#e9eef8]/50 mr-1 flex items-center">
+        <span className="text-[#10151f]/50 mr-1 flex items-center">
           <Chevron open={open} />
         </span>
       )}
-      <span className={`mr-1.5 flex items-center ${isActive ? "text-[#e9eef8]" : "text-[#e9eef8]/60"}`}>
+      <span className={`mr-1.5 flex items-center ${isActive ? "text-[#10151f]" : "text-[#10151f]/60"}`}>
         {dir ? <FolderIcon open={open} /> : <FileIcon />}
       </span>
       <span
         className={`truncate ${
-          isActive ? "text-[#e9eef8] font-semibold" : "text-[#e9eef8]/75"
-        } group-hover:text-[#e9eef8] transition-colors`}
+          isActive ? "text-[#10151f] font-semibold" : "text-[#10151f]/75"
+        } group-hover:text-[#10151f] transition-colors`}
       >
         {node.name}
       </span>
@@ -199,7 +199,7 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
   );
 
   const rowClass =
-    "group flex items-center w-full text-left text-xs leading-7 hover:bg-[#e9eef8]/5 rounded-sm cursor-pointer";
+    "group flex items-center w-full text-left text-xs leading-7 hover:bg-[#10151f]/5 rounded-sm cursor-pointer";
 
   let row: React.ReactNode;
   if (node.href) {
@@ -262,7 +262,7 @@ export default function FileTree() {
     <nav aria-label="Site file tree" className="text-xs">
       <Link
         href="/#home"
-        className="flex items-center gap-1.5 leading-7 text-[#e9eef8] hover:bg-[#e9eef8]/5 rounded-sm"
+        className="flex items-center gap-1.5 leading-7 text-[#10151f] hover:bg-[#10151f]/5 rounded-sm"
       >
         <FolderIcon open />
         <span className="font-semibold">hugo-barnes</span>

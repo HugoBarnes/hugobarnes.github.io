@@ -5,15 +5,14 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
-    <footer className="border-t border-[#241a20] text-xs text-[#d9c2ba] mt-12">
+    <footer className="border-t border-[#e4e9f2] text-xs text-[#262e3e] mt-12">
       <nav className="mx-auto max-w-3xl px-6 py-6">
         <div className="flex justify-between items-start w-full">
           <ul className="flex flex-col space-y-1">
             <li>
-              <span className="text-[#4a3a42]">$</span>{" "}
               <a
                 href="mailto:hugo.s.barnes@gmail.com"
-                className="text-[#9aa5cc] hover:text-[#b5a8d0]"
+                className="text-[#1a3e8c] hover:text-[#33508e]"
               >
                 hugo.s.barnes@gmail.com
               </a>
@@ -25,7 +24,7 @@ function Footer() {
                 onClick={() =>
                   window.open("https://www.linkedin.com/in/hugo-barnes/", "_blank")
                 }
-                className="text-[#7c87b0] hover:text-[#9aa5cc] cursor-pointer"
+                className="text-[#163373] hover:text-[#1a3e8c] cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
@@ -36,7 +35,7 @@ function Footer() {
                 onClick={() =>
                   window.open("https://github.com/HugoBarnes", "_blank")
                 }
-                className="text-[#d9c2ba] hover:text-[#9aa5cc] cursor-pointer"
+                className="text-[#262e3e] hover:text-[#1a3e8c] cursor-pointer"
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faSquareGithub} />
@@ -50,7 +49,7 @@ function Footer() {
                     "_blank"
                   )
                 }
-                className="text-[#d9c2ba] hover:text-[#9aa5cc] cursor-pointer"
+                className="text-[#262e3e] hover:text-[#1a3e8c] cursor-pointer"
                 aria-label="CV"
               >
                 <FontAwesomeIcon icon={faFile} />

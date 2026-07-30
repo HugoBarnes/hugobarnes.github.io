@@ -111,23 +111,23 @@ const Board = () => {
         {/* Board */}
         <div className="space-y-4">
           <BoardGrid board={board} preview={preview} onChange={handleCellChange} />
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-[#8a7080]">
-            <Legend className="bg-[#c9605c]" label="triple word" />
-            <Legend className="bg-[#b087a8]" label="double word" />
-            <Legend className="bg-[#5f6a94]" label="triple letter" />
-            <Legend className="bg-[#8d80ab]" label="double letter" />
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-[#5b6577]">
+            <Legend className="bg-[#16294f]" label="triple word" />
+            <Legend className="bg-[#263a64]" label="double word" />
+            <Legend className="bg-[#122a5e]" label="triple letter" />
+            <Legend className="bg-[#2a4478]" label="double letter" />
           </div>
         </div>
 
         {/* Controls + results */}
         <div className="space-y-4">
           <div>
-            <h3 className="text-sm text-[#9aa5cc] mb-2">
-              <span className="text-[#4a3a42]">$</span> your rack
+            <h3 className="text-sm text-[#1a3e8c] mb-2">
+              <span className="text-[#8e99ac]">$</span> your rack
             </h3>
             <Rack tiles={rack} onChange={handleRackChange} />
-            <p className="mt-2 text-[10px] text-[#4a3a42] text-center">
-              Type letters; use <span className="text-[#8a7080]">?</span> for a blank.
+            <p className="mt-2 text-[10px] text-[#8e99ac] text-center">
+              Type letters; use <span className="text-[#5b6577]">?</span> for a blank.
             </p>
           </div>
 
@@ -135,8 +135,8 @@ const Board = () => {
             <button
               onClick={solve}
               disabled={solving}
-              className="px-4 py-2 rounded text-sm font-medium bg-[#b8bd8f] text-[#0a070b]
-                hover:bg-[#9aa06e] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 rounded text-sm font-medium bg-[#2c4a86] text-[#ffffff]
+                hover:bg-[#223a69] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             >
               {solving
                 ? dictState === "loading"
@@ -146,19 +146,19 @@ const Board = () => {
             </button>
             <button
               onClick={clearRack}
-              className="px-3 py-2 rounded text-sm bg-[#241a20] text-[#d9c2ba] hover:bg-[#3a2a30] transition-colors"
+              className="px-3 py-2 rounded text-sm bg-[#e4e9f2] text-[#262e3e] hover:bg-[#cfd7e4] transition-colors"
             >
               Clear rack
             </button>
             <button
               onClick={clearBoard}
-              className="px-3 py-2 rounded text-sm bg-[#241a20] text-[#d9c2ba] hover:bg-[#3a2a30] transition-colors"
+              className="px-3 py-2 rounded text-sm bg-[#e4e9f2] text-[#262e3e] hover:bg-[#cfd7e4] transition-colors"
             >
               Clear board
             </button>
           </div>
 
-          {message && <p className="text-sm text-[#f5b78a]">{message}</p>}
+          {message && <p className="text-sm text-[#1b4f9e]">{message}</p>}
 
           <Results
             moves={moves}

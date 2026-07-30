@@ -6,7 +6,7 @@ export default function page(){
           title="drawing-machine"
           description="Automaton — a 3D-printed, Arduino-powered drawing machine I built the summer before my senior year of high school."
         >
-        <div className="text-sm text-[#d9c2ba] leading-relaxed">
+        <div className="text-sm text-[#262e3e] leading-relaxed">
         <p className="mb-4"> Welcome to Automaton, my 3D printed Arduino Uno powered Drawing Machine!</p>
         <p className="mb-4">
             I built this drawing machine the summer before my Senior year of high school. It cost around 100 dollars to build and I followed

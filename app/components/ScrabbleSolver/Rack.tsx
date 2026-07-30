@@ -31,16 +31,16 @@ function Rack({ tiles, onChange }: RackProps) {
                 }
               }}
               className="w-full h-full text-center text-lg font-bold uppercase rounded
-                bg-[#241a20] text-[#f2c078] border-2 border-[#3a2a30]
-                placeholder:text-[#3a2a30] outline-none focus:border-[#9aa5cc] transition-colors"
+                bg-[#e4e9f2] text-[#26437a] border-2 border-[#cfd7e4]
+                placeholder:text-[#cfd7e4] outline-none focus:border-[#1a3e8c] transition-colors"
             />
             {value && !isBlank && LETTER_VALUES[value] !== undefined && (
-              <sub className="pointer-events-none absolute bottom-0.5 right-1 text-[8px] text-[#d9c2ba]">
+              <sub className="pointer-events-none absolute bottom-0.5 right-1 text-[8px] text-[#262e3e]">
                 {LETTER_VALUES[value]}
               </sub>
             )}
             {isBlank && (
-              <span className="pointer-events-none absolute bottom-0.5 right-1 text-[8px] text-[#8a7080]">
+              <span className="pointer-events-none absolute bottom-0.5 right-1 text-[8px] text-[#5b6577]">
                 0
               </span>
             )}

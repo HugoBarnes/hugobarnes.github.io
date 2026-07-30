@@ -10,7 +10,7 @@ interface GridProps {
 const SudokuGrid: React.FC<GridProps> = ({ board, setBoard }) => {
   return (
     <div
-      className="bg-[#0a070b] p-[2px] rounded"
+      className="bg-[#ffffff] p-[2px] rounded"
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(9, minmax(0, 1fr))",
@@ -31,12 +31,12 @@ const SudokuGrid: React.FC<GridProps> = ({ board, setBoard }) => {
             inputMode="numeric"
             type="text"
             className="w-9 h-9 sm:w-11 sm:h-11 text-center text-lg outline-none
-              bg-[#1a1218] text-[#f2c078] focus:bg-[#241a20] transition-colors"
+              bg-[#eef1f7] text-[#26437a] focus:bg-[#e4e9f2] transition-colors"
             style={{
-              borderTop: i % 3 === 0 ? "2px solid #8a7080" : "1px solid #241a20",
-              borderLeft: j % 3 === 0 ? "2px solid #8a7080" : "1px solid #241a20",
-              borderRight: j === 8 ? "2px solid #8a7080" : "",
-              borderBottom: i === 8 ? "2px solid #8a7080" : "",
+              borderTop: i % 3 === 0 ? "2px solid #5b6577" : "1px solid #e4e9f2",
+              borderLeft: j % 3 === 0 ? "2px solid #5b6577" : "1px solid #e4e9f2",
+              borderRight: j === 8 ? "2px solid #5b6577" : "",
+              borderBottom: i === 8 ? "2px solid #5b6577" : "",
             }}
           />
         ))

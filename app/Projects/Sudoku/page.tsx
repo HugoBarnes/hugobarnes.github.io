@@ -5,7 +5,7 @@ import Grid from "@/app/components/Grid";
 import ProjectShell from "@/app/components/ProjectShell";
 
 const BTN =
-  "px-3 py-1.5 rounded text-sm bg-[#241a20] text-[#d9c2ba] hover:bg-[#3a2a30] transition-colors";
+  "px-3 py-1.5 rounded text-sm bg-[#e4e9f2] text-[#262e3e] hover:bg-[#cfd7e4] transition-colors";
 
 export default function SudokuGrid() {
   const [board, setBoard] = useState(
@@ -110,10 +110,10 @@ export default function SudokuGrid() {
               Check
             </button>
             {isBoardValid === true && (
-              <span className="text-sm text-[#b8bd8f]">✓ valid</span>
+              <span className="text-sm text-[#2c4a86]">✓ valid</span>
             )}
             {isBoardValid === false && (
-              <span className="text-sm text-[#e8837e]">✗ invalid</span>
+              <span className="text-sm text-[#1f3a70]">✗ invalid</span>
             )}
           </div>
 

@@ -1,23 +1,17 @@
 import BentoBox from "./components/BentoBox";
 import ScrollDownArrow from "./components/ScrollDownArrow";
 
-function SectionHeading({
-  n,
-  id,
-  title,
-}: {
-  n: string;
-  id: string;
-  title: string;
-}) {
+function SectionHeading({ id, title }: { id: string; title: string }) {
   return (
-    <h2
-      id={id}
-      className="scroll-mt-20 text-[#9aa5cc] text-2xl mb-6 border-b border-[#241a20] pb-2"
-    >
-      <span className="text-[#4a3a42]">[{n}]</span>{" "}
-      <span className="text-[#b8bd8f]">#</span> {title}
-    </h2>
+    <div className="mb-6">
+      <h2
+        id={id}
+        className="scroll-mt-20 text-[#10151f] text-2xl font-bold uppercase tracking-[0.15em] pb-2 border-b-2 border-[#10151f]"
+      >
+        {title}
+      </h2>
+      <div className="border-b border-[#10151f] mt-[3px]" />
+    </div>
   );
 }
 
@@ -29,33 +23,34 @@ export default function Home() {
         id="home"
         className="relative flex flex-col items-center justify-center min-h-screen text-center"
       >
+        {/* Masthead */}
+        <div className="w-full max-w-2xl border-t-4 border-double border-[#10151f] pt-1">
+          <div className="border-t border-[#10151f]" />
+        </div>
         <img
           src="/images/Hugo.jpg"
           alt="Hugo"
-          className="w-32 h-32 rounded-full object-cover border-2 border-[#3a2a30] mb-8"
+          className="w-32 h-32 object-cover grayscale border border-[#10151f] mt-10 mb-8"
         />
-        <p className="text-[#e9eef8] text-sm mb-4">
-          <span className="text-[#b8bd8f]">~$</span> whoami
-        </p>
-        <h1 className="text-5xl md:text-7xl text-[#e9eef8] tracking-tight">
-          hugo-barnes
-          <span className="inline-block w-[0.6ch] ml-1 bg-[#9aa5cc] animate-pulse h-[1em] align-[-0.15em]" />
+        <h1 className="text-5xl md:text-7xl font-bold text-[#10151f] tracking-tight">
+          Hugo Barnes
         </h1>
-        <p className="mt-6 text-sm md:text-base text-[#d9c2ba]">
-          Mathematics &amp; Computer Science
-          <span className="text-[#4a3a42] mx-2">|</span>
-          University of Virginia
+        <p className="mt-6 text-xs md:text-sm text-[#262e3e] uppercase tracking-[0.3em]">
+          Mathematics &amp; Computer Science &middot; University of Virginia
         </p>
-        <p className="mt-2 text-xs text-[#4a3a42]">
+        <p className="mt-3 text-sm text-[#4d576b] italic">
           Things I&apos;ve built, taught, and written down.
         </p>
+        <div className="w-full max-w-2xl border-b border-[#10151f] mt-10 pb-1">
+          <div className="border-b-4 border-double border-[#10151f]" />
+        </div>
         <ScrollDownArrow />
       </section>
 
       {/* About */}
       <section className="py-16">
-        <SectionHeading n="00" id="about" title="about" />
-        <div className="text-sm text-[#d9c2ba] space-y-3">
+        <SectionHeading id="about" title="About" />
+        <div className="text-sm text-[#262e3e] space-y-3">
           <p>
             Mathematics (Probability &amp; Statistics concentration) and
             Computer Science at the University of Virginia. Originally from
@@ -71,8 +66,8 @@ export default function Home() {
 
       {/* Notes */}
       <section className="py-16">
-        <SectionHeading n="01" id="notes" title="notes" />
-        <div className="text-sm text-[#d9c2ba] space-y-3">
+        <SectionHeading id="notes" title="Notes" />
+        <div className="text-sm text-[#262e3e] space-y-3">
           <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -81,7 +76,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4a3a42]">—</span> Basic Real Analysis
+                <span className="text-[#8e99ac]">—</span> Basic Real Analysis
               </a>
             </li>
             <li>
@@ -90,7 +85,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4a3a42]">—</span> Advanced Linear
+                <span className="text-[#8e99ac]">—</span> Advanced Linear
                 Algebra
               </a>
             </li>
@@ -100,7 +95,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4a3a42]">—</span> Combinatorics
+                <span className="text-[#8e99ac]">—</span> Combinatorics
               </a>
             </li>
           </ul>
@@ -109,8 +104,8 @@ export default function Home() {
 
       {/* Teaching */}
       <section className="py-16">
-        <SectionHeading n="02" id="teaching" title="teaching" />
-        <div className="text-sm text-[#d9c2ba] space-y-4">
+        <SectionHeading id="teaching" title="Teaching" />
+        <div className="text-sm text-[#262e3e] space-y-4">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
@@ -130,7 +125,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4a3a42]">—</span> 10:00 AM lecture
+                <span className="text-[#8e99ac]">—</span> 10:00 AM lecture
                 recording
               </a>
             </li>
@@ -140,7 +135,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#4a3a42]">—</span> 11:00 AM lecture
+                <span className="text-[#8e99ac]">—</span> 11:00 AM lecture
                 recording
               </a>
             </li>
@@ -150,7 +145,7 @@ export default function Home() {
 
       {/* Projects */}
       <section className="py-16">
-        <SectionHeading n="03" id="projects" title="projects and applications" />
+        <SectionHeading id="projects" title="Projects &amp; Applications" />
         <BentoBox />
       </section>
     </>

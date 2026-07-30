@@ -21,11 +21,11 @@ interface BoardGridProps {
 
 // Gruvbox-toned premium colours, dark enough that light tile text stays legible.
 const PREMIUM_STYLE: Record<Premium, string> = {
-  TW: "bg-[#c9605c] text-[#f6ece2]",
-  DW: "bg-[#b087a8] text-[#f6ece2]",
-  TL: "bg-[#5f6a94] text-[#f6ece2]",
-  DL: "bg-[#8d80ab] text-[#f6ece2]",
-  "": "bg-[#1a1218] text-[#4a3a42]",
+  TW: "bg-[#16294f] text-[#0b0f18]",
+  DW: "bg-[#263a64] text-[#0b0f18]",
+  TL: "bg-[#122a5e] text-[#0b0f18]",
+  DL: "bg-[#2a4478] text-[#0b0f18]",
+  "": "bg-[#eef1f7] text-[#8e99ac]",
 };
 
 const PREMIUM_LABEL: Record<Premium, string> = {
@@ -42,7 +42,7 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
   return (
     <div className="overflow-x-auto">
       <div
-        className="grid gap-[2px] bg-[#0a070b] p-[2px] w-max mx-auto rounded"
+        className="grid gap-[2px] bg-[#ffffff] p-[2px] w-max mx-auto rounded"
         style={{ gridTemplateColumns: `repeat(${BOARD_SIZE}, minmax(0, 1fr))` }}
       >
         {board.map((row, r) =>
@@ -64,8 +64,8 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
                   className={`w-full h-full text-center text-sm font-bold uppercase outline-none transition-colors
                     ${
                       filled
-                        ? "bg-[#3a2a30] text-[#f6ece2] border border-[#5c4a52]"
-                        : `${PREMIUM_STYLE[prem]} border border-transparent focus:border-[#9aa5cc]`
+                        ? "bg-[#cfd7e4] text-[#0b0f18] border border-[#77839a]"
+                        : `${PREMIUM_STYLE[prem]} border border-transparent focus:border-[#1a3e8c]`
                     }`}
                 />
 
@@ -76,14 +76,14 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
                   </span>
                 )}
                 {!filled && !previewTile && isCenter && (
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[10px] text-[#f6ece2]">
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[10px] text-[#0b0f18]">
                     ★
                   </span>
                 )}
 
                 {/* suggested-move overlay */}
                 {!filled && previewTile && (
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#b8bd8f] text-[#0a070b] text-sm font-bold ring-2 ring-[#f2c078]">
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#2c4a86] text-[#ffffff] text-sm font-bold ring-2 ring-[#26437a]">
                     {previewTile.letter}
                     {!previewTile.blank && (
                       <sub className="absolute bottom-0 right-[2px] text-[7px]">
@@ -95,7 +95,7 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
 
                 {/* value of an existing tile */}
                 {filled && LETTER_VALUES[value] !== undefined && (
-                  <sub className="pointer-events-none absolute bottom-0 right-[2px] text-[7px] text-[#d9c2ba]">
+                  <sub className="pointer-events-none absolute bottom-0 right-[2px] text-[7px] text-[#262e3e]">
                     {LETTER_VALUES[value]}
                   </sub>
                 )}

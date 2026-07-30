@@ -96,7 +96,7 @@ const MatrixMultiplicationVisualizer: React.FC<Props> = ({
           onFill={fill("A")}
           onClear={clear("A")}
         />
-        <span className="self-center text-2xl text-[#4a3a42] pt-6">×</span>
+        <span className="self-center text-2xl text-[#8e99ac] pt-6">×</span>
         <MatrixInput
           label="Matrix B"
           matrix={matrixB}

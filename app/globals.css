@@ -1,32 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  /* Sunset pier — matches the laptop rice (kitty / waybar / hyprland) */
-  --sp-bg0: #0f0b10;
-  --sp-bg1: #241a20;
-  --sp-bg2: #3a2a30;
-  --sp-bg3: #4a3a42;
-  --sp-bg4: #5c4a52;
-  /* Sunset pier — fg */
-  --sp-fg0: #f6ece2;
-  --sp-fg1: #f2e0d3;
-  --sp-fg2: #d9c2ba;
-  --sp-fg3: #c0a8ae;
-  --sp-fg4: #a68f97;
-  /* Sunset pier — accents */
-  --sp-coral: #e8837e;
-  --sp-sage: #b8bd8f;
-  --sp-gold: #f2c078;
-  --sp-periwinkle: #9aa5cc;
-  --sp-mauve: #cba6c3;
-  --sp-lavender: #b5a8d0;
-  --sp-peach: #f5b78a;
-  --sp-gray: #8a7080;
-  /* Terminal text — bright white with a tinge of blue */
-  --sp-term-white: #e9eef8;
+  /* Newspaper — cool white paper and ink */
+  --np-paper: #f7f9fc;
+  --np-paper-shade: #e4e9f2;
+  --np-rule: #cfd7e4;
+  --np-muted: #8e99ac;
+  --np-muted-dark: #77839a;
+  /* Ink */
+  --np-ink: #10151f;
+  --np-ink-strong: #0b0f18;
+  --np-ink-body: #121722;
+  --np-ink-soft: #262e3e;
+  /* Newspaper blues */
+  --np-blue: #1a3e8c;
+  --np-blue-bright: #1b4f9e;
+  --np-blue-deep: #1f3a70;
 
-  --background: var(--sp-bg0);
-  --foreground: var(--sp-fg1);
+  --background: var(--np-paper);
+  --foreground: var(--np-ink-body);
 }
 
 html {
@@ -36,17 +28,19 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: "Times New Roman", Times, Georgia, serif;
 }
 
 ::selection {
-  background: var(--sp-bg2);
-  color: var(--sp-fg0);
+  background: var(--np-rule);
+  color: var(--np-ink-strong);
 }
 
 a {
-  color: var(--sp-periwinkle);
+  color: var(--np-blue);
 }
 
 a:hover {
-  color: var(--sp-peach);
+  color: var(--np-blue-bright);
+  text-decoration: underline;
 }
