@@ -33,7 +33,7 @@ export default function ProjectShell({
       <header className="mt-3 mb-8 border-b border-[#efefef] pb-5">
         <h1 className="text-4xl font-bold text-[#1c1c1c]">{headline(title)}</h1>
         {description && (
-          <p className="mt-2 text-lg text-[#6b6b6b] max-w-prose">{description}</p>
+          <p className="mt-2 text-xl text-[#6b6b6b] max-w-prose">{description}</p>
         )}
       </header>
 

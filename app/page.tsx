@@ -40,7 +40,7 @@ export default function Home() {
       {/* About */}
       <section className="py-16">
         <SectionHeading id="about" title="About" />
-        <div className="text-lg text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-xl text-[#404040] space-y-4 leading-relaxed">
           <p>
             Mathematics (Probability &amp; Statistics concentration) and
             Computer Science at the University of Virginia. Originally from
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Notes */}
       <section className="py-16">
         <SectionHeading id="notes" title="Notes" />
-        <div className="text-lg text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-xl text-[#404040] space-y-4 leading-relaxed">
           <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -95,7 +95,7 @@ export default function Home() {
       {/* Teaching */}
       <section className="py-16">
         <SectionHeading id="teaching" title="Teaching" />
-        <div className="text-lg text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-xl text-[#404040] space-y-4 leading-relaxed">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
