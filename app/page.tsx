@@ -33,12 +33,6 @@ export default function Home() {
             <p className="text-[#1c1c1c] font-semibold">Hugo Barnes</p>
             <p className="text-[#a0a0a0]">Charlottesville, VA</p>
           </div>
-          <a
-            href="mailto:hugo.s.barnes@gmail.com"
-            className="ml-auto bg-[#ff6719] text-white text-sm font-semibold px-5 py-2 rounded-full no-underline hover:bg-[#e05a10] hover:text-white hover:no-underline"
-          >
-            Subscribe
-          </a>
         </div>
         <hr className="mt-10 border-[#efefef]" />
       </section>
