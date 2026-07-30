@@ -7,26 +7,26 @@ export default function ScrabbleSolverPage() {
       title="scrabble-solver"
       description="Enter the current board and your rack, then find the highest-scoring legal play. The solver accounts for existing tiles, cross-words, premium squares, blanks, and the 50-point bingo bonus."
     >
-      <div className="mb-6 text-sm text-[#262e3e] space-y-2">
+      <div className="mb-6 text-sm text-[#404040] space-y-2">
         <p>
-          <span className="text-[#8e99ac]">1.</span> Type letters directly into
+          <span className="text-[#a0a0a0]">1.</span> Type letters directly into
           the board to recreate your game.
         </p>
         <p>
-          <span className="text-[#8e99ac]">2.</span> Fill your rack ( use{" "}
-          <span className="text-[#5b6577]">?</span> for blanks ) and press{" "}
-          <span className="text-[#2c4a86]">Find best plays</span>.
+          <span className="text-[#a0a0a0]">2.</span> Fill your rack ( use{" "}
+          <span className="text-[#6b6b6b]">?</span> for blanks ) and press{" "}
+          <span className="text-[#4a4a4a]">Find best plays</span>.
         </p>
         <p>
-          <span className="text-[#8e99ac]">3.</span> Hover a result to preview it;
-          press <span className="text-[#1a3e8c]">place</span> to commit it to the
+          <span className="text-[#a0a0a0]">3.</span> Hover a result to preview it;
+          press <span className="text-[#ff6719]">place</span> to commit it to the
           board.
         </p>
       </div>
 
       <Board />
 
-      <div className="mt-10 border-t border-[#e4e9f2] pt-4 text-xs text-[#5b6577] space-y-1">
+      <div className="mt-10 border-t border-[#efefef] pt-4 text-xs text-[#6b6b6b] space-y-1">
         <p>Useful resources:</p>
         <ul className="space-y-1 pl-4">
           <li>

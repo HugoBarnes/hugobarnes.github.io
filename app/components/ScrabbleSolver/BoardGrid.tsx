@@ -21,11 +21,11 @@ interface BoardGridProps {
 
 // Gruvbox-toned premium colours, dark enough that light tile text stays legible.
 const PREMIUM_STYLE: Record<Premium, string> = {
-  TW: "bg-[#16294f] text-[#0b0f18]",
-  DW: "bg-[#263a64] text-[#0b0f18]",
-  TL: "bg-[#122a5e] text-[#0b0f18]",
-  DL: "bg-[#2a4478] text-[#0b0f18]",
-  "": "bg-[#eef1f7] text-[#8e99ac]",
+  TW: "bg-[#2a2a2a] text-[#111111]",
+  DW: "bg-[#3f3f3f] text-[#111111]",
+  TL: "bg-[#c94f0e] text-[#111111]",
+  DL: "bg-[#454545] text-[#111111]",
+  "": "bg-[#fafafa] text-[#a0a0a0]",
 };
 
 const PREMIUM_LABEL: Record<Premium, string> = {
@@ -64,8 +64,8 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
                   className={`w-full h-full text-center text-sm font-bold uppercase outline-none transition-colors
                     ${
                       filled
-                        ? "bg-[#cfd7e4] text-[#0b0f18] border border-[#77839a]"
-                        : `${PREMIUM_STYLE[prem]} border border-transparent focus:border-[#1a3e8c]`
+                        ? "bg-[#e0e0e0] text-[#111111] border border-[#8a8a8a]"
+                        : `${PREMIUM_STYLE[prem]} border border-transparent focus:border-[#ff6719]`
                     }`}
                 />
 
@@ -76,14 +76,14 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
                   </span>
                 )}
                 {!filled && !previewTile && isCenter && (
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[10px] text-[#0b0f18]">
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[10px] text-[#111111]">
                     ★
                   </span>
                 )}
 
                 {/* suggested-move overlay */}
                 {!filled && previewTile && (
-                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#2c4a86] text-[#ffffff] text-sm font-bold ring-2 ring-[#26437a]">
+                  <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#4a4a4a] text-[#ffffff] text-sm font-bold ring-2 ring-[#444444]">
                     {previewTile.letter}
                     {!previewTile.blank && (
                       <sub className="absolute bottom-0 right-[2px] text-[7px]">
@@ -95,7 +95,7 @@ function BoardGrid({ board, preview, onChange }: BoardGridProps) {
 
                 {/* value of an existing tile */}
                 {filled && LETTER_VALUES[value] !== undefined && (
-                  <sub className="pointer-events-none absolute bottom-0 right-[2px] text-[7px] text-[#262e3e]">
+                  <sub className="pointer-events-none absolute bottom-0 right-[2px] text-[7px] text-[#404040]">
                     {LETTER_VALUES[value]}
                   </sub>
                 )}

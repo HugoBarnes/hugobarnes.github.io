@@ -1,24 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  /* Newspaper — cool white paper and ink */
-  --np-paper: #f7f9fc;
-  --np-paper-shade: #e4e9f2;
-  --np-rule: #cfd7e4;
-  --np-muted: #8e99ac;
-  --np-muted-dark: #77839a;
-  /* Ink */
-  --np-ink: #10151f;
-  --np-ink-strong: #0b0f18;
-  --np-ink-body: #121722;
-  --np-ink-soft: #262e3e;
-  /* Newspaper blues */
-  --np-blue: #1a3e8c;
-  --np-blue-bright: #1b4f9e;
-  --np-blue-deep: #1f3a70;
+  /* Substack-style: white page, near-black text, warm orange accent */
+  --ss-bg: #ffffff;
+  --ss-bg-soft: #fafafa;
+  --ss-rule: #efefef;
+  --ss-rule-dark: #e0e0e0;
+  --ss-muted: #a0a0a0;
+  --ss-gray: #6b6b6b;
+  --ss-text-soft: #404040;
+  --ss-text: #1c1c1c;
+  --ss-accent: #ff6719;
+  --ss-accent-dark: #e05a10;
 
-  --background: var(--np-paper);
-  --foreground: var(--np-ink-body);
+  --background: var(--ss-bg);
+  --foreground: var(--ss-text);
 }
 
 html {
@@ -29,18 +25,20 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 1.0625rem;
+  line-height: 1.65;
 }
 
 ::selection {
-  background: var(--np-rule);
-  color: var(--np-ink-strong);
+  background: #ffe1d1;
+  color: var(--ss-text);
 }
 
 a {
-  color: var(--np-blue);
+  color: var(--ss-accent);
 }
 
 a:hover {
-  color: var(--np-blue-bright);
+  color: var(--ss-accent-dark);
   text-decoration: underline;
 }

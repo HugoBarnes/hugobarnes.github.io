@@ -13,7 +13,7 @@ export default function ResultMatrix({ label, matrix }: ResultMatrixProps) {
   const cols = matrix[0]?.length ?? 0;
   return (
     <div className="flex flex-col items-center">
-      {label && <h3 className="text-sm text-[#26437a] mb-2">{label}</h3>}
+      {label && <h3 className="text-sm text-[#444444] mb-2">{label}</h3>}
       <div className="flex items-stretch">
         <Bracket side="left" />
         <div
@@ -24,7 +24,7 @@ export default function ResultMatrix({ label, matrix }: ResultMatrixProps) {
             row.map((value, c) => (
               <span
                 key={`${r}-${c}`}
-                className="min-w-10 text-center text-sm text-[#121722] tabular-nums"
+                className="min-w-10 text-center text-sm text-[#1c1c1c] tabular-nums"
               >
                 {formatNumber(value)}
               </span>
@@ -40,7 +40,7 @@ export default function ResultMatrix({ label, matrix }: ResultMatrixProps) {
 function Bracket({ side }: { side: "left" | "right" }) {
   return (
     <div
-      className={`w-2 border-y-2 border-[#2c4a86] ${
+      className={`w-2 border-y-2 border-[#4a4a4a] ${
         side === "left" ? "border-l-2 rounded-l" : "border-r-2 rounded-r"
       }`}
     />

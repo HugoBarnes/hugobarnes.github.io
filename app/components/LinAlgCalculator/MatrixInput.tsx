@@ -24,7 +24,7 @@ export default function MatrixInput({
 
   return (
     <div className="flex flex-col items-center">
-      <h3 className="text-sm text-[#1a3e8c] mb-2">{label}</h3>
+      <h3 className="text-sm text-[#ff6719] mb-2">{label}</h3>
       <div className="flex items-stretch">
         <Bracket side="left" />
         <div
@@ -40,15 +40,15 @@ export default function MatrixInput({
                 value={value}
                 aria-label={`${label} entry ${r + 1},${c + 1}`}
                 onChange={(e) => onChange(r, c, e.target.value)}
-                className="w-12 h-10 text-sm text-center rounded bg-[#eef1f7] text-[#121722]
-                  border border-[#cfd7e4] outline-none focus:border-[#1a3e8c] transition-colors tabular-nums"
+                className="w-12 h-10 text-sm text-center rounded bg-[#fafafa] text-[#1c1c1c]
+                  border border-[#e0e0e0] outline-none focus:border-[#ff6719] transition-colors tabular-nums"
               />
             ))
           )}
         </div>
         <Bracket side="right" />
       </div>
-      <p className="mt-1 text-[10px] text-[#8e99ac]">
+      <p className="mt-1 text-[10px] text-[#a0a0a0]">
         {rows} × {cols}
       </p>
       {(onFill || onClear) && (
@@ -56,7 +56,7 @@ export default function MatrixInput({
           {onFill && (
             <button
               onClick={onFill}
-              className="text-xs px-2.5 py-1 rounded bg-[#e4e9f2] text-[#262e3e] hover:bg-[#cfd7e4] transition-colors"
+              className="text-xs px-2.5 py-1 rounded bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors"
             >
               Fill 0
             </button>
@@ -64,7 +64,7 @@ export default function MatrixInput({
           {onClear && (
             <button
               onClick={onClear}
-              className="text-xs px-2.5 py-1 rounded bg-[#e4e9f2] text-[#262e3e] hover:bg-[#cfd7e4] transition-colors"
+              className="text-xs px-2.5 py-1 rounded bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors"
             >
               Clear
             </button>
@@ -78,7 +78,7 @@ export default function MatrixInput({
 function Bracket({ side }: { side: "left" | "right" }) {
   return (
     <div
-      className={`w-2 border-y-2 border-[#77839a] ${
+      className={`w-2 border-y-2 border-[#8a8a8a] ${
         side === "left" ? "border-l-2 rounded-l" : "border-r-2 rounded-r"
       }`}
     />

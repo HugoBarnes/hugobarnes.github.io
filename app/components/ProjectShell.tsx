@@ -25,15 +25,15 @@ export default function ProjectShell({
     <div className="py-10">
       <Link
         href="/#projects"
-        className="text-xs text-[#5b6577] uppercase tracking-widest no-underline hover:text-[#1a3e8c]"
+        className="text-sm text-[#6b6b6b] no-underline hover:text-[#ff6719]"
       >
         &larr; All Projects
       </Link>
 
-      <header className="mt-3 mb-8 border-b-2 border-[#10151f] pb-4">
-        <h1 className="text-3xl font-bold text-[#10151f]">{headline(title)}</h1>
+      <header className="mt-3 mb-8 border-b border-[#efefef] pb-5">
+        <h1 className="text-3xl font-bold text-[#1c1c1c]">{headline(title)}</h1>
         {description && (
-          <p className="mt-2 text-sm text-[#4d576b] italic max-w-prose">{description}</p>
+          <p className="mt-2 text-base text-[#6b6b6b] max-w-prose">{description}</p>
         )}
       </header>
 

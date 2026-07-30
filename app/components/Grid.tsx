@@ -31,12 +31,12 @@ const SudokuGrid: React.FC<GridProps> = ({ board, setBoard }) => {
             inputMode="numeric"
             type="text"
             className="w-9 h-9 sm:w-11 sm:h-11 text-center text-lg outline-none
-              bg-[#eef1f7] text-[#26437a] focus:bg-[#e4e9f2] transition-colors"
+              bg-[#fafafa] text-[#444444] focus:bg-[#efefef] transition-colors"
             style={{
-              borderTop: i % 3 === 0 ? "2px solid #5b6577" : "1px solid #e4e9f2",
-              borderLeft: j % 3 === 0 ? "2px solid #5b6577" : "1px solid #e4e9f2",
-              borderRight: j === 8 ? "2px solid #5b6577" : "",
-              borderBottom: i === 8 ? "2px solid #5b6577" : "",
+              borderTop: i % 3 === 0 ? "2px solid #6b6b6b" : "1px solid #efefef",
+              borderLeft: j % 3 === 0 ? "2px solid #6b6b6b" : "1px solid #efefef",
+              borderRight: j === 8 ? "2px solid #6b6b6b" : "",
+              borderBottom: i === 8 ? "2px solid #6b6b6b" : "",
             }}
           />
         ))

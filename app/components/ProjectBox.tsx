@@ -12,17 +12,17 @@ interface ProjectBoxProps {
 const ProjectBox: React.FC<ProjectBoxProps> = ({ name, link, description }) => {
   return (
     <Link href={link} className="group block h-full">
-      <div className="h-full flex flex-col rounded-lg border border-[#e4e9f2] bg-[#eef1f7] p-4
-        transition-colors group-hover:border-[#1a3e8c]">
-        <h3 className="text-base text-[#121722] group-hover:text-[#1a3e8c] transition-colors">
-          <span className="text-[#8e99ac]">&gt;</span> {name}
+      <div className="h-full flex flex-col rounded-lg border border-[#efefef] bg-[#fafafa] p-4
+        transition-colors group-hover:border-[#ff6719]">
+        <h3 className="text-base text-[#1c1c1c] group-hover:text-[#ff6719] transition-colors">
+          <span className="text-[#a0a0a0]">&gt;</span> {name}
         </h3>
         {description && (
-          <p className="mt-2 text-xs leading-relaxed text-[#4d576b] flex-grow">
+          <p className="mt-2 text-xs leading-relaxed text-[#5a5a5a] flex-grow">
             {description}
           </p>
         )}
-        <span className="mt-3 text-xs text-[#8e99ac] group-hover:text-[#33508e] transition-colors">
+        <span className="mt-3 text-xs text-[#a0a0a0] group-hover:text-[#e05a10] transition-colors">
           open →
         </span>
       </div>
