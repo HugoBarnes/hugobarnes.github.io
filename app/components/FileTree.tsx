@@ -75,6 +75,19 @@ function allDirKeys(nodes: TreeNode[], trail = ""): string[] {
   });
 }
 
+// Keys of every directory on the way to the node with the given path
+function ancestorsOf(nodes: TreeNode[], target: string, trail = ""): string[] | null {
+  for (const n of nodes) {
+    const key = nodeKey(n, trail);
+    if (n.path === target) return [];
+    if (isDir(n)) {
+      const sub = ancestorsOf(n.children!, target, key);
+      if (sub) return [key, ...sub];
+    }
+  }
+  return null;
+}
+
 function FolderIcon({ open }: { open: boolean }) {
   return (
     <svg
@@ -195,11 +208,21 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
       >
         {node.name}
       </span>
+      {isActive && (
+        <>
+          <span
+            className="ml-2 inline-block w-2 h-2 rounded-full bg-[#ff6719] shrink-0"
+            aria-hidden
+          />
+          <span className="sr-only">(current page)</span>
+        </>
+      )}
     </>
   );
 
-  const rowClass =
-    "group flex items-center w-full text-left text-sm leading-9 hover:bg-[#1c1c1c]/5 rounded-sm cursor-pointer";
+  const rowClass = `group flex items-center w-full text-left text-sm leading-9 rounded-sm cursor-pointer ${
+    isActive ? "bg-[#fff1e8] hover:bg-[#ffe7d6]" : "hover:bg-[#1c1c1c]/5"
+  }`;
 
   let row: React.ReactNode;
   if (node.href) {
@@ -257,6 +280,18 @@ export default function FileTree() {
       else next.add(key);
       return next;
     });
+
+  // Reveal the current page: expand every folder on the way to it.
+  useEffect(() => {
+    const ancestors = ancestorsOf(TREE, active);
+    if (!ancestors || ancestors.length === 0) return;
+    setCollapsed((prev) => {
+      if (!ancestors.some((k) => prev.has(k))) return prev;
+      const next = new Set(prev);
+      ancestors.forEach((k) => next.delete(k));
+      return next;
+    });
+  }, [active]);
 
   return (
     <nav aria-label="Site file tree" className="text-sm">

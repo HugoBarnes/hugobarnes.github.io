@@ -4,7 +4,7 @@ function SectionHeading({ id, title }: { id: string; title: string }) {
   return (
     <h2
       id={id}
-      className="scroll-mt-20 text-[#1c1c1c] text-2xl font-bold mb-5"
+      className="scroll-mt-20 text-[#1c1c1c] text-3xl font-bold mb-5"
     >
       {title}
     </h2>
@@ -19,7 +19,7 @@ export default function Home() {
         <h1 className="text-4xl md:text-5xl font-bold text-[#1c1c1c] leading-tight tracking-tight">
           Hugo Barnes
         </h1>
-        <p className="mt-4 text-xl text-[#6b6b6b] leading-snug">
+        <p className="mt-4 text-2xl text-[#6b6b6b] leading-snug">
           Mathematics &amp; Computer Science at the University of Virginia —
           things I&apos;ve built, taught, and written down.
         </p>
@@ -40,7 +40,7 @@ export default function Home() {
       {/* About */}
       <section className="py-16">
         <SectionHeading id="about" title="About" />
-        <div className="text-base text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-lg text-[#404040] space-y-4 leading-relaxed">
           <p>
             Mathematics (Probability &amp; Statistics concentration) and
             Computer Science at the University of Virginia. Originally from
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Notes */}
       <section className="py-16">
         <SectionHeading id="notes" title="Notes" />
-        <div className="text-base text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-lg text-[#404040] space-y-4 leading-relaxed">
           <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -95,7 +95,7 @@ export default function Home() {
       {/* Teaching */}
       <section className="py-16">
         <SectionHeading id="teaching" title="Teaching" />
-        <div className="text-base text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-lg text-[#404040] space-y-4 leading-relaxed">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
