@@ -155,7 +155,10 @@ function useActiveLocation(): string {
     return () => window.removeEventListener("hashchange", update);
   }, [pathname]);
 
-  return pathname === "/" && hash ? `/${hash}` : pathname;
+  // The site exports with trailingSlash, so live URLs are "/Research/" while
+  // tree paths are "/Research" — normalize before comparing.
+  const clean = pathname.replace(/\/+$/, "") || "/";
+  return clean === "/" && hash ? `/${hash}` : clean;
 }
 
 interface RowProps {
