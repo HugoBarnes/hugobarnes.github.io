@@ -31,10 +31,8 @@ export default function RootLayout({
           <div className="w-full min-w-0">
             {/* Mobile: collapsible tree in place of the removed header */}
             <details className="md:hidden mx-6 mt-4 border border-[#241a20] rounded-sm">
-              <summary className="cursor-pointer px-3 py-2 text-xs text-[#b8bd8f] select-none">
-                ~/hugo-barnes <span className="text-[#9aa5cc]">git:(</span>
-                <span className="text-[#e8837e]">main</span>
-                <span className="text-[#9aa5cc]">)</span>
+              <summary className="cursor-pointer px-3 py-2 text-xs text-[#e9eef8] select-none">
+                hugo-barnes
               </summary>
               <div className="px-3 pb-3 overflow-x-auto">
                 <FileTree />

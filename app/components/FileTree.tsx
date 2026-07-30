@@ -13,7 +13,7 @@ interface TreeNode {
 
 const TREE: TreeNode[] = [
   {
-    name: "about.md",
+    name: "about",
     path: "/#about",
   },
   {
@@ -51,7 +51,7 @@ const TREE: TreeNode[] = [
     ],
   },
   {
-    name: "research.md",
+    name: "research",
     path: "/Research",
   },
   {
@@ -60,19 +60,75 @@ const TREE: TreeNode[] = [
   },
 ];
 
-const isDir = (node: TreeNode) => node.children !== undefined;
+const LINE = "border-[#e9eef8]/20"; // thin white connector lines
 
-/* Color a file name the way a terminal `ls`/git tree would */
-function nameColor(node: TreeNode, active: boolean): string {
-  if (active) return "text-[#f5b78a]";
-  if (isDir(node)) return "text-[#9aa5cc]";
-  if (node.name.endsWith(".pdf")) return "text-[#cba6c3]";
-  if (node.name.endsWith(".mp4")) return "text-[#b5a8d0]";
-  return "text-[#f2e0d3]";
-}
+const isDir = (node: TreeNode) => node.children !== undefined;
 
 function nodeKey(node: TreeNode, trail: string): string {
   return `${trail}/${node.name}`;
+}
+
+function allDirKeys(nodes: TreeNode[], trail = ""): string[] {
+  return nodes.flatMap((n) => {
+    const key = nodeKey(n, trail);
+    return isDir(n) ? [key, ...allDirKeys(n.children!, key)] : [];
+  });
+}
+
+function FolderIcon({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4 shrink-0"
+      aria-hidden
+    >
+      {open ? (
+        <path d="M3 8V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1M3 8h16.2a1 1 0 0 1 .97 1.24l-2.2 8A2 2 0 0 1 16 19H5a2 2 0 0 1-2-2V8z" />
+      ) : (
+        <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
+      )}
+    </svg>
+  );
+}
+
+function FileIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4 shrink-0"
+      aria-hidden
+    >
+      <path d="M14 2H7a1 1 0 0 0-1 1v18a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6l-4-4z" />
+      <path d="M14 2v4h4" />
+    </svg>
+  );
+}
+
+function Chevron({ open }: { open: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`w-3 h-3 shrink-0 transition-transform ${open ? "rotate-90" : ""}`}
+      aria-hidden
+    >
+      <path d="M9 6l6 6-6 6" />
+    </svg>
+  );
 }
 
 function useActiveLocation(): string {
@@ -106,27 +162,44 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
   const open = dir && !collapsed.has(key);
   const isActive = node.path !== undefined && node.path === active;
 
-  const prefix =
-    guides.map((g) => (g ? "│  " : "   ")).join("") + (isLast ? "└── " : "├── ");
+  // Thin-line connectors: a vertical guide per ancestor, then an L/T corner.
+  const connectors = (
+    <span className="flex self-stretch shrink-0" aria-hidden>
+      {guides.map((g, i) => (
+        <span key={i} className={`w-4 ${g ? `border-l ${LINE}` : ""}`} />
+      ))}
+      <span className="relative w-4">
+        <span
+          className={`absolute left-0 top-0 border-l ${LINE} ${isLast ? "h-1/2" : "h-full"}`}
+        />
+        <span className={`absolute left-0 top-1/2 w-3 border-t ${LINE}`} />
+      </span>
+    </span>
+  );
 
   const label = (
     <>
-      <span className="text-[#4a3a42] select-none whitespace-pre">{prefix}</span>
+      {connectors}
       {hasKids && (
-        <span className="text-[#4a3a42] select-none">{open ? "▾ " : "▸ "}</span>
+        <span className="text-[#e9eef8]/50 mr-1 flex items-center">
+          <Chevron open={open} />
+        </span>
       )}
+      <span className={`mr-1.5 flex items-center ${isActive ? "text-[#e9eef8]" : "text-[#e9eef8]/60"}`}>
+        {dir ? <FolderIcon open={open} /> : <FileIcon />}
+      </span>
       <span
-        className={`${nameColor(node, isActive)} group-hover:text-[#f5b78a] transition-colors`}
+        className={`truncate ${
+          isActive ? "text-[#e9eef8] font-semibold" : "text-[#e9eef8]/75"
+        } group-hover:text-[#e9eef8] transition-colors`}
       >
         {node.name}
-        {dir && <span className="text-[#4a3a42]">/</span>}
       </span>
-      {isActive && <span className="text-[#e8837e] ml-1">●</span>}
     </>
   );
 
   const rowClass =
-    "group block w-full text-left text-xs leading-6 whitespace-pre hover:bg-[#241a20] rounded-sm cursor-pointer";
+    "group flex items-center w-full text-left text-xs leading-7 hover:bg-[#e9eef8]/5 rounded-sm cursor-pointer";
 
   let row: React.ReactNode;
   if (node.href) {
@@ -137,11 +210,7 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
     );
   } else if (node.path) {
     row = (
-      <Link
-        href={node.path}
-        className={rowClass}
-        onClick={() => hasKids && onToggle(key)}
-      >
+      <Link href={node.path} className={rowClass} onClick={() => hasKids && onToggle(key)}>
         {label}
       </Link>
     );
@@ -156,7 +225,7 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
   return (
     <li>
       {row}
-      {dir && open && node.children!.length > 0 && (
+      {hasKids && open && (
         <ul>
           {node.children!.map((child, i) => (
             <Row
@@ -178,7 +247,8 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle }: RowPr
 
 export default function FileTree() {
   const active = useActiveLocation();
-  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  // Start fully collapsed: only the root-level entries are visible.
+  const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set(allDirKeys(TREE)));
 
   const toggle = (key: string) =>
     setCollapsed((prev) => {
@@ -189,15 +259,14 @@ export default function FileTree() {
     });
 
   return (
-    <nav aria-label="Site file tree" className="text-xs font-mono">
-      {/* repo header, zsh style */}
-      <Link href="/#home" className="group block leading-6 whitespace-pre">
-        <span className="text-[#b8bd8f]">~/hugo-barnes</span>{" "}
-        <span className="text-[#9aa5cc]">git:(</span>
-        <span className="text-[#e8837e]">main</span>
-        <span className="text-[#9aa5cc]">)</span>
+    <nav aria-label="Site file tree" className="text-xs">
+      <Link
+        href="/#home"
+        className="flex items-center gap-1.5 leading-7 text-[#e9eef8] hover:bg-[#e9eef8]/5 rounded-sm"
+      >
+        <FolderIcon open />
+        <span className="font-semibold">hugo-barnes</span>
       </Link>
-      <div className="text-[#4a3a42] leading-6 select-none">.</div>
       <ul>
         {TREE.map((node, i) => (
           <Row
