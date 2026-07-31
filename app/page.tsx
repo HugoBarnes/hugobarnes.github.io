@@ -1,4 +1,5 @@
 import BentoBox from "./components/BentoBox";
+import PdfGrid from "./components/PdfGrid";
 
 function SectionHeading({ id, title }: { id: string; title: string }) {
   return (
@@ -59,36 +60,25 @@ export default function Home() {
         <SectionHeading id="notes" title="Notes" />
         <div className="text-[1.625rem] text-[color:var(--ss-text-soft)] space-y-4 leading-relaxed">
           <p>LaTeX notes from coursework at UVA.</p>
-          <ul className="space-y-1 pl-4">
-            <li>
-              <a
-                href="/pdfs/BasicRealAnalyis.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-[color:var(--ss-muted)]">—</span> Basic Real Analysis
-              </a>
-            </li>
-            <li>
-              <a
-                href="/pdfs/AdvancedLinearAlgebra.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-[color:var(--ss-muted)]">—</span> Advanced Linear
-                Algebra
-              </a>
-            </li>
-            <li>
-              <a
-                href="/pdfs/Combinatorics.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-[color:var(--ss-muted)]">—</span> Combinatorics
-              </a>
-            </li>
-          </ul>
+          <PdfGrid
+            items={[
+              {
+                title: "Basic Real Analysis",
+                href: "/pdfs/BasicRealAnalyis.pdf",
+                thumb: "/pdfs/thumbs/BasicRealAnalyis.png",
+              },
+              {
+                title: "Advanced Linear Algebra",
+                href: "/pdfs/AdvancedLinearAlgebra.pdf",
+                thumb: "/pdfs/thumbs/AdvancedLinearAlgebra.png",
+              },
+              {
+                title: "Combinatorics",
+                href: "/pdfs/Combinatorics.pdf",
+                thumb: "/pdfs/thumbs/Combinatorics.png",
+              },
+            ]}
+          />
         </div>
       </section>
 
