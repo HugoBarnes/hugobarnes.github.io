@@ -54,15 +54,15 @@ const SudokuGrid: React.FC<GridProps> = ({ board, givens, conflicts, wrong, onIn
   const cellClasses = (i: number, j: number): string => {
     const key = `${i}-${j}`;
     const given = givens[i][j];
-    if (conflicts.has(key)) return "bg-[#fdeaea] text-[#c0392b]";
-    if (wrong.has(key)) return "bg-[#fff3e8] text-[#c0392b]";
-    if (given) return "bg-[#fafafa] text-[#1c1c1c] font-semibold";
-    return "bg-[#ffffff] text-[#ff6719]";
+    if (conflicts.has(key)) return "bg-[var(--ss-error-bg)] text-[color:var(--ss-error)]";
+    if (wrong.has(key)) return "bg-[var(--ss-accent-soft)] text-[color:var(--ss-error)]";
+    if (given) return "bg-[var(--ss-bg-soft)] text-[color:var(--ss-text)] font-semibold";
+    return "bg-[var(--ss-bg)] text-[color:var(--ss-accent)]";
   };
 
   return (
     <div
-      className="bg-[#ffffff] p-[2px] rounded"
+      className="bg-[var(--ss-bg)] p-[2px] rounded"
       style={{
         display: "grid",
         gridTemplateColumns: "repeat(9, minmax(0, 1fr))",
@@ -88,12 +88,12 @@ const SudokuGrid: React.FC<GridProps> = ({ board, givens, conflicts, wrong, onIn
             type="text"
             aria-label={`Row ${i + 1}, column ${j + 1}`}
             className={`w-9 h-9 sm:w-11 sm:h-11 text-center text-lg outline-none cursor-pointer
-              focus:bg-[#efefef] transition-colors ${cellClasses(i, j)}`}
+              focus:bg-[var(--ss-rule)] transition-colors ${cellClasses(i, j)}`}
             style={{
-              borderTop: i % 3 === 0 ? "2px solid #6b6b6b" : "1px solid #efefef",
-              borderLeft: j % 3 === 0 ? "2px solid #6b6b6b" : "1px solid #efefef",
-              borderRight: j === 8 ? "2px solid #6b6b6b" : "",
-              borderBottom: i === 8 ? "2px solid #6b6b6b" : "",
+              borderTop: i % 3 === 0 ? "2px solid var(--ss-gray)" : "1px solid var(--ss-rule)",
+              borderLeft: j % 3 === 0 ? "2px solid var(--ss-gray)" : "1px solid var(--ss-rule)",
+              borderRight: j === 8 ? "2px solid var(--ss-gray)" : "",
+              borderBottom: i === 8 ? "2px solid var(--ss-gray)" : "",
             }}
           />
         ))

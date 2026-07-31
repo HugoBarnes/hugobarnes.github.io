@@ -4,7 +4,7 @@ function SectionHeading({ id, title }: { id: string; title: string }) {
   return (
     <h2
       id={id}
-      className="scroll-mt-20 text-[#1c1c1c] text-4xl font-bold mb-5"
+      className="scroll-mt-20 text-[color:var(--ss-text)] text-4xl font-bold mb-5"
     >
       {title}
     </h2>
@@ -16,10 +16,10 @@ export default function Home() {
     <>
       {/* Post-style header */}
       <section id="home" className="pt-20 pb-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#1c1c1c] leading-tight tracking-tight">
+        <h1 className="text-4xl md:text-5xl font-bold text-[color:var(--ss-text)] leading-tight tracking-tight">
           Hugo Barnes
         </h1>
-        <p className="mt-4 text-[1.75rem] text-[#6b6b6b] leading-snug">
+        <p className="mt-4 text-[1.75rem] text-[color:var(--ss-gray)] leading-snug">
           Mathematics &amp; Computer Science at the University of Virginia —
           things I&apos;ve built, taught, and written down.
         </p>
@@ -30,17 +30,17 @@ export default function Home() {
             className="w-12 h-12 rounded-full object-cover"
           />
           <div className="text-sm leading-tight">
-            <p className="text-[#1c1c1c] font-semibold">Hugo Barnes</p>
-            <p className="text-[#a0a0a0]">Charlottesville, VA</p>
+            <p className="text-[color:var(--ss-text)] font-semibold">Hugo Barnes</p>
+            <p className="text-[color:var(--ss-muted)]">Charlottesville, VA</p>
           </div>
         </div>
-        <hr className="mt-10 border-[#efefef]" />
+        <hr className="mt-10 border-[color:var(--ss-rule)]" />
       </section>
 
       {/* About */}
       <section className="py-16">
         <SectionHeading id="about" title="About" />
-        <div className="text-[1.625rem] text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-[1.625rem] text-[color:var(--ss-text-soft)] space-y-4 leading-relaxed">
           <p>
             Mathematics (Probability &amp; Statistics concentration) and
             Computer Science at the University of Virginia. Originally from
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Notes */}
       <section className="py-16">
         <SectionHeading id="notes" title="Notes" />
-        <div className="text-[1.625rem] text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-[1.625rem] text-[color:var(--ss-text-soft)] space-y-4 leading-relaxed">
           <p>LaTeX notes from coursework at UVA.</p>
           <ul className="space-y-1 pl-4">
             <li>
@@ -66,7 +66,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#a0a0a0]">—</span> Basic Real Analysis
+                <span className="text-[color:var(--ss-muted)]">—</span> Basic Real Analysis
               </a>
             </li>
             <li>
@@ -75,7 +75,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#a0a0a0]">—</span> Advanced Linear
+                <span className="text-[color:var(--ss-muted)]">—</span> Advanced Linear
                 Algebra
               </a>
             </li>
@@ -85,7 +85,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#a0a0a0]">—</span> Combinatorics
+                <span className="text-[color:var(--ss-muted)]">—</span> Combinatorics
               </a>
             </li>
           </ul>
@@ -95,7 +95,7 @@ export default function Home() {
       {/* Teaching */}
       <section className="py-16">
         <SectionHeading id="teaching" title="Teaching" />
-        <div className="text-[1.625rem] text-[#404040] space-y-4 leading-relaxed">
+        <div className="text-[1.625rem] text-[color:var(--ss-text-soft)] space-y-4 leading-relaxed">
           <p>
             Filled in to teach UVA&apos;s Fall 2024 CS 2120 (Discrete
             Mathematics I) after{" "}
@@ -115,7 +115,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#a0a0a0]">—</span> 10:00 AM lecture
+                <span className="text-[color:var(--ss-muted)]">—</span> 10:00 AM lecture
                 recording
               </a>
             </li>
@@ -125,7 +125,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-[#a0a0a0]">—</span> 11:00 AM lecture
+                <span className="text-[color:var(--ss-muted)]">—</span> 11:00 AM lecture
                 recording
               </a>
             </li>

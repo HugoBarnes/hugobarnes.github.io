@@ -12,9 +12,37 @@
   --ss-text: #1c1c1c;
   --ss-accent: #ff6719;
   --ss-accent-dark: #e05a10;
+  --ss-accent-soft: #fff3e8;
+  --ss-error: #c0392b;
+  --ss-error-bg: #fdeaea;
+  --ss-selection-bg: #ffe1d1;
+  --ss-selection-text: var(--ss-text);
 
   --background: var(--ss-bg);
   --foreground: var(--ss-text);
+  color-scheme: light;
+}
+
+/* Sunset pier dark mode — same palette as the kitty terminal:
+   bg #0f0b10, surfaces #241a20/#3a2a30, cream text #e9eef8/#e8d5c8,
+   peach accent #f5b78a, rose #e8837e */
+[data-theme="dark"] {
+  --ss-bg: #0f0b10;
+  --ss-bg-soft: #241a20;
+  --ss-rule: #241a20;
+  --ss-rule-dark: #3a2a30;
+  --ss-muted: #8a7480;
+  --ss-gray: #b3a2ab;
+  --ss-text-soft: #e8d5c8;
+  --ss-text: #e9eef8;
+  --ss-accent: #f5b78a;
+  --ss-accent-dark: #f0a985;
+  --ss-accent-soft: #2e2118;
+  --ss-error: #e8837e;
+  --ss-error-bg: #33191c;
+  --ss-selection-bg: #3a2a33;
+  --ss-selection-text: #f6ece2;
+  color-scheme: dark;
 }
 
 html {
@@ -30,8 +58,8 @@ body {
 }
 
 ::selection {
-  background: #ffe1d1;
-  color: var(--ss-text);
+  background: var(--ss-selection-bg);
+  color: var(--ss-selection-text);
 }
 
 a {

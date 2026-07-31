@@ -60,7 +60,7 @@ const TREE: TreeNode[] = [
   },
 ];
 
-const LINE = "border-[#1c1c1c]/20"; // thin white connector lines
+const LINE = "border-[color:var(--ss-text)]/20"; // thin white connector lines
 
 const isDir = (node: TreeNode) => node.children !== undefined;
 
@@ -205,17 +205,17 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle, onNavig
     <>
       {connectors}
       {hasKids && (
-        <span className="text-[#1c1c1c]/50 mr-1 flex items-center">
+        <span className="text-[color:var(--ss-text)]/50 mr-1 flex items-center">
           <Chevron open={open} />
         </span>
       )}
-      <span className={`mr-1.5 flex items-center ${isActive ? "text-[#1c1c1c]" : "text-[#1c1c1c]/60"}`}>
+      <span className={`mr-1.5 flex items-center ${isActive ? "text-[color:var(--ss-text)]" : "text-[color:var(--ss-text)]/60"}`}>
         {dir ? <FolderIcon open={open} /> : <FileIcon />}
       </span>
       <span
         className={`truncate ${
-          isActive ? "text-[#1c1c1c] font-semibold" : "text-[#1c1c1c]/75"
-        } group-hover:text-[#1c1c1c] transition-colors`}
+          isActive ? "text-[color:var(--ss-text)] font-semibold" : "text-[color:var(--ss-text)]/75"
+        } group-hover:text-[color:var(--ss-text)] transition-colors`}
       >
         {node.name}
       </span>
@@ -224,7 +224,7 @@ function Row({ node, guides, isLast, trail, active, collapsed, onToggle, onNavig
   );
 
   const rowClass =
-    "group flex items-center w-full text-left text-sm leading-9 rounded-sm cursor-pointer hover:bg-[#1c1c1c]/5";
+    "group flex items-center w-full text-left text-sm leading-9 rounded-sm cursor-pointer hover:bg-[var(--ss-text)]/5";
 
   let row: React.ReactNode;
   if (node.href) {
@@ -360,13 +360,13 @@ export default function FileTree() {
       {marker && (
         <span
           aria-hidden
-          className="absolute right-0 w-[2px] bg-[#1c1c1c] transition-[top] duration-300 ease-out"
+          className="absolute right-0 w-[2px] bg-[var(--ss-text)] transition-[top] duration-300 ease-out"
           style={{ top: marker.top, height: marker.height }}
         />
       )}
       <Link
         href="/#home"
-        className="flex items-center gap-2 leading-9 text-base text-[#1c1c1c] hover:bg-[#1c1c1c]/5 rounded-sm"
+        className="flex items-center gap-2 leading-9 text-base text-[color:var(--ss-text)] hover:bg-[var(--ss-text)]/5 rounded-sm"
       >
         <FolderIcon open />
         <span className="font-semibold">hugo-barnes</span>

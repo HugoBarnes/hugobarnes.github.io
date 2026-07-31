@@ -76,7 +76,7 @@ const DotProduct: React.FC<Props> = ({ rowsA }) => {
           onFill={fill("A")}
           onClear={clear("A")}
         />
-        <span className="self-center text-2xl text-[#a0a0a0] pt-6">·</span>
+        <span className="self-center text-2xl text-[color:var(--ss-muted)] pt-6">·</span>
         <MatrixInput
           label="Vector b"
           matrix={vecB}
@@ -88,9 +88,9 @@ const DotProduct: React.FC<Props> = ({ rowsA }) => {
 
       {error && <p className={ERROR_TEXT}>{error}</p>}
       {result !== null && !error && (
-        <p className="text-center text-lg text-[#404040]">
+        <p className="text-center text-lg text-[color:var(--ss-text-soft)]">
           a · b ={" "}
-          <span className="text-[#4a4a4a] font-bold">{formatNumber(result)}</span>
+          <span className="text-[color:var(--ss-text-soft)] font-bold">{formatNumber(result)}</span>
         </p>
       )}
     </div>

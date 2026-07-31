@@ -12,17 +12,17 @@ interface ProjectBoxProps {
 const ProjectBox: React.FC<ProjectBoxProps> = ({ name, link, description }) => {
   return (
     <Link href={link} className="group block h-full">
-      <div className="h-full flex flex-col rounded-lg border border-[#efefef] bg-[#fafafa] p-4
-        transition-colors group-hover:border-[#ff6719]">
-        <h3 className="text-base text-[#1c1c1c] group-hover:text-[#ff6719] transition-colors">
-          <span className="text-[#a0a0a0]">&gt;</span> {name}
+      <div className="h-full flex flex-col rounded-lg border border-[color:var(--ss-rule)] bg-[var(--ss-bg-soft)] p-4
+        transition-colors group-hover:border-[color:var(--ss-accent)]">
+        <h3 className="text-base text-[color:var(--ss-text)] group-hover:text-[color:var(--ss-accent)] transition-colors">
+          <span className="text-[color:var(--ss-muted)]">&gt;</span> {name}
         </h3>
         {description && (
-          <p className="mt-2 text-xs leading-relaxed text-[#5a5a5a] flex-grow">
+          <p className="mt-2 text-xs leading-relaxed text-[color:var(--ss-gray)] flex-grow">
             {description}
           </p>
         )}
-        <span className="mt-3 text-xs text-[#a0a0a0] group-hover:text-[#e05a10] transition-colors">
+        <span className="mt-3 text-xs text-[color:var(--ss-muted)] group-hover:text-[color:var(--ss-accent-dark)] transition-colors">
           open →
         </span>
       </div>

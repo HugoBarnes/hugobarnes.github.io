@@ -70,15 +70,15 @@ export default function MatrixPage() {
               lockCols
               onChange={(rows) => setMatrixA({ rows, cols: rows })}
             />
-            <label className="flex items-center gap-2 text-sm text-[#404040]">
+            <label className="flex items-center gap-2 text-sm text-[color:var(--ss-text-soft)]">
               Power n
               <input
                 type="number"
                 min={0}
                 value={power}
                 onChange={(e) => setPower(parseInt(e.target.value) || 0)}
-                className="w-16 h-9 px-2 text-center rounded bg-[#fafafa] text-[#1c1c1c]
-                  border border-[#e0e0e0] outline-none focus:border-[#ff6719] transition-colors tabular-nums"
+                className="w-16 h-9 px-2 text-center rounded bg-[var(--ss-bg-soft)] text-[color:var(--ss-text)]
+                  border border-[color:var(--ss-rule-dark)] outline-none focus:border-[color:var(--ss-accent)] transition-colors tabular-nums"
               />
             </label>
           </div>

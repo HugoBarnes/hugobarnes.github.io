@@ -22,7 +22,7 @@ function NumberField({
   disabled?: boolean;
 }) {
   return (
-    <label className="flex items-center gap-2 text-sm text-[#404040]">
+    <label className="flex items-center gap-2 text-sm text-[color:var(--ss-text-soft)]">
       {label}
       <input
         type="number"
@@ -30,8 +30,8 @@ function NumberField({
         value={value}
         onChange={onChange}
         disabled={disabled}
-        className="w-16 h-9 px-2 text-center rounded bg-[#fafafa] text-[#1c1c1c]
-          border border-[#e0e0e0] outline-none focus:border-[#ff6719] transition-colors
+        className="w-16 h-9 px-2 text-center rounded bg-[var(--ss-bg-soft)] text-[color:var(--ss-text)]
+          border border-[color:var(--ss-rule-dark)] outline-none focus:border-[color:var(--ss-accent)] transition-colors
           disabled:opacity-50 tabular-nums"
       />
     </label>
@@ -67,7 +67,7 @@ export default function Dimensions({
 
   return (
     <div className="flex flex-col items-center gap-1">
-      {label && <span className="text-xs text-[#ff6719]">{label}</span>}
+      {label && <span className="text-xs text-[color:var(--ss-accent)]">{label}</span>}
       <div className="flex gap-4">
         <NumberField label="Rows" value={rowInput} onChange={handleRowChange} />
         <NumberField

@@ -111,23 +111,23 @@ const Board = () => {
         {/* Board */}
         <div className="space-y-4">
           <BoardGrid board={board} preview={preview} onChange={handleCellChange} />
-          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-[#6b6b6b]">
-            <Legend className="bg-[#2a2a2a]" label="triple word" />
-            <Legend className="bg-[#3f3f3f]" label="double word" />
-            <Legend className="bg-[#c94f0e]" label="triple letter" />
-            <Legend className="bg-[#454545]" label="double letter" />
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-[10px] text-[color:var(--ss-gray)]">
+            <Legend className="bg-[var(--ss-text)]" label="triple word" />
+            <Legend className="bg-[var(--ss-text-soft)]" label="double word" />
+            <Legend className="bg-[var(--ss-accent-dark)]" label="triple letter" />
+            <Legend className="bg-[var(--ss-text-soft)]" label="double letter" />
           </div>
         </div>
 
         {/* Controls + results */}
         <div className="space-y-4">
           <div>
-            <h3 className="text-sm text-[#ff6719] mb-2">
-              <span className="text-[#a0a0a0]">$</span> your rack
+            <h3 className="text-sm text-[color:var(--ss-accent)] mb-2">
+              <span className="text-[color:var(--ss-muted)]">$</span> your rack
             </h3>
             <Rack tiles={rack} onChange={handleRackChange} />
-            <p className="mt-2 text-[10px] text-[#a0a0a0] text-center">
-              Type letters; use <span className="text-[#6b6b6b]">?</span> for a blank.
+            <p className="mt-2 text-[10px] text-[color:var(--ss-muted)] text-center">
+              Type letters; use <span className="text-[color:var(--ss-gray)]">?</span> for a blank.
             </p>
           </div>
 
@@ -135,8 +135,8 @@ const Board = () => {
             <button
               onClick={solve}
               disabled={solving}
-              className="px-4 py-2 rounded text-sm font-medium bg-[#4a4a4a] text-[#ffffff]
-                hover:bg-[#3a3a3a] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 rounded text-sm font-medium bg-[var(--ss-text-soft)] text-[color:var(--ss-bg)]
+                hover:bg-[var(--ss-text)] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             >
               {solving
                 ? dictState === "loading"
@@ -146,19 +146,19 @@ const Board = () => {
             </button>
             <button
               onClick={clearRack}
-              className="px-3 py-2 rounded text-sm bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors"
+              className="px-3 py-2 rounded text-sm bg-[var(--ss-rule)] text-[color:var(--ss-text-soft)] hover:bg-[var(--ss-rule-dark)] transition-colors"
             >
               Clear rack
             </button>
             <button
               onClick={clearBoard}
-              className="px-3 py-2 rounded text-sm bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors"
+              className="px-3 py-2 rounded text-sm bg-[var(--ss-rule)] text-[color:var(--ss-text-soft)] hover:bg-[var(--ss-rule-dark)] transition-colors"
             >
               Clear board
             </button>
           </div>
 
-          {message && <p className="text-sm text-[#e05a10]">{message}</p>}
+          {message && <p className="text-sm text-[color:var(--ss-accent-dark)]">{message}</p>}
 
           <Results
             moves={moves}

@@ -5,14 +5,14 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
-    <footer className="border-t border-[#efefef] text-xs text-[#404040] mt-12">
+    <footer className="border-t border-[color:var(--ss-rule)] text-xs text-[color:var(--ss-text-soft)] mt-12">
       <nav className="mx-auto max-w-3xl px-6 py-6">
         <div className="flex justify-between items-start w-full">
           <ul className="flex flex-col space-y-1">
             <li>
               <a
                 href="mailto:hugo.s.barnes@gmail.com"
-                className="text-[#ff6719] hover:text-[#e05a10]"
+                className="text-[color:var(--ss-accent)] hover:text-[color:var(--ss-accent-dark)]"
               >
                 hugo.s.barnes@gmail.com
               </a>
@@ -24,7 +24,7 @@ function Footer() {
                 onClick={() =>
                   window.open("https://www.linkedin.com/in/hugo-barnes/", "_blank")
                 }
-                className="text-[#e05a10] hover:text-[#ff6719] cursor-pointer"
+                className="text-[color:var(--ss-accent-dark)] hover:text-[color:var(--ss-accent)] cursor-pointer"
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
@@ -35,7 +35,7 @@ function Footer() {
                 onClick={() =>
                   window.open("https://github.com/HugoBarnes", "_blank")
                 }
-                className="text-[#404040] hover:text-[#ff6719] cursor-pointer"
+                className="text-[color:var(--ss-text-soft)] hover:text-[color:var(--ss-accent)] cursor-pointer"
                 aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faSquareGithub} />
@@ -49,7 +49,7 @@ function Footer() {
                     "_blank"
                   )
                 }
-                className="text-[#404040] hover:text-[#ff6719] cursor-pointer"
+                className="text-[color:var(--ss-text-soft)] hover:text-[color:var(--ss-accent)] cursor-pointer"
                 aria-label="CV"
               >
                 <FontAwesomeIcon icon={faFile} />

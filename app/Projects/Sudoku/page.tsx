@@ -15,7 +15,7 @@ import {
 } from "@/app/lib/sudoku";
 
 const BTN =
-  "px-3 py-1.5 rounded text-sm bg-[#efefef] text-[#404040] hover:bg-[#e0e0e0] transition-colors cursor-pointer";
+  "px-3 py-1.5 rounded text-sm bg-[var(--ss-rule)] text-[color:var(--ss-text-soft)] hover:bg-[var(--ss-rule-dark)] transition-colors cursor-pointer";
 
 const DIFFICULTIES: Difficulty[] = ["easy", "medium", "hard"];
 
@@ -150,20 +150,20 @@ export default function SudokuPage() {
             onInput={handleInput}
           />
           {solved && (
-            <p className="mt-4 text-center text-lg text-[#ff6719] font-semibold">
+            <p className="mt-4 text-center text-lg text-[color:var(--ss-accent)] font-semibold">
               Solved in {formatTime(seconds)} — nice!
             </p>
           )}
         </div>
 
         <div className="flex flex-col gap-4 min-w-44">
-          <div className="flex items-center justify-between text-sm text-[#6b6b6b]">
+          <div className="flex items-center justify-between text-sm text-[color:var(--ss-gray)]">
             <span className="capitalize">{difficulty}</span>
             <span className="tabular-nums">{formatTime(seconds)}</span>
           </div>
 
           <div className="flex flex-col gap-2">
-            <span className="text-xs uppercase tracking-wide text-[#a0a0a0]">
+            <span className="text-xs uppercase tracking-wide text-[color:var(--ss-muted)]">
               New puzzle
             </span>
             <div className="flex gap-2">
@@ -171,7 +171,7 @@ export default function SudokuPage() {
                 <button
                   key={d}
                   className={`${BTN} capitalize ${
-                    d === difficulty ? "bg-[#e0e0e0] font-semibold" : ""
+                    d === difficulty ? "bg-[var(--ss-rule-dark)] font-semibold" : ""
                   }`}
                   onClick={() => {
                     setDifficulty(d);
@@ -185,7 +185,7 @@ export default function SudokuPage() {
           </div>
 
           <div className="flex flex-col gap-2">
-            <span className="text-xs uppercase tracking-wide text-[#a0a0a0]">
+            <span className="text-xs uppercase tracking-wide text-[color:var(--ss-muted)]">
               Play
             </span>
             <div className="flex flex-wrap gap-2">
@@ -204,9 +204,9 @@ export default function SudokuPage() {
             </div>
           </div>
 
-          {message && <p className="text-sm text-[#404040]">{message}</p>}
+          {message && <p className="text-sm text-[color:var(--ss-text-soft)]">{message}</p>}
           {conflicts.size > 0 && (
-            <p className="text-sm text-[#c0392b]">
+            <p className="text-sm text-[color:var(--ss-error)]">
               Conflicting cells are highlighted
             </p>
           )}

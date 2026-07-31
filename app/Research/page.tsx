@@ -5,8 +5,8 @@ export default function Home() {
     <div  className="text-sm p-2">
         <p>
             In the <strong>Research Tab</strong>, is a compilation of the work I 
-            did for <a href="https://www.tomhartvigsen.com/" target="_blank" className="text-[#ff6719] underline hover:text-[#e05a10]">Professor Hartvigsen</a> in the summer of 2024.
-            Our work culminated in a paper titled: <a href="https://arxiv.org/html/2410.21151" target="_blank" className="text-[#ff6719] underline hover:text-[#e05a10]">Offline Reinforcement Learning
+            did for <a href="https://www.tomhartvigsen.com/" target="_blank" className="text-[color:var(--ss-accent)] underline hover:text-[color:var(--ss-accent-dark)]">Professor Hartvigsen</a> in the summer of 2024.
+            Our work culminated in a paper titled: <a href="https://arxiv.org/html/2410.21151" target="_blank" className="text-[color:var(--ss-accent)] underline hover:text-[color:var(--ss-accent-dark)]">Offline Reinforcement Learning
             With Combinatorial Action Spaces</a>.
       </p>
     </div>

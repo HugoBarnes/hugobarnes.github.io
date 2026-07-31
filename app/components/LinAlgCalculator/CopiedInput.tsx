@@ -9,7 +9,7 @@ export default function CopiedInput({onChange}: inputProp){
         <div className="flex gap-4">
             <textarea
             onChange = {(e) => onChange(e.target.value)}
-            className="w-full border border-gray-300 p2"
+            className="w-full border border-[color:var(--ss-rule-dark)] p2"
             rows={5}
             />
         </div>

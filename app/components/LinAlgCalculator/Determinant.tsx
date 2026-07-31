@@ -67,9 +67,9 @@ const Determinant: React.FC<Props> = ({ size }) => {
 
       {error && <p className={ERROR_TEXT}>{error}</p>}
       {result !== null && !error && (
-        <p className="text-center text-lg text-[#404040]">
+        <p className="text-center text-lg text-[color:var(--ss-text-soft)]">
           det(A) ={" "}
-          <span className="text-[#4a4a4a] font-bold">{formatNumber(result)}</span>
+          <span className="text-[color:var(--ss-text-soft)] font-bold">{formatNumber(result)}</span>
         </p>
       )}
     </div>
