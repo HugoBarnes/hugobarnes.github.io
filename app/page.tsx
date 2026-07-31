@@ -1,4 +1,4 @@
-import ProjectStrip from "./components/ProjectStrip";
+import Link from "next/link";
 import PdfGrid from "./components/PdfGrid";
 
 function SectionHeading({ id, title }: { id: string; title: string }) {
@@ -141,7 +141,30 @@ export default function Home() {
       {/* Projects */}
       <section className="py-16">
         <SectionHeading id="projects" title="Projects &amp; Applications" />
-        <ProjectStrip />
+        <div className="divide-y divide-[color:var(--ss-rule)]">
+          <Link
+            href="/Projects/CalvinAndHobbes"
+            className="group block py-10 no-underline hover:no-underline"
+          >
+            <span className="block text-[1.75rem] leading-snug text-[color:var(--ss-text)] group-hover:text-[color:var(--ss-accent)] transition-colors">
+              Calvin and Hobbes Reader
+            </span>
+            <span className="mt-1 block text-[1.25rem] text-[color:var(--ss-gray)]">
+              The complete collection, readable in the browser.
+            </span>
+          </Link>
+          <Link
+            href="/Projects/DrawingMachine"
+            className="group block py-10 no-underline hover:no-underline"
+          >
+            <span className="block text-[1.75rem] leading-snug text-[color:var(--ss-text)] group-hover:text-[color:var(--ss-accent)] transition-colors">
+              Automaton
+            </span>
+            <span className="mt-1 block text-[1.25rem] text-[color:var(--ss-gray)]">
+              A 3D-printed, Arduino-powered drawing machine.
+            </span>
+          </Link>
+        </div>
       </section>
     </>
   );
