@@ -23,6 +23,9 @@ const TREE: TreeNode[] = [
       { name: "real-analysis.pdf", href: "/pdfs/BasicRealAnalyis.pdf" },
       { name: "adv-linear-algebra.pdf", href: "/pdfs/AdvancedLinearAlgebra.pdf" },
       { name: "combinatorics.pdf", href: "/pdfs/Combinatorics.pdf" },
+      { name: "discrete-math.pdf", href: "/pdfs/DiscreteMath.pdf" },
+      { name: "statistics.pdf", href: "/pdfs/StatsLectureNotes.pdf" },
+      { name: "corporate-finance.pdf", href: "/pdfs/CorporateFinance.pdf" },
     ],
   },
   {

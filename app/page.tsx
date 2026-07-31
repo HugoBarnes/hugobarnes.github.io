@@ -77,6 +77,21 @@ export default function Home() {
                 href: "/pdfs/Combinatorics.pdf",
                 thumb: "/pdfs/thumbs/Combinatorics.png",
               },
+              {
+                title: "Discrete Math",
+                href: "/pdfs/DiscreteMath.pdf",
+                thumb: "/pdfs/thumbs/DiscreteMath.png",
+              },
+              {
+                title: "Statistics",
+                href: "/pdfs/StatsLectureNotes.pdf",
+                thumb: "/pdfs/thumbs/StatsLectureNotes.png",
+              },
+              {
+                title: "Corporate Finance",
+                href: "/pdfs/CorporateFinance.pdf",
+                thumb: "/pdfs/thumbs/CorporateFinance.png",
+              },
             ]}
           />
         </div>
