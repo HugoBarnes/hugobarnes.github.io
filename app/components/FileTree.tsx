@@ -46,9 +46,6 @@ const TREE: TreeNode[] = [
     name: "projects",
     path: "/#projects",
     children: [
-      { name: "scrabble-solver", path: "/Projects/ScrabbleSolver", children: [] },
-      { name: "sudoku", path: "/Projects/Sudoku", children: [] },
-      { name: "lin-algebra", path: "/Projects/LinAlgebra", children: [] },
       { name: "drawing-machine", path: "/Projects/DrawingMachine", children: [] },
       { name: "calvin-and-hobbes", path: "/Projects/CalvinAndHobbes", children: [] },
     ],

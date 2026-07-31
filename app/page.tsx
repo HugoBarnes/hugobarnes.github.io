@@ -1,4 +1,4 @@
-import BentoBox from "./components/BentoBox";
+import ProjectStrip from "./components/ProjectStrip";
 import PdfGrid from "./components/PdfGrid";
 
 function SectionHeading({ id, title }: { id: string; title: string }) {
@@ -141,7 +141,7 @@ export default function Home() {
       {/* Projects */}
       <section className="py-16">
         <SectionHeading id="projects" title="Projects &amp; Applications" />
-        <BentoBox />
+        <ProjectStrip />
       </section>
     </>
   );
